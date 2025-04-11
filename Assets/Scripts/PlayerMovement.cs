@@ -4,10 +4,10 @@ using UnityEngine;
 //player movement
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    private Rigidbody2D rb;
+    public float moveSpeed = 5f;  //moving speed
+    private Rigidbody2D rb;       //collide
     private Vector2 movement;
-    private Animator animator;
+    private Animator animator;    //animation
     private SpriteRenderer spriteRenderer;
 
     void Start()
@@ -46,5 +46,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided with" + collision.gameObject.name);
     }
 }
