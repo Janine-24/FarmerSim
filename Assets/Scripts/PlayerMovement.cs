@@ -1,5 +1,8 @@
 using UnityEngine;
 
+//"Cute Fantasy asset pack" by Kenmi ¨C Free Version License
+//https://kenmi-art.itch.io/cute-fantasy-rpg
+//Used with permission for non-commercial purposes. Modified assets not redistributed.
 
 //player movement
 public class PlayerMovement : MonoBehaviour
