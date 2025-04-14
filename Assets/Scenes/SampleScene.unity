@@ -740,7 +740,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 462301494}
-        m_TargetAssemblyTypeName: playerguide, Assembly-CSharp
+        m_TargetAssemblyTypeName: playerGuideScene, Assembly-CSharp
         m_MethodName: LoadPlayerGuide
         m_Mode: 1
         m_Arguments:
