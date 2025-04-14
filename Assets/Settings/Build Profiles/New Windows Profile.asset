@@ -20,10 +20,12 @@ MonoBehaviour:
     rid: 1689606608620617798
   m_OverrideGlobalSceneList: 1
   m_Scenes:
-  - m_enabled: 1
+  - m_enabled: 0
     m_path: Assets/Scenes/SampleScene.unity
-  - m_enabled: 1
+  - m_enabled: 0
     m_path: Assets/Scenes/playerGuideScene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/SNBMachine2.unity
   m_ScriptingDefines:
   - 
   m_PlayerSettingsYaml:
