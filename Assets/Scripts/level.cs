@@ -18,6 +18,7 @@ public class LevelSystem : MonoBehaviour
     public GameObject levelUpPopup;
 
 
+
     void Start()
     {
         UpdateUI();
