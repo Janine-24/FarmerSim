@@ -25,7 +25,11 @@ MonoBehaviour:
   - m_enabled: 0
     m_path: Assets/Scenes/playerGuideScene.unity
   - m_enabled: 1
+<<<<<<< HEAD
     m_path: Assets/Scenes/SNBMachine2.unity
+=======
+    m_path: Assets/Scenes/main page.unity
+>>>>>>> 1bf2e79231b946ac35dd4387931bae67031802ec
   m_ScriptingDefines:
   - 
   m_PlayerSettingsYaml:

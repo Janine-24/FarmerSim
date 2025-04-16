@@ -16,13 +16,6 @@ public class LevelSystem : MonoBehaviour
     public AudioClip xpSound;
     public AudioClip levelUpSound;
     public GameObject levelUpPopup;
-
-
-    void Start()
-    {
-        UpdateUI();
-    }
-
     public void AddXP(int amount)
     {
         currentXP += amount;
