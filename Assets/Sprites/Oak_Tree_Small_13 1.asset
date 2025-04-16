@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Grass_Middle_0
+  m_Name: Oak_Tree_Small_13 1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -8093324950678878029, guid: 6c4653379f4002341b0ecd543e8ac9a4, type: 3}
+  m_Sprite: {fileID: 409284542, guid: f529fdead38cee648babe41ec0b8b4c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

@@ -7,6 +7,6 @@ public class BackToMainMenu : MonoBehaviour
     public void LoadMainMenu()
     {
         Debug.Log("Back to main menu clicked");
-        SceneManager.LoadScene("SampleScene"); // ← main scene name 
+        SceneManager.LoadScene("main page"); // ← main scene name 
     }
 }
