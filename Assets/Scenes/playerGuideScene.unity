@@ -783,7 +783,7 @@ GameObject:
   - component: {fileID: 1177274181}
   - component: {fileID: 1177274180}
   m_Layer: 0
-  m_Name: buttonbackmanager
+  m_Name: buttonback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
