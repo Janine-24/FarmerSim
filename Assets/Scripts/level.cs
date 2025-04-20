@@ -19,12 +19,11 @@ public class LevelSystem : MonoBehaviour
 
 
 
-    void Start()
-    {
-        UpdateUI();
-    }
-
-    public void AddXP(int amount)
+    ///void Start()
+    ///{
+    ///    UpdateUI();
+    /// <summary>
+    /// }
     {
         currentXP += amount;
         if (xpSound != null && audioSource != null)
