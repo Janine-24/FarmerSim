@@ -993,6 +993,7 @@ GameObject:
   - component: {fileID: 1790144752}
   - component: {fileID: 1790144754}
   - component: {fileID: 1790144753}
+  - component: {fileID: 1790144755}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1016,8 +1017,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0081034, y: -2.9047}
-  m_SizeDelta: {x: 2328.4, y: 896.37}
+  m_AnchoredPosition: {x: -0.0007672906, y: -2.9047}
+  m_SizeDelta: {x: 2332.2, y: 896.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790144753
 MonoBehaviour:
@@ -1057,6 +1058,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790144751}
   m_CullTransparentMesh: 1
+--- !u!223 &1790144755
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790144751}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1871925366
 GameObject:
   m_ObjectHideFlags: 0
