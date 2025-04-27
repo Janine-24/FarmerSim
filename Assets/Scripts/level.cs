@@ -36,6 +36,14 @@ public class LevelSystem : MonoBehaviour
         UpdateUI();
     }
 
+    private System.Collections.IEnumerator HidePopupAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (levelUpPopup != null)
+            levelUpPopup.SetActive(false);
+    }
+
     void LevelUp()
     {
         level++;
@@ -49,7 +57,7 @@ public class LevelSystem : MonoBehaviour
         if (levelUpPopup != null)
         {
             levelUpPopup.SetActive(true);
-            Invoke("HidePopup", 2f);
+            StartCoroutine(HidePopupAfterDelay(2f));
         }
 
         UpdateUI();
