@@ -1,64 +1,69 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
-// Manager for the selling machine
 public class SellingMachineManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class MachineStock
+    [Header("Product Setup")]
+    [SerializeField]
+    public List<Product> sellingProducts;
+    public List<Button> sellingButtons;
+
+    [Header("Total Price Display")]
+    public TextMeshProUGUI totalPriceText;
+    private int totalPrice = 0;
+
+    private void Start()
     {
-        public Product product;  // The product
-        public int stock;        // The quantity in stock
+        SetupButtons();
     }
 
-    public List<MachineStock> machineStock = new List<MachineStock>();  // List of all stocks
-
-    // Method to sell a product
-    public bool SellProduct(Product product, int amount)
+    private void SetupButtons()
     {
-        var stockEntry = machineStock.Find(entry => entry.product == product);
-        if (stockEntry != null && stockEntry.stock >= amount)
+        for (int i = 0; i < sellingButtons.Count; i++)
         {
-            // Check if the player has enough product in their inventory
-            if (InventoryManager.Instance.RemoveProduct(product, amount))
-            {
-                stockEntry.stock -= amount;  // Decrease machine stock
-                Debug.Log($"Successfully Sold {amount} {product.productName}. Selling Machine Remaining Stock: {stockEntry.stock}");
-                return true;
-            }
-            else
-            {
-                Debug.Log("Inventory is insufficient and cannot be sold!");
-            }
+            int index = i;
+            UpdateButtonDisplay(index);
+            sellingButtons[i].onClick.AddListener(() => OnProductClicked(index));
         }
-        else
+    }
+
+    private void OnProductClicked(int index)
+    {
+        Product product = sellingProducts[index];
+
+        if (product.currentQuantity > 0)
         {
-            Debug.Log("Selling Machine Out Of Stock!");
+            product.currentQuantity--;
+            totalPrice += product.price;
+            UpdateButtonDisplay(index);
+            UpdateTotalPriceDisplay();
         }
-        return false;
     }
 
-    // Get current stock of a specific product
-    public int GetStock(Product product)
+    public void UpdateButtonDisplay(int index)
     {
-        var stockEntry = machineStock.Find(entry => entry.product == product);
-        return stockEntry != null ? stockEntry.stock : 0;
+        Product product = sellingProducts[index];
+        Button button = sellingButtons[index];
+
+        button.GetComponentInChildren<TextMeshProUGUI>().text = product.currentQuantity.ToString();
+        button.image.sprite = product.productImage;
     }
 
-    // Set stock to a specific value
-    public void SetStock(Product product, int amount)
+    private void UpdateTotalPriceDisplay()
     {
-        var stockEntry = machineStock.Find(entry => entry.product == product);
-        if (stockEntry != null) stockEntry.stock = amount;
+        totalPriceText.text = "Total: $" + totalPrice;
     }
 
-    // Add stock to the machine
-    public void AddStock(Product product, int amount)
+    public void ResetSellingMachine()
     {
-        var stockEntry = machineStock.Find(entry => entry.product == product);
-        if (stockEntry != null)
-            stockEntry.stock += amount;
-        else
-            machineStock.Add(new MachineStock { product = product, stock = amount });
+        totalPrice = 0;
+        for (int i = 0; i < sellingProducts.Count; i++)
+        {
+            sellingProducts[i].currentQuantity = sellingProducts[i].originalQuantity;
+            UpdateButtonDisplay(i);
+        }
+        UpdateTotalPriceDisplay();
     }
 }

@@ -710,8 +710,8 @@ MonoBehaviour:
   playerStockText: {fileID: 40565407}
   machineStockText: {fileID: 40565407}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &87861953
 GameObject:
@@ -987,8 +987,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1098642854}
   machineStockText: {fileID: 223534197}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &163079722
 GameObject:
@@ -1536,8 +1536,8 @@ MonoBehaviour:
   playerStockText: {fileID: 40565407}
   machineStockText: {fileID: 1533583089}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &263484939
 GameObject:
@@ -1675,37 +1675,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263484939}
   m_CullTransparentMesh: 1
---- !u!1 &273695854
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 273695856}
-  m_Layer: 0
-  m_Name: MachineButtonUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &273695856
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273695854}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.228905, y: -1.1574662, z: 4.81939}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &297907899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,8 +1813,8 @@ MonoBehaviour:
   playerStockText: {fileID: 263484941}
   machineStockText: {fileID: 163079724}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &315958957
 GameObject:
@@ -2224,8 +2193,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1968470224}
   machineStockText: {fileID: 1807989234}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &351096720
 GameObject:
@@ -2365,8 +2334,8 @@ MonoBehaviour:
   playerStockText: {fileID: 934828945}
   machineStockText: {fileID: 934828945}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &368601699
 GameObject:
@@ -2642,8 +2611,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1329933886}
   machineStockText: {fileID: 1329933886}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &391568156
 GameObject:
@@ -2919,8 +2888,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1098642854}
   machineStockText: {fileID: 223534197}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &464599099
 GameObject:
@@ -3178,8 +3147,8 @@ MonoBehaviour:
   playerStockText: {fileID: 530441064}
   machineStockText: {fileID: 391568158}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &501330677
 GameObject:
@@ -3319,8 +3288,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1667516757}
   machineStockText: {fileID: 1667516757}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &505717732
 GameObject:
@@ -3460,8 +3429,8 @@ MonoBehaviour:
   playerStockText: {fileID: 530441064}
   machineStockText: {fileID: 530441064}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &512733745
 GameObject:
@@ -4145,8 +4114,8 @@ MonoBehaviour:
   playerStockText: {fileID: 87861955}
   machineStockText: {fileID: 87861955}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &634654467
 GameObject:
@@ -4537,8 +4506,8 @@ MonoBehaviour:
   playerStockText: {fileID: 87861955}
   machineStockText: {fileID: 1803504066}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &689214918
 GameObject:
@@ -4678,8 +4647,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1968470224}
   machineStockText: {fileID: 1968470224}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &695229904
 GameObject:
@@ -4819,8 +4788,8 @@ MonoBehaviour:
   playerStockText: {fileID: 55173107}
   machineStockText: {fileID: 55173107}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &698202651
 GameObject:
@@ -4960,8 +4929,8 @@ MonoBehaviour:
   playerStockText: {fileID: 972804557}
   machineStockText: {fileID: 972804557}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &708905452
 GameObject:
@@ -5237,8 +5206,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1842977607}
   machineStockText: {fileID: 1842977607}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &773612098
 GameObject:
@@ -5378,8 +5347,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1667516757}
   machineStockText: {fileID: 854884043}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &796235066
 GameObject:
@@ -5912,85 +5881,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854884041}
   m_CullTransparentMesh: 1
---- !u!1 &877024299
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 877024300}
-  - component: {fileID: 877024301}
-  m_Layer: 0
-  m_Name: SellingMachineManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &877024300
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877024299}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 431.214, y: 185.321, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &877024301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877024299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b2edd864960ed49a3f722dea39f57f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  machineStock:
-  - product: {fileID: 11400000, guid: 4c5cb8aaa0c04a64ca1c0c3e2e82b261, type: 2}
-    stock: 5
-  - product: {fileID: 11400000, guid: fb29dc52188b3fd42b03c0d6fbac0c98, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: 5cc61025964e9084ea8d826d202a67f3, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: 4c4a5c3fc3b27f94b955c4787ea2326a, type: 2}
-    stock: 10
-  - product: {fileID: 11400000, guid: 98f1d476452f45d4381e4fa47fbb5880, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: 292be4df2e380d44ca024d444e81e135, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: 40ac97b9b61fb1f4bba6ff0672c9df68, type: 2}
-    stock: 10
-  - product: {fileID: 11400000, guid: 394654d6b17a73d419bec6f20bfbd498, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: 5c40c0b62f785be4c8614effd66e43dd, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: 5fca0e1f073a14e4da7eec39aaf7fa95, type: 2}
-    stock: 10
-  - product: {fileID: 11400000, guid: 3bd47263797c4e247bc7643ac2ef0da0, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: 9442009f3254a4043aa4314df2c63224, type: 2}
-    stock: 5
-  - product: {fileID: 11400000, guid: 57885638a5bd8424392e71eed27b7240, type: 2}
-    stock: 5
-  - product: {fileID: 11400000, guid: 597478e3f3661b24b860dc12cedde21c, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: b02f2561b1b83744b81d7662fc0fe1bc, type: 2}
-    stock: 10
-  - product: {fileID: 11400000, guid: e1ba60b0a289a5d449c3c22c229e2f42, type: 2}
-    stock: 0
-  - product: {fileID: 11400000, guid: 477484764af433c40a4513fe75675b2d, type: 2}
-    stock: 10
 --- !u!1 &934828943
 GameObject:
   m_ObjectHideFlags: 0
@@ -6265,8 +6155,8 @@ MonoBehaviour:
   playerStockText: {fileID: 934828945}
   machineStockText: {fileID: 1217929893}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &972804555
 GameObject:
@@ -6542,88 +6432,9 @@ MonoBehaviour:
   playerStockText: {fileID: 972804557}
   machineStockText: {fileID: 2019667602}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
---- !u!1 &1081587568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1081587570}
-  - component: {fileID: 1081587571}
-  m_Layer: 0
-  m_Name: BuyingMachineManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1081587570
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081587568}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 431.214, y: 185.321, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1081587571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081587568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1690d17d23e42f841a12262dd26b7399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  machineStock:
-  - product: {fileID: 11400000, guid: 4c5cb8aaa0c04a64ca1c0c3e2e82b261, type: 2}
-    stock: 5
-  - product: {fileID: 11400000, guid: fb29dc52188b3fd42b03c0d6fbac0c98, type: 2}
-    stock: 10
-  - product: {fileID: 11400000, guid: 5cc61025964e9084ea8d826d202a67f3, type: 2}
-    stock: 8
-  - product: {fileID: 11400000, guid: 4c4a5c3fc3b27f94b955c4787ea2326a, type: 2}
-    stock: 15
-  - product: {fileID: 11400000, guid: 98f1d476452f45d4381e4fa47fbb5880, type: 2}
-    stock: 8
-  - product: {fileID: 11400000, guid: 292be4df2e380d44ca024d444e81e135, type: 2}
-    stock: 8
-  - product: {fileID: 11400000, guid: 40ac97b9b61fb1f4bba6ff0672c9df68, type: 2}
-    stock: 15
-  - product: {fileID: 11400000, guid: 394654d6b17a73d419bec6f20bfbd498, type: 2}
-    stock: 10
-  - product: {fileID: 11400000, guid: 5c40c0b62f785be4c8614effd66e43dd, type: 2}
-    stock: 8
-  - product: {fileID: 11400000, guid: 5fca0e1f073a14e4da7eec39aaf7fa95, type: 2}
-    stock: 15
-  - product: {fileID: 11400000, guid: 3bd47263797c4e247bc7643ac2ef0da0, type: 2}
-    stock: 10
-  - product: {fileID: 11400000, guid: 9442009f3254a4043aa4314df2c63224, type: 2}
-    stock: 5
-  - product: {fileID: 11400000, guid: 57885638a5bd8424392e71eed27b7240, type: 2}
-    stock: 5
-  - product: {fileID: 11400000, guid: 597478e3f3661b24b860dc12cedde21c, type: 2}
-    stock: 8
-  - product: {fileID: 11400000, guid: b02f2561b1b83744b81d7662fc0fe1bc, type: 2}
-    stock: 15
-  - product: {fileID: 11400000, guid: 477484764af433c40a4513fe75675b2d, type: 2}
-    stock: 15
-  - product: {fileID: 11400000, guid: e1ba60b0a289a5d449c3c22c229e2f42, type: 2}
-    stock: 10
 --- !u!1 &1098642852
 GameObject:
   m_ObjectHideFlags: 0
@@ -6898,8 +6709,8 @@ MonoBehaviour:
   playerStockText: {fileID: 55173107}
   machineStockText: {fileID: 2053880932}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1217011142
 GameObject:
@@ -7311,8 +7122,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1914713554}
   machineStockText: {fileID: 534018945}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1262307460
 GameObject:
@@ -7452,8 +7263,8 @@ MonoBehaviour:
   playerStockText: {fileID: 263484941}
   machineStockText: {fileID: 263484941}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1264578788
 GameObject:
@@ -7949,8 +7760,8 @@ MonoBehaviour:
   playerStockText: {fileID: 828503749}
   machineStockText: {fileID: 336110510}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1503050923
 GameObject:
@@ -8238,8 +8049,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1503050925}
   machineStockText: {fileID: 557125497}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1533583087
 GameObject:
@@ -8651,105 +8462,9 @@ MonoBehaviour:
   playerStockText: {fileID: 1541012055}
   machineStockText: {fileID: 1541012055}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
---- !u!1 &1627693526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1627693528}
-  - component: {fileID: 1627693527}
-  - component: {fileID: 1627693529}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1627693527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627693526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3de1142f4e20343bce245b10f443b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buyingMachineManager: {fileID: 1081587571}
---- !u!4 &1627693528
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627693526}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.228905, y: -1.1574662, z: 4.81939}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1627693529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627693526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6206a58362060f741a31680f6908f45e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allProductsWithStock:
-  - product: {fileID: 11400000, guid: 4c5cb8aaa0c04a64ca1c0c3e2e82b261, type: 2}
-    initialStock: 5
-  - product: {fileID: 11400000, guid: fb29dc52188b3fd42b03c0d6fbac0c98, type: 2}
-    initialStock: 0
-  - product: {fileID: 11400000, guid: 5cc61025964e9084ea8d826d202a67f3, type: 2}
-    initialStock: 0
-  - product: {fileID: 11400000, guid: 4c4a5c3fc3b27f94b955c4787ea2326a, type: 2}
-    initialStock: 10
-  - product: {fileID: 11400000, guid: 98f1d476452f45d4381e4fa47fbb5880, type: 2}
-    initialStock: 0
-  - product: {fileID: 11400000, guid: 292be4df2e380d44ca024d444e81e135, type: 2}
-    initialStock: 0
-  - product: {fileID: 11400000, guid: 40ac97b9b61fb1f4bba6ff0672c9df68, type: 2}
-    initialStock: 10
-  - product: {fileID: 11400000, guid: 394654d6b17a73d419bec6f20bfbd498, type: 2}
-    initialStock: 0
-  - product: {fileID: 11400000, guid: 5c40c0b62f785be4c8614effd66e43dd, type: 2}
-    initialStock: 0
-  - product: {fileID: 11400000, guid: 3bd47263797c4e247bc7643ac2ef0da0, type: 2}
-    initialStock: 0
-  - product: {fileID: 11400000, guid: 5fca0e1f073a14e4da7eec39aaf7fa95, type: 2}
-    initialStock: 10
-  - product: {fileID: 11400000, guid: 5fca0e1f073a14e4da7eec39aaf7fa95, type: 2}
-    initialStock: 10
-  - product: {fileID: 11400000, guid: 9442009f3254a4043aa4314df2c63224, type: 2}
-    initialStock: 5
-  - product: {fileID: 11400000, guid: 57885638a5bd8424392e71eed27b7240, type: 2}
-    initialStock: 5
-  - product: {fileID: 11400000, guid: 597478e3f3661b24b860dc12cedde21c, type: 2}
-    initialStock: 0
-  - product: {fileID: 11400000, guid: b02f2561b1b83744b81d7662fc0fe1bc, type: 2}
-    initialStock: 10
-  - product: {fileID: 11400000, guid: 477484764af433c40a4513fe75675b2d, type: 2}
-    initialStock: 10
-  - product: {fileID: 11400000, guid: 477484764af433c40a4513fe75675b2d, type: 2}
-    initialStock: 10
-  totalInventoryLimit: 100
 --- !u!1 &1647766756
 GameObject:
   m_ObjectHideFlags: 0
@@ -8888,8 +8603,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1842977607}
   machineStockText: {fileID: 796235068}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1667516755
 GameObject:
@@ -9165,8 +8880,8 @@ MonoBehaviour:
   playerStockText: {fileID: 828503749}
   machineStockText: {fileID: 828503749}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1757712810
 GameObject:
@@ -9712,72 +9427,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842977605}
   m_CullTransparentMesh: 1
---- !u!1 &1884275049
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1884275051}
-  - component: {fileID: 1884275052}
-  m_Layer: 0
-  m_Name: ButtonAutoLinker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1884275051
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884275049}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.228905, y: -1.1574662, z: 4.81939}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1884275052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884275049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 983201ecf5bf05d46a427da938edd6a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  products:
-  - {fileID: 11400000, guid: 477484764af433c40a4513fe75675b2d, type: 2}
-  - {fileID: 11400000, guid: 4c5cb8aaa0c04a64ca1c0c3e2e82b261, type: 2}
-  - {fileID: 11400000, guid: fb29dc52188b3fd42b03c0d6fbac0c98, type: 2}
-  - {fileID: 11400000, guid: 5cc61025964e9084ea8d826d202a67f3, type: 2}
-  - {fileID: 11400000, guid: 4c4a5c3fc3b27f94b955c4787ea2326a, type: 2}
-  - {fileID: 11400000, guid: 98f1d476452f45d4381e4fa47fbb5880, type: 2}
-  - {fileID: 11400000, guid: 292be4df2e380d44ca024d444e81e135, type: 2}
-  - {fileID: 11400000, guid: 40ac97b9b61fb1f4bba6ff0672c9df68, type: 2}
-  - {fileID: 11400000, guid: 394654d6b17a73d419bec6f20bfbd498, type: 2}
-  - {fileID: 11400000, guid: 5c40c0b62f785be4c8614effd66e43dd, type: 2}
-  - {fileID: 11400000, guid: 5fca0e1f073a14e4da7eec39aaf7fa95, type: 2}
-  - {fileID: 11400000, guid: 3bd47263797c4e247bc7643ac2ef0da0, type: 2}
-  - {fileID: 11400000, guid: 9442009f3254a4043aa4314df2c63224, type: 2}
-  - {fileID: 11400000, guid: 57885638a5bd8424392e71eed27b7240, type: 2}
-  - {fileID: 11400000, guid: 597478e3f3661b24b860dc12cedde21c, type: 2}
-  - {fileID: 11400000, guid: b02f2561b1b83744b81d7662fc0fe1bc, type: 2}
-  - {fileID: 11400000, guid: e1ba60b0a289a5d449c3c22c229e2f42, type: 2}
-  buyingCanvas: {fileID: 668908137}
-  sellingCanvas: {fileID: 464599099}
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
 --- !u!1 &1914713552
 GameObject:
   m_ObjectHideFlags: 0
@@ -10052,8 +9701,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1503050925}
   machineStockText: {fileID: 557125497}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1945044358
 GameObject:
@@ -10193,8 +9842,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1541012055}
   machineStockText: {fileID: 1757712812}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &1968470222
 GameObject:
@@ -10470,8 +10119,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1217011144}
   machineStockText: {fileID: 368601701}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &2019667600
 GameObject:
@@ -10747,8 +10396,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1217011144}
   machineStockText: {fileID: 1217011144}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &2053880930
 GameObject:
@@ -11024,8 +10673,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1329933886}
   machineStockText: {fileID: 199355285}
   isBuyingMachine: 1
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1 &2140611831
 GameObject:
@@ -11165,8 +10814,8 @@ MonoBehaviour:
   playerStockText: {fileID: 1914713554}
   machineStockText: {fileID: 1914713554}
   isBuyingMachine: 0
-  buyingMachine: {fileID: 1081587571}
-  sellingMachine: {fileID: 877024301}
+  buyingMachine: {fileID: 0}
+  sellingMachine: {fileID: 0}
   amount: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -11177,11 +10826,6 @@ SceneRoots:
   - {fileID: 668908141}
   - {fileID: 1317612119}
   - {fileID: 464599103}
-  - {fileID: 1081587570}
-  - {fileID: 877024300}
-  - {fileID: 1627693528}
-  - {fileID: 1884275051}
-  - {fileID: 273695856}
   - {fileID: 315958961}
   - {fileID: 852730605}
   - {fileID: 71058954}

@@ -1,65 +1,80 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
-// Manager for the buying machine
 public class BuyingMachineManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class MachineStock
+    [Header("Product Setup")]
+    [SerializeField]
+    public List<Product> buyingProducts;
+    public List<Button> buyingButtons;
+
+    [Header("Selling Machine Reference")]
+    public SellingMachineManager sellingMachineManager; // 要拖拽 SellingMachineManager 进来
+
+    [Header("Total Price Display")]
+    public TextMeshProUGUI totalPriceText;
+    private int totalPrice = 0;
+
+    private void Start()
     {
-        public Product product;  // The product
-        public int stock;        // Available quantity
+        SetupButtons();
     }
 
-    public List<MachineStock> machineStock = new List<MachineStock>();  // List of stock entries
-
-    // Player buys a product from the machine
-    public bool BuyProduct(Product product, int amount)
+    private void SetupButtons()
     {
-        var stockEntry = machineStock.Find(entry => entry.product == product);
-        if (stockEntry != null && stockEntry.stock >= amount)
+        for (int i = 0; i < buyingButtons.Count; i++)
         {
-            stockEntry.stock -= amount;  // Decrease machine stock
-            InventoryManager.Instance.AddProduct(product, amount);  // Add to player's inventory
-            Debug.Log($"Successfully Buy {amount} {product.productName}. Buying Machine Remaining Stock: {stockEntry.stock}");
-            return true;
+            int index = i;
+            UpdateButtonDisplay(index);
+            buyingButtons[i].onClick.AddListener(() => OnProductClicked(index));
         }
-
-        Debug.Log($"Failed To Buy: {product.productName} Stock Not Enough!");
-        return false;
     }
 
-    // Refresh the machine stock daily with random amounts
-    public void RefreshDailyStock()
+    private void OnProductClicked(int index)
     {
-        foreach (var stockEntry in machineStock)
+        Product product = buyingProducts[index];
+        if (product.currentQuantity > 0)
         {
-            stockEntry.stock = Random.Range(1, 6);  // Random stock from 1 to 5
+            product.currentQuantity--;
+            totalPrice += product.price;
+
+            // 卖的机器数量 +1
+            sellingMachineManager.sellingProducts[index].currentQuantity++;
+
+            UpdateButtonDisplay(index);
+            sellingMachineManager.UpdateButtonDisplay(index); // 更新selling那边
+            UpdateTotalPriceDisplay();
         }
-        Debug.Log("Buying machine inventory has been refreshed!");
     }
 
-    // Get current stock of a product
-    public int GetStock(Product product)
+    private void UpdateButtonDisplay(int index)
     {
-        var stockEntry = machineStock.Find(entry => entry.product == product);
-        return stockEntry != null ? stockEntry.stock : 0;
+        Product product = buyingProducts[index];
+        Button button = buyingButtons[index];
+
+        button.GetComponentInChildren<TextMeshProUGUI>().text = product.currentQuantity.ToString();
+        button.image.sprite = product.productImage;
     }
 
-    // Set a specific stock value
-    public void SetStock(Product product, int amount)
+    private void UpdateTotalPriceDisplay()
     {
-        var stockEntry = machineStock.Find(entry => entry.product == product);
-        if (stockEntry != null) stockEntry.stock = amount;
+        totalPriceText.text = "Total: $" + totalPrice;
     }
 
-    // Add to stock
-    public void AddStock(Product product, int amount)
+    public void ResetBuyingMachine()
     {
-        var stockEntry = machineStock.Find(entry => entry.product == product);
-        if (stockEntry != null)
-            stockEntry.stock += amount;
-        else
-            machineStock.Add(new MachineStock { product = product, stock = amount });
+        totalPrice = 0;
+        for (int i = 0; i < buyingProducts.Count; i++)
+        {
+            buyingProducts[i].currentQuantity = buyingProducts[i].originalQuantity;
+            UpdateButtonDisplay(i);
+
+            // Reset时要同步减回去在selling machine上加上去的数量
+            sellingMachineManager.sellingProducts[i].currentQuantity = sellingMachineManager.sellingProducts[i].originalQuantity;
+            sellingMachineManager.UpdateButtonDisplay(i);
+        }
+        UpdateTotalPriceDisplay();
     }
 }

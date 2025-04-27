@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewProduct", menuName = "ScriptableObjects/Product")]
-public class Product : ScriptableObject
+[System.Serializable]
+public class Product
 {
-    public string productName; // Product Name
-    public int initialStock;   // Initial Stock
+    public string productName;
+    public Sprite productImage;
+    public int originalQuantity;
+    public int currentQuantity;
+    public int price;
 }
+
