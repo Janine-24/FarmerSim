@@ -60,7 +60,7 @@ public class BuyingMachineManager : MonoBehaviour
 
     private void UpdateTotalPriceDisplay()
     {
-        totalPriceText.text = "Total: $" + totalPrice;
+        totalPriceText.text = "$" + totalPrice;
     }
 
     public void ResetBuyingMachine()

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SNBMachine2 : MonoBehaviour
+public class LateSNB : MonoBehaviour
 
 {
     public void Loadmainpage()

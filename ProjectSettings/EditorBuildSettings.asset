@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InventoryManager.unity
     guid: 1f59d61d1dfd2ed48a618ea06c576822
+  - enabled: 1
+    path: Assets/Scenes/LateSNB.unity
+    guid: 9f27d819a7964b24183713ac59098be1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
