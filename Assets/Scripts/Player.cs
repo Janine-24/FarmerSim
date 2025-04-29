@@ -22,5 +22,20 @@ public class Player : MonoBehaviour
                 GameManager.instance.tileManager.ReverseInteracted( position );
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
+            
+            if (GameManager.instance.tileManager.IsPlantable(position))
+            {
+                Debug.Log("Tile is plantable");
+                GameManager.instance.tileManager.ShowPlantingCue(position);
+            }
+            else
+            {
+                Debug.Log("Tile is not plantable");
+            }
+        }
     }
 }

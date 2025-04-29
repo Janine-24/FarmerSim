@@ -8,6 +8,7 @@ public class InteractableTileManager : MonoBehaviour
     [SerializeField] private Tilemap interactableMap;
 
     [SerializeField] private Tile hiddenInteractableTile;
+    [SerializeField] private Sprite visualCueForPlant;
     [SerializeField] private Tile interactedTile;
    void Start()
     {
@@ -31,13 +32,39 @@ public class InteractableTileManager : MonoBehaviour
         return false;
     }
 
+    public void ReverseInteracted(Vector3Int position)
+    {
+        interactableMap.SetTile(position, hiddenInteractableTile);
+    }
+
     public void SetInteracted(Vector3Int position)
     {
         interactableMap.SetTile(position, interactedTile);
     }
 
-    public void ReverseInteracted(Vector3Int position)
+    public bool IsPlantable(Vector3Int position)
     {
-        interactableMap.SetTile(position, hiddenInteractableTile);
+        TileBase tile = interactableMap.GetTile(position);
+
+        if (tile != null)
+        {
+            if (tile.name == "soil")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void ShowPlantingCue(Vector3Int tilePos)
+    {
+        Vector3 worldPos = interactableMap.CellToWorld(tilePos) + interactableMap.tileAnchor;
+
+        GameObject cue = new GameObject("PlantingCue");
+        SpriteRenderer sr = cue.AddComponent<SpriteRenderer>();
+        sr.sprite = visualCueForPlant;
+        sr.sortingOrder = 4; // Make sure it appears above tiles
+
+        cue.transform.position = worldPos;
     }
 }
