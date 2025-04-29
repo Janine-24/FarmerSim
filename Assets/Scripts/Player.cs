@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] public int numCarrotSeed = 0;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
