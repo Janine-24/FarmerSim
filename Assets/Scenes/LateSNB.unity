@@ -1308,11 +1308,6 @@ MonoBehaviour:
     originalQuantity: 10
     currentQuantity: 10
     price: 7
-  - productName: Saw
-    productImage: {fileID: -7542551398723938307, guid: 98b93145cc78dbd4da8be4dc306d3506, type: 3}
-    originalQuantity: 5
-    currentQuantity: 5
-    price: 54
   - productName: Carrot
     productImage: {fileID: 8149248240261775872, guid: c60ffccea72a9e14397bcc660d039e39, type: 3}
     originalQuantity: 10
@@ -1373,6 +1368,11 @@ MonoBehaviour:
     originalQuantity: 0
     currentQuantity: 0
     price: 122
+  - productName: Saw
+    productImage: {fileID: -7542551398723938307, guid: 98b93145cc78dbd4da8be4dc306d3506, type: 3}
+    originalQuantity: 5
+    currentQuantity: 5
+    price: 54
   - productName: Axe
     productImage: {fileID: -639260001916785282, guid: e058f313f1d9eb540a930746e8ced416, type: 3}
     originalQuantity: 5
@@ -1386,7 +1386,6 @@ MonoBehaviour:
   sellingButtons:
   - {fileID: 182242069}
   - {fileID: 452734104}
-  - {fileID: 1918665266}
   - {fileID: 974437894}
   - {fileID: 1633822515}
   - {fileID: 765867895}
@@ -1399,6 +1398,7 @@ MonoBehaviour:
   - {fileID: 30274329}
   - {fileID: 289618078}
   - {fileID: 1211917937}
+  - {fileID: 1918665266}
   - {fileID: 188948289}
   - {fileID: 1078014076}
   totalPriceText: {fileID: 1808592649}
@@ -10584,6 +10584,11 @@ MonoBehaviour:
     originalQuantity: 8
     currentQuantity: 8
     price: 124
+  - productName: Saw
+    productImage: {fileID: -7542551398723938307, guid: 98b93145cc78dbd4da8be4dc306d3506, type: 3}
+    originalQuantity: 5
+    currentQuantity: 5
+    price: 56
   - productName: Axe
     productImage: {fileID: -639260001916785282, guid: e058f313f1d9eb540a930746e8ced416, type: 3}
     originalQuantity: 5
@@ -10594,11 +10599,6 @@ MonoBehaviour:
     originalQuantity: 5
     currentQuantity: 5
     price: 108
-  - productName: Saw
-    productImage: {fileID: -7542551398723938307, guid: 98b93145cc78dbd4da8be4dc306d3506, type: 3}
-    originalQuantity: 5
-    currentQuantity: 5
-    price: 56
   buyingButtons:
   - {fileID: 38909873}
   - {fileID: 817771757}
@@ -10614,9 +10614,9 @@ MonoBehaviour:
   - {fileID: 799832400}
   - {fileID: 964319477}
   - {fileID: 307824943}
+  - {fileID: 666865195}
   - {fileID: 1642617537}
   - {fileID: 950973625}
-  - {fileID: 666865195}
   sellingMachineManager: {fileID: 176654501}
   totalPriceText: {fileID: 1572380350}
 --- !u!4 &2045994269
