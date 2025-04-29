@@ -1,10 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 
 public class LevelSystem : MonoBehaviour
-
 {
     public int level = 1;
     public int currentXP = 0;
@@ -17,8 +15,6 @@ public class LevelSystem : MonoBehaviour
     public AudioClip levelUpSound;
     public GameObject levelUpPopup;
 
-
-
     void Start()
     {
         UpdateUI();
@@ -27,8 +23,10 @@ public class LevelSystem : MonoBehaviour
     public void AddXP(int amount)
     {
         currentXP += amount;
+
         if (xpSound != null && audioSource != null)
             audioSource.PlayOneShot(xpSound);
+
         if (currentXP >= xpToNextLevel)
         {
             currentXP -= xpToNextLevel;
@@ -38,19 +36,28 @@ public class LevelSystem : MonoBehaviour
         UpdateUI();
     }
 
+    private System.Collections.IEnumerator HidePopupAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (levelUpPopup != null)
+            levelUpPopup.SetActive(false);
+    }
+
     void LevelUp()
     {
         level++;
-        xpToNextLevel += 100; //  can increase XP requirement per level
+        xpToNextLevel += 100; // Increase required XP for next level
+
         if (audioSource != null && levelUpSound != null)
-        {
             audioSource.PlayOneShot(levelUpSound);
-        }
+
         Debug.Log("Level Up! Now Level: " + level);
+
         if (levelUpPopup != null)
         {
             levelUpPopup.SetActive(true);
-            Invoke("HidePopup", 2f);
+            StartCoroutine(HidePopupAfterDelay(2f));
         }
 
         UpdateUI();
@@ -58,8 +65,19 @@ public class LevelSystem : MonoBehaviour
 
     void UpdateUI()
     {
-        levelText.text = "Level " + level;
-        xpBar.maxValue = xpToNextLevel;
-        xpBar.value = currentXP;
+        if (levelText != null)
+            levelText.text = "Level " + level;
+
+        if (xpBar != null)
+        {
+            xpBar.maxValue = xpToNextLevel;
+            xpBar.value = currentXP;
+        }
+    }
+
+    void HidePopup()
+    {
+        if (levelUpPopup != null)
+            levelUpPopup.SetActive(false);
     }
 }
