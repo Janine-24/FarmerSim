@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 35c0bb52ea12010468068e8e9c805058
+guid: 9da3fb190d758be4bb50a11ffed05ba6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3670725253079697016
-    second: bacon-clipart-pixel-art-14_0
+      213: -8192326996301974387
+    second: adventurer-run-01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bacon-clipart-pixel-art-14_0
+      name: adventurer-run-01_0
       rect:
         serializedVersion: 2
-        x: 143
-        y: 93
-        width: 147
-        height: 260
+        x: 15
+        y: 0
+        width: 22
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8760fd95b2901f230800000000000000
-      internalID: 3670725253079697016
+      spriteID: d84f39d60020f4e80800000000000000
+      internalID: -8192326996301974387
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bacon-clipart-pixel-art-14_0: 3670725253079697016
+      adventurer-run-01_0: -8192326996301974387
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
