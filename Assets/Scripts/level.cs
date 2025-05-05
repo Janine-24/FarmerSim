@@ -80,10 +80,5 @@ public class LevelSystem : MonoBehaviour
         if (levelUpPopup != null)
             levelUpPopup.SetActive(false);
     }
-<<<<<<< HEAD
 
 }
-
-=======
-}
->>>>>>> f598a507318380309e9bf7a9f70fd9940e01adf6
