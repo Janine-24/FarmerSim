@@ -15,6 +15,11 @@ public class CloudController : MonoBehaviour
             Instantiate(particleEffectPrefab, transform.position, Quaternion.identity);
         }
 
-        Destroy(gameObject, 1.2f); // delay destroy cloud
+        StartCoroutine(DelayedDestroy(1.2f)); // delay destroy cloud
+    }
+    private System.Collections.IEnumerator DelayedDestroy(float delay) //waiting(IEnumerator) for 1.2 seconds and destroy the object
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 }

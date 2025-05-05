@@ -2,44 +2,33 @@
 
 public class TileController : MonoBehaviour
 {
-    public int requiredLevel = 5;
+    public int requiredLevel = 5; //can adjust in unity
     public bool isUnlocked = false;
     public CloudController cloudController;
-
-    public void TryUnlockTile(int playerLevel)
+    public void Start()
     {
-        if (playerLevel >= requiredLevel && !isUnlocked)
+        TryUnlockTile(LevelSystem.Instance.level); //try access in level.cs
+    }
+    public void TryUnlockTile(int level)
+    {
+        if (isUnlocked) return;
+
+        if (level >= requiredLevel)
         {
             isUnlocked = true;
             cloudController.UnlockCloud();
+            Debug.Log("Land unlocked!");
         }
         else
         {
-            Debug.Log("Haven't reach the conditions！");
+            Debug.Log($"Land will be unlocked at Level {requiredLevel}.");
+
         }
     }
     private void OnMouseDown()
-    {
-        // Here you can replace with your actual player level and coins
-        int playerLevel = 1;
-
-        if (!isUnlocked)
         {
-            if (playerLevel >= requiredLevel)
-            {
-                isUnlocked = true;
-                cloudController.UnlockCloud();
-                Debug.Log("Land unlocked!");
-             }
-                else
-                {
-                    Debug.Log($"Land will be unlocked at Level {requiredLevel}.");
+            TryUnlockTile(LevelSystem.Instance.level);
+            Debug.Log($"Land will be unlocked at Level {requiredLevel}. (Player current level: {LevelSystem.Instance.level})");
 
-                }
-            }
-            else
-            {
-                Debug.Log("Level too low to unlock.");
-            }
-        }
+    }
 }
