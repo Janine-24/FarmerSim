@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Animationmove : MonoBehaviour
 {
-    public List<GameObject> tileList = new();
+    public List<GameObject> tileList = new List<GameObject>();
     public int gridWidth; // Number of tiles per row
     public float loadDistance = 20f;
     private Transform cameraTransform;

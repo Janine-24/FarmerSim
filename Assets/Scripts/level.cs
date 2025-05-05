@@ -1,9 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Tilemaps;
-using System.Collections.Generic;
-using System;
 
 public class LevelSystem : MonoBehaviour
 {
@@ -18,7 +15,6 @@ public class LevelSystem : MonoBehaviour
     public AudioClip levelUpSound;
     public GameObject levelUpPopup;
 
-    public static event Action<int> OnLevelUp;
     void Start()
     {
         UpdateUI();
@@ -84,6 +80,10 @@ public class LevelSystem : MonoBehaviour
         if (levelUpPopup != null)
             levelUpPopup.SetActive(false);
     }
+<<<<<<< HEAD
 
 }
 
+=======
+}
+>>>>>>> f598a507318380309e9bf7a9f70fd9940e01adf6

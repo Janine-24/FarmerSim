@@ -1,35 +1,45 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Landexpand : MonoBehaviour
+public class TileController : MonoBehaviour
 {
-    public int unlockLevel;
-    public GameObject cloudCover;
+    public int requiredLevel = 5;
+    public bool isUnlocked = false;
+    public CloudController cloudController;
 
-    public void TryUnlock(int playerLevel)
+    public void TryUnlockTile(int playerLevel)
     {
-        if (playerLevel >= unlockLevel)
-            Unlock();
+        if (playerLevel >= requiredLevel && !isUnlocked)
+        {
+            isUnlocked = true;
+            cloudController.UnlockCloud();
+        }
+        else
+        {
+            Debug.Log("Haven't reach the conditions！");
+        }
     }
-
-    void Unlock()
+    private void OnMouseDown()
     {
-        // Play fade animation or disable cloud
-        cloudCover.GetComponent<Animator>().SetTrigger("FadeOut");
-        // Optionally, destroy after animation
-        Destroy(cloudCover, 2f);
-    }
+        // Here you can replace with your actual player level and coins
+        int playerLevel = 1;
 
-    // call fadeout(animation) when unlocking the tile
-    private Animator animator; 
+        if (!isUnlocked)
+        {
+            if (playerLevel >= requiredLevel)
+            {
+                isUnlocked = true;
+                cloudController.UnlockCloud();
+                Debug.Log("Land unlocked!");
+             }
+                else
+                {
+                    Debug.Log($"Land will be unlocked at Level {requiredLevel}.");
 
-    void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
-
-    public void FadeOutCloud()
-    {
-        animator.SetTrigger("FadeOut");
-        Destroy(gameObject, 1.2f); // optional: destroy after fade
-    }
+                }
+            }
+            else
+            {
+                Debug.Log("Level too low to unlock.");
+            }
+        }
 }

@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         //update animator parameters
-        animator.SetFloat("MoveX",movement.x);
-        animator.SetFloat("MoveY",movement.y);
+        animator.SetFloat("MoveX", movement.x);
+        animator.SetFloat("MoveY", movement.y);
         animator.SetBool("IsMoving", movement != Vector2.zero);
 
         if (movement.x > 0)

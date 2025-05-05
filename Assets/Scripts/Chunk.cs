@@ -1,28 +1,54 @@
 using UnityEngine;
+using System.Linq;
 
-    public static class Chunk
+public class Chunk : MonoBehaviour
+{
+    public Vector2Int chunkCoord;
+    public GameObject[] buildingPrefabs;
+    public GameObject[] decorations; //trees, rocks, etc.
+    public void Generate()
     {
-        public const int chunkSize = 16;
-
-        public static Vector2Int GetChunkCoord(Vector3 worldPos)
+        var data = WorldSaveManager.Instance.LoadChunk(chunkCoord);
+        if (data != null)
         {
-            return new Vector2Int(
-                Mathf.FloorToInt(worldPos.x / chunkSize),
-                Mathf.FloorToInt(worldPos.y / chunkSize)
-            );
+            // can add buildings
         }
 
-        public static Vector3 GetWorldPosition(Vector2Int chunkCoord)
+        // randomly place tree, rocks.... by not saved
+        for (int i = 0; i < 5; i++)
         {
-            return new Vector3(chunkCoord.x * chunkSize, chunkCoord.y * chunkSize, 0);
+            Vector2 pos = new Vector2(Random.Range(0, ChunkHelper.chunkSize), Random.Range(0, ChunkHelper.chunkSize));
+            Vector3 worldPos = transform.position + (Vector3)pos;
+
+            float checkRadius = 1.5f; // Adjust based on how close is "too close"
+            Collider[] nearbyObjects = Physics.OverlapSphere(worldPos, checkRadius);
+
+            bool hasNearbyDecoration = false;
+            foreach (var obj in nearbyObjects)
+            {
+                if (obj.CompareTag("Decoration")) // Make sure your decoration prefabs have this tag
+                {
+                    hasNearbyDecoration = true;
+                    break;
+                }
+            }
+
+            if (!hasNearbyDecoration)
+            {
+                var decoPrefab = decorations[Random.Range(0, decorations.Length)];
+                Instantiate(decoPrefab, worldPos, Quaternion.identity, transform);
+            }
+
         }
 
-        public static Vector2 GetLocalPos(Vector3 worldPos, Vector2Int chunkCoord)
+        if (data == null) return;
+
+        foreach (var b in data.buildings)
         {
-            return new Vector2(
-                worldPos.x - chunkCoord.x * chunkSize,
-                worldPos.y - chunkCoord.y * chunkSize
-            );
+            GameObject prefab = buildingPrefabs.First(p => p.name == b.buildingType);
+            GameObject obj = Instantiate(prefab, transform);
+            obj.transform.localPosition = b.localPosition;
+            obj.GetComponent<Building>().level = b.level;
         }
     }
-
+}

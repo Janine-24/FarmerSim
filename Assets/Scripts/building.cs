@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using UnityEditor.U2D.Aseprite;
 
 
 public class Building : MonoBehaviour
@@ -9,6 +8,8 @@ public class Building : MonoBehaviour
     public string buildingType;
     public int level = 1;
 }
+
+// setting logic for building
 public class BuildingPlacer : MonoBehaviour
 {
     public GameObject[] buildingPrefabs;
@@ -17,8 +18,8 @@ public class BuildingPlacer : MonoBehaviour
     {
         var prefab = buildingPrefabs.First(p => p.name == buildingType);
         var building = Instantiate(prefab, worldPos, Quaternion.identity);
-        var chunkCoord = Chunk.GetChunkCoord(worldPos);
-        var localPos = Chunk.GetLocalPos(worldPos, chunkCoord);
+        var chunkCoord = ChunkHelper.GetChunkCoord(worldPos);
+        var localPos = ChunkHelper.GetLocalPos(worldPos, chunkCoord);
 
         if (!WorldSaveManager.Instance.savedChunks.ContainsKey(chunkCoord))
         {
@@ -33,8 +34,3 @@ public class BuildingPlacer : MonoBehaviour
         });
     }
 }
-
-
-
-
-

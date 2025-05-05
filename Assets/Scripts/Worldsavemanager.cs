@@ -10,7 +10,7 @@ public class BuildingData
 }
 
 [System.Serializable]
-public class ChunkData
+public class ChunkData 
 {
     public List<BuildingData> buildings = new();
 }
