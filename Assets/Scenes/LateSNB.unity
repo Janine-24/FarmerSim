@@ -1349,7 +1349,7 @@ MonoBehaviour:
     currentQuantity: 0
     price: 208
   - productName: CarrotPie
-    productImage: {fileID: 6077772079770768616, guid: b02d54be8d08c7348bb69d6abd90bb28, type: 3}
+    productImage: {fileID: -1682948431585814222, guid: 943bc3602ee173547b1a379e456b965a, type: 3}
     originalQuantity: 0
     currentQuantity: 0
     price: 82
@@ -1402,6 +1402,7 @@ MonoBehaviour:
   - {fileID: 188948289}
   - {fileID: 1078014076}
   totalPriceText: {fileID: 1808592649}
+  feedbackText: {fileID: 0}
 --- !u!4 &176654502
 Transform:
   m_ObjectHideFlags: 0
@@ -5745,8 +5746,8 @@ Transform:
   m_GameObject: {fileID: 954362037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.031, y: 0.0415, z: 0}
-  m_LocalScale: {x: 2.9884837, y: 2.4283862, z: 1}
+  m_LocalPosition: {x: -0.031, y: 0.0141, z: 0}
+  m_LocalScale: {x: 2.9884837, y: 2.4417422, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

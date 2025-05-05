@@ -14,6 +14,8 @@ public class SellingMachineManager : MonoBehaviour
     public TextMeshProUGUI totalPriceText;
     private int totalPrice = 0;
 
+    [Header("UI Feedback")]
+    public TextMeshProUGUI feedbackText;
     private void Start()
     {
         SetupButtons();
