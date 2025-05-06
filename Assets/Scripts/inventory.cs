@@ -2,7 +2,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class inventory : MonoBehaviour
-
 {
     public void LoadMainMenu()
     {

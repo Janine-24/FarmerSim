@@ -6,6 +6,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public ItemData data;
+
     [HideInInspector] public Rigidbody2D rb2d;
 
     private void Awake()
