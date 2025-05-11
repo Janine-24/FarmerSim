@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
-    public static LevelSystem Instance; //easy to use other script to visit LevelSystem by using LevelManager.Instance
+    public static LevelSystem Instance; //easy to use other script to visit LevelSystem by using LevelSystem.Instance
     public int level = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 100;
