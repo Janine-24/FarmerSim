@@ -4,34 +4,36 @@ public class AnimalBehavior : MonoBehaviour
 {
     public float moveSpeed = 1f;
     public float moveRadius = 2f;
-    private Vector3 origin;
-    private Vector3 target;
-    private bool isMoving = false;
+    private Vector3 startPosition;
+    private Vector3 targetPosition;
+    private Animator animator;
 
     void Start()
     {
-        origin = transform.position;
-        PickNewTarget();
-        InvokeRepeating(nameof(PickNewTarget), 3f, 5f); // new behavior per 5 second
+        startPosition = transform.position;
+        targetPosition = GetRandomPosition();
     }
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, target) > 0.1f)
+        float distance = Vector3.Distance(transform.position, targetPosition);
+
+        // move
+        if (distance > 0.1f)
         {
-            isMoving = true;
-            transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            if (animator != null) animator.SetBool("isWalking", true);
         }
         else
         {
-            isMoving = false;
+            if (animator != null) animator.SetBool("isWalking", false);
+            targetPosition = GetRandomPosition();
         }
     }
 
-    void PickNewTarget()
+    Vector3 GetRandomPosition()
     {
-        float offsetX = Random.Range(-moveRadius, moveRadius);
-        float offsetY = Random.Range(-moveRadius, moveRadius);
-        target = origin + new Vector3(offsetX, offsetY, 0);
+        Vector2 offset = Random.insideUnitCircle * moveRadius;
+        return startPosition + new Vector3(offset.x, offset.y, 0);
     }
 }
