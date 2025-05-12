@@ -26,7 +26,7 @@ public class Toolbar_UI : MonoBehaviour
 
     public void SelectSlot(int index)
     {
-        if (toolbarSlots.Count == 9)
+        if (toolbarSlots.Count == 6)
         {
             if (selectedSlot != null)
             {

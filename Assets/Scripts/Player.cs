@@ -6,6 +6,10 @@ using UnityEngine.Tilemaps;
 public class Player : MonoBehaviour
 {
     public InventoryManager inventoryManager;
+    [SerializeField] private int gridWidth = 10;
+    [SerializeField] private int gridHeight = 10;
+
+
     private TileManager tileManager;
 
     private void Start()
@@ -17,22 +21,18 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (tileManager != null)
+            Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
+
+            if (GameManager.instance.tileManager.IsInteractable(position))
             {
-                Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
-
-                string tileName = tileManager.GetTileName(position);
-
-                if (!string.IsNullOrWhiteSpace(tileName))
-                {
-                    if (tileName == "interactable" && inventoryManager.toolbar.selectedSlot.itemName == "Hoe")
-                    {
-                        tileManager.SetInteracted(position);
-                    }
-                }
+                Debug.Log("Tile is interactable");
+                GameManager.instance.tileManager.SetInteracted(position);
+            }
+            else
+            {
+                GameManager.instance.tileManager.ReverseInteracted(position);
             }
         }
-
 
         if (Input.GetKeyDown(KeyCode.P))
         {
