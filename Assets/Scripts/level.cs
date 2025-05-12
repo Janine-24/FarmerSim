@@ -1,9 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
+    public static LevelSystem Instance; //easy to use other script to visit LevelSystem by using LevelManager.Instance
     public int level = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 100;
@@ -17,9 +18,33 @@ public class LevelSystem : MonoBehaviour
 
     void Start()
     {
+        int Level = LevelSystem.Instance.level;
+        UpdateUI();
+    }
+    public void SaveLevel()
+    {
+        PlayerPrefs.SetInt("PlayerLevel", level);
+    }
+
+    // load level
+    public void LoadLevel()
+    {
+        level = PlayerPrefs.GetInt("PlayerLevel", 1); // if has no level, set to 1
+    }
+    public void ForceSetLevel(int newLevel)
+    {
+        level = newLevel;
+        SaveLevel();
         UpdateUI();
     }
 
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this; //levelsystem
+        else
+            Destroy(gameObject);// avoid multiple level system
+    }
     public void AddXP(int amount)
     {
         currentXP += amount;
@@ -80,4 +105,5 @@ public class LevelSystem : MonoBehaviour
         if (levelUpPopup != null)
             levelUpPopup.SetActive(false);
     }
+
 }
