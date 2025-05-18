@@ -20,6 +20,7 @@ public class ShopManager : MonoBehaviour
     {
         shopPanel.SetActive(true);
         PopulateShop();
+        Debug.Log("Shop Opened");
     }
 
     public void CloseShop()
@@ -54,6 +55,5 @@ public class ShopManager : MonoBehaviour
     void StartDragging(ShopItem item)
     {
         GameObject dragging = Instantiate(item.prefabToPlace);
-        dragging.AddComponent<DragToPlace>().isAnimal = item.itemType == ShopItemType.Animal;
     }
 }

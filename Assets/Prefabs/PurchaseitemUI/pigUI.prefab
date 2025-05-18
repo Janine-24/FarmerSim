@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 4066449474423643026}
   - component: {fileID: 5580350291374871856}
   - component: {fileID: 7527313137049301309}
+  - component: {fileID: 7851800296008151738}
   m_Layer: 5
   m_Name: pig
   m_TagString: Untagged
@@ -211,6 +212,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &7851800296008151738
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665792348491389257}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5949876374096513822
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +356,7 @@ GameObject:
   - component: {fileID: 8123120568958551222}
   - component: {fileID: 2862665132654940215}
   m_Layer: 0
-  m_Name: pig
+  m_Name: pigUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

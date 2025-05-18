@@ -1,48 +1,56 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DragToPlace : MonoBehaviour
+public class DragToPlace : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public bool isAnimal = false;
-    private bool placed = false;
+    public GameObject prefabToPlace; // Drag the prefab here in the Inspector
+    private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
 
-    void Update()
+    void Awake()
     {
-        if (placed) return;
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0f;
-        transform.position = mousePos;
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        canvasGroup.blocksRaycasts = false;
+    }
 
-        if (Input.GetMouseButtonUp(0))
+    public void OnDrag(PointerEventData eventData)
+    {
+        rectTransform.anchoredPosition += eventData.delta / transform.lossyScale;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        canvasGroup.blocksRaycasts = true;
+
+        // Raycast to check if mouse is over the farm area
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("FarmArea"));
+
+        if (hit.collider != null)
         {
-            if (IsInsideFarmArea(transform.position))
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            worldPosition.z = 0;
+
+            if (prefabToPlace != null)
             {
-                // detect is animal or not,if yes, add animations
-                if (gameObject.CompareTag("Animal"))
-                {
-                    Animator anim = GetComponent<Animator>();
-                    if (anim != null) anim.enabled = true;
-
-                    if (GetComponent<AnimalBehavior>() == null)
-                        gameObject.AddComponent<AnimalBehavior>();
-                }
-
-                Destroy(this); // stop drag
+                Instantiate(prefabToPlace, worldPosition, Quaternion.identity);
+                Debug.Log("Placed successfully: " + prefabToPlace.name);
             }
             else
             {
-                Destroy(gameObject); // if outside the habitat, it will be destroyed
+                Debug.LogWarning("No prefab assigned!");
             }
         }
+        else
+        {
+            Debug.Log("Placement failed: outside of farm area.");
+        }
 
+        Destroy(gameObject);
     }
-
-    bool IsInsideFarmArea(Vector3 pos)
-    {
-        Collider2D hit = Physics2D.OverlapPoint(pos);
-        return hit != null && hit.CompareTag("FarmArea");
-
-    }
-
-
 }

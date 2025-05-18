@@ -14,12 +14,12 @@ public class MerchantCharacter : MonoBehaviour
     {
         if (shopManager != null)
         {
-            shopManager.OpenShop();
-            Debug.Log("Shop Opened");
+            shopManager.OpenShop();  // open shop
+            Debug.Log("Shop Opened"); 
         }
         else
         {
-            Debug.LogWarning("ShopManager haven't insterted!");   // open shop
+            Debug.LogWarning("ShopManager haven't insterted!");  
         }   
     }
 }
