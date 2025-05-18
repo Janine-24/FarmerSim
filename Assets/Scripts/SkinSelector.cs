@@ -6,6 +6,7 @@ public class SkinSelector : MonoBehaviour
     // Store current selected skin's AnimatorOverrideController
     public AnimatorOverrideController overrideController;
 
+   
     // This method sets the selected skin by assigning the overrideController to the SkinManager.
     public void UseSkin()
     {
@@ -14,5 +15,7 @@ public class SkinSelector : MonoBehaviour
 
         // Log a message in the console to confirm the skin selection.
         Debug.Log("Selected override set!" + overrideController.name);
+
+        
     }
 }
