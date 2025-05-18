@@ -13,7 +13,15 @@ public class Collectable : MonoBehaviour
         {
             Item item = GetComponent<Item>();
 
-            if (item != null)
+            if (item == null)
+            {
+                Debug.LogError("Item component is missing!");
+            }
+            else if (item.data == null)
+            {
+                Debug.LogError($"ItemData is NULL on object: {gameObject.name}");
+            }
+            else
             {
                 player.inventoryManager.Add("backpack", item);
                 Destroy(this.gameObject);

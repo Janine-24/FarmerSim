@@ -11,6 +11,9 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Sprite visualCueForPlant;
     [SerializeField] private Tile interactedTile;
 
+    private Dictionary<Vector3Int, GameObject> activeCues = new Dictionary<Vector3Int, GameObject>();
+
+
     public string GetTileName(Vector3Int position)
     {
         if (interactableMap != null)
@@ -36,15 +39,9 @@ public class TileManager : MonoBehaviour
 
     public bool NoPlantOnTile(Vector3Int position)
     {
-        if (ShowPlantingCue(position))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return !activeCues.ContainsKey(position);
     }
+
     public bool IsInteractable(Vector3Int position)
     {
         TileBase tile = interactableMap.GetTile(position);
@@ -61,6 +58,13 @@ public class TileManager : MonoBehaviour
 
     public void ReverseInteracted(Vector3Int position)
     {
+        // If there's a cue on this tile, do nothing
+        if (activeCues.ContainsKey(position))
+        {
+            Debug.Log("Cannot reverse tile: visual cue is active.");
+            return;
+        }
+
         interactableMap.SetTile(position, hiddenInteractableTile);
     }
 
@@ -85,7 +89,10 @@ public class TileManager : MonoBehaviour
 
     public bool ShowPlantingCue(Vector3Int tilePos)
     {
-        Vector3 worldPos = interactableMap.CellToWorld(tilePos) + interactableMap.tileAnchor;
+        if (activeCues.ContainsKey(tilePos))
+            return false;
+
+        Vector3 worldPos = interactableMap.GetCellCenterWorld(tilePos);
 
         GameObject cue = new GameObject("PlantingCue");
         SpriteRenderer sr = cue.AddComponent<SpriteRenderer>();
@@ -93,6 +100,8 @@ public class TileManager : MonoBehaviour
         sr.sortingOrder = 9; // Make sure it appears above tiles
 
         cue.transform.position = worldPos;
+
+        activeCues[tilePos] = cue;
 
         return true;
     }

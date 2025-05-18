@@ -6,8 +6,6 @@ using UnityEngine.Tilemaps;
 public class Player : MonoBehaviour
 {
     public InventoryManager inventoryManager;
-    [SerializeField] private int gridWidth = 10;
-    [SerializeField] private int gridHeight = 10;
 
 
     private TileManager tileManager;
@@ -23,31 +21,82 @@ public class Player : MonoBehaviour
         {
             Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
 
-            if (GameManager.instance.tileManager.IsInteractable(position))
+            Inventory toolbar = inventoryManager.toolbar;
+            Inventory.Slot selectedSlot = toolbar.selectedSlot;
+
+            string toolName = selectedSlot?.itemData?.itemName.ToLower() ?? "None"; // Declare only once
+
+            
+
+            Debug.Log("Selected tool: " + toolName);
+
+            if (selectedSlot.count > 0)
             {
-                Debug.Log("Tile is interactable");
-                GameManager.instance.tileManager.SetInteracted(position);
-            }
-            else
-            {
-                GameManager.instance.tileManager.ReverseInteracted(position);
-            }
+                if (selectedSlot.itemName == "hoe")
+                {
+                    if (tileManager.IsInteractable(position))
+                    {
+                        Debug.Log("Tile is interactable");
+                        tileManager.SetInteracted(position);
+                    }
+                    else
+                    {
+                        tileManager.ReverseInteracted(position);
+                    }
+                }
+                    else
+                    {
+                        Debug.Log("Selected tool is not a hoe.");
+                    }
+                }
+                else
+                {
+                    Debug.Log("Selected item is not a tool or count is zero.");
+                }
+            
         }
+
 
         if (Input.GetKeyDown(KeyCode.P))
         {
             Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
 
-            if (GameManager.instance.tileManager.IsPlantable(position))
+            if (GameManager.instance.tileManager.IsPlantable(position) && GameManager.instance.tileManager.NoPlantOnTile(position))
             {
-                Debug.Log("Tile is plantable");
-                GameManager.instance.tileManager.ShowPlantingCue(position);
+                Inventory toolbar = inventoryManager.toolbar;
+
+                Inventory.Slot selectedSlot = toolbar.selectedSlot;
+
+
+                if (selectedSlot != null && selectedSlot.count > 0 && selectedSlot.itemName.Contains("Seed"))
+                {
+                    Debug.Log("Planted: " + selectedSlot.itemName);
+                    GameManager.instance.tileManager.ShowPlantingCue(position);
+
+                    selectedSlot.count--;
+
+                    // Update the UI
+                    inventoryManager.UpdateToolbarUI();
+
+                    // If item count is 0, clear the slot
+                    if (selectedSlot.count <= 0)
+                    {
+                        toolbar.selectedSlot = null;
+
+                        inventoryManager.UpdateToolbarUI();
+                    }
+                }
+                else
+                {
+                    Debug.Log("No seeds selected or empty slot.");
+                }
             }
             else
             {
                 Debug.Log("Tile is not plantable");
             }
         }
+
     }
 
     public void DropItem(Item item)
@@ -66,7 +115,4 @@ public class Player : MonoBehaviour
             DropItem(item);
         }
     }
-
- 
-
 }

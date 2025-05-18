@@ -8,7 +8,7 @@ public class Inventory_UI : MonoBehaviour
     public string inventoryName;
     public List<Slot_UI> slots = new List<Slot_UI>();
     public Canvas canvas;
-   
+
 
     private Inventory inventory;
 

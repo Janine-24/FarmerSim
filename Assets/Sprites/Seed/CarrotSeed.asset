@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb1c780bfecfa7b4380b02301878d69b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8f0d9fba444d7b4c9f99fe69e64d4ff, type: 3}
   m_Name: CarrotSeed
   m_EditorClassIdentifier: 
-  seedName: CarrotSeed
-  icon: {fileID: 2950869812727453837, guid: 6b4bd23006ef5aa438bb9116be690a33, type: 3}
-  cropPrefab: {fileID: 3479818012833226476, guid: 06ac65b7656419a40b9fa98150f36b4e, type: 3}
+  itemName: Item Name
+  icon: {fileID: 4379626984075295356, guid: c0d3d237a397c2c4ab5243b3d22aca27, type: 3}
+  wateringTime: 30
+  harvestTime: 60

@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public Dictionary<string, Inventory> inventoryByName = new Dictionary<string, Inventory>();
+    public Toolbar_UI toolbarUI;
 
     [Header("Backpack")]
     public Inventory backpack;
@@ -44,4 +45,25 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+    public void UpdateToolbarUI()
+    {
+        for (int i = 0; i < toolbar.slots.Count; i++)
+        {
+            if (i < toolbarUI.toolbarSlots.Count)
+            {
+                var slotData = toolbar.slots[i];
+                if (slotData.count > 0)
+                {
+                    toolbarUI.toolbarSlots[i].SetItem(slotData);
+                }
+                else
+                {
+                    toolbarUI.toolbarSlots[i].SetEmpty();
+                }
+            }
+        }
+    }
+
+
 }

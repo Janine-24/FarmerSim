@@ -21,9 +21,9 @@ public class ItemManager : MonoBehaviour
 
         if (item == null || item.data == null)
         {
-            Debug.LogWarning("Item or item.data is null while adding to dictionary.");
-            return;
+            Debug.LogWarning($"Item is null: {item == null}, Item name: {(item != null ? item.name : "null")}");
         }
+
 
         if (!collectableItemsDict.ContainsKey(item.data.itemName))
         {

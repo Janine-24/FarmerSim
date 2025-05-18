@@ -11,7 +11,7 @@ public class Inventory
         public string itemName;
         public int count;
         public int maxAllowed;
-
+        public ItemData itemData;
         public Sprite icon;
 
         public Slot()
@@ -46,10 +46,22 @@ public class Inventory
 
         public void AddItem(Item item)
         {
-            this.itemName = item.data.itemName;
-            this.icon = item.data.icon;
-            count++;
+            if (count == 0)
+            {
+                this.itemName = item.data.itemName;
+                this.icon = item.data.icon;
+                count++;
+            }
+            else if (item.data.itemName == this.itemName)
+            {
+                count++;
+            }
+            else
+            {
+                Debug.LogWarning("Trying to add a different item to a non-empty stack.");
+            }
         }
+
 
         public void AddItem(string itemName, Sprite icon, int maxAllowed)
         {
