@@ -10,7 +10,7 @@ public class ShopManager : MonoBehaviour
     public Transform contentPanel;
     public List<ShopItem> allItems;
     public int playerLevel = 1;
-    public int playerMoney = 1000;
+    public int playerMoney = 1000; //could be fixed later
 
     private void Start()
     {
@@ -54,6 +54,6 @@ public class ShopManager : MonoBehaviour
 
     void StartDragging(ShopItem item)
     {
-        GameObject dragging = Instantiate(item.prefabToPlace);
+        DragManager.Instance.StartDragging(item);
     }
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9269dbba0e3b3bf409221a15ec747b68, type: 3}
+  m_Name: chicken
+  m_EditorClassIdentifier: 
+  itemName: Chicken
+  icon: {fileID: -4103245812459447607, guid: 904c225d77feae742808db12715ddd00, type: 3}
+  price: 20
+  requiredLevel: 2
+  prefabToPlace: {fileID: 7812178713843837684, guid: 38c6f523527299d4694719ed7fe02afb, type: 3}
+  itemType: 0
+  previewPrefab: {fileID: 7812178713843837684, guid: b4c0b63f0948732488106e921b49abb9, type: 3}
