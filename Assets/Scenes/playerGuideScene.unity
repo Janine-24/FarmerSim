@@ -560,7 +560,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0.15625, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -580,8 +580,8 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 1
+      m_TileSpriteIndex: 4294967295
+      m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -590,8 +590,8 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
+      m_TileSpriteIndex: 4294967295
+      m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -600,8 +600,8 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 1
+      m_TileSpriteIndex: 4294967295
+      m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -614,17 +614,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: c02f75f4881311b4f91008c07aa8c47a, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 86178dc99a20d8b46afca72b6e9b3caf, type: 2}
-  m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 7504173757061796091, guid: f86e52eecdce872408550fa93c5e76a5, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1644491751466927929, guid: f86e52eecdce872408550fa93c5e76a5, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -3357028997785511978, guid: f86e52eecdce872408550fa93c5e76a5, type: 3}
+  m_TileSpriteArray: []
   m_TileMatrixArray:
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data:
-      e00: -1
+      e00: 1
       e01: 0
       e02: 0
       e03: 0
@@ -640,9 +634,9 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data:
-      e00: 1
+      e00: -1
       e01: 0
       e02: 0
       e03: 0
@@ -754,7 +748,7 @@ SpriteRenderer:
   m_Size: {x: 1.0625, y: 0.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1039898029
@@ -781,7 +775,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1177274181}
-  - component: {fileID: 1177274180}
+  - component: {fileID: 1177274182}
   m_Layer: 0
   m_Name: buttonback
   m_TagString: Untagged
@@ -789,18 +783,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1177274180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177274179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51fd180614aeab9468900e738e85797a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1177274181
 Transform:
   m_ObjectHideFlags: 0
@@ -816,6 +798,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177274182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177274179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23563143a3798fd4fa0cab1e084cca03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1623556004
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +879,7 @@ SpriteRenderer:
   m_Size: {x: 0.8125, y: 1.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1623556006
@@ -972,7 +966,7 @@ SpriteRenderer:
   m_Size: {x: 0.8125, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1676424227
@@ -1072,9 +1066,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1177274180}
-        m_TargetAssemblyTypeName: BackToMenu, Assembly-CSharp
-        m_MethodName: LoadMainMenu
+      - m_Target: {fileID: 1177274182}
+        m_TargetAssemblyTypeName: back, Assembly-CSharp
+        m_MethodName: Loadmainpage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1219,7 +1213,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1944216368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51fd180614aeab9468900e738e85797a, type: 3}
+  m_Script: {fileID: 11500000, guid: 23563143a3798fd4fa0cab1e084cca03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
