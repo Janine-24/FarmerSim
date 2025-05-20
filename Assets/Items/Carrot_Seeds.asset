@@ -14,3 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Carrot_Seed
   icon: {fileID: -5393398564529373947, guid: c0d3d237a397c2c4ab5243b3d22aca27, type: 3}
+  itemType: 0
+  wateringTime: 3
+  harvestTime: 5
+  seedStageSprite: {fileID: 2383185621388321068, guid: c0d3d237a397c2c4ab5243b3d22aca27, type: 3}
+  sproutStageSprite: {fileID: 1683974080300636658, guid: bb3e258bdbaa7b146b001794db8173e0, type: 3}
+  matureStageSprite: {fileID: 2950869812727453837, guid: 351b266a1d103f14d8576bebf6e99bbb, type: 3}
+  durability: 0
+  toolActionPrefab: {fileID: 0}
+  growthBoost: 0
+  waterCapacity: 0
+  wateringRange: 0
+  isAutoWaterer: 0
+  unlockLevel: 0
