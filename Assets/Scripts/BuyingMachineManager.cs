@@ -7,8 +7,6 @@ using Unity.VisualScripting;
 
 public class BuyingMachineManager : MonoBehaviour
 {
-
-
     [Header("Product Setup")]
     public List<Product> buyingProducts;
     public List<Button> buyingButtons;
@@ -28,10 +26,10 @@ public class BuyingMachineManager : MonoBehaviour
 
     private void Start()
     {
-        CheckAndRefreshDailyStock(); // 新加的函数
+        LoadInventory(); // ✅ 先加载数据
+        CheckAndRefreshDailyStock(); // 然后判断是否需要刷新（不影响旧数据）
         SetupButtons();
     }
-
     private void SetupButtons()
     {
         for (int i = 0; i < buyingButtons.Count; i++)
@@ -53,7 +51,6 @@ public class BuyingMachineManager : MonoBehaviour
             UpdateTotalPriceDisplay();
         }
     }
-
     private void UpdateButtonDisplay(int index)
     {
         Product product = buyingProducts[index];
@@ -66,7 +63,6 @@ public class BuyingMachineManager : MonoBehaviour
     {
         totalPriceText.text = "$" + totalPrice;
     }
-
     public void ConfirmBuy()
     {
         if (!playerCoinManager.HasEnoughCoins(totalPrice)) return;
@@ -107,6 +103,8 @@ public class BuyingMachineManager : MonoBehaviour
         // 重置总价格并更新显示
         totalPrice = 0;
         UpdateTotalPriceDisplay();
+        sellingMachineManager.SaveInventory(); // ✅ 同步保存卖出机状态
+
     }
     private IEnumerator ClearSpendText()
     {
@@ -145,26 +143,39 @@ public class BuyingMachineManager : MonoBehaviour
     {
         for (int i = 0; i < buyingProducts.Count; i++)
         {
-            PlayerPrefs.SetInt($"{"Buying"}_Product_{i}_CurrentQuantity", buyingProducts[i].currentQuantity);
-            PlayerPrefs.SetInt($"{"Buying"}_Product_{i}_OriginalQuantity", buyingProducts[i].originalQuantity);
+            PlayerPrefs.SetInt($"Buying_Product_{i}_CurrentQuantity", buyingProducts[i].currentQuantity);
+            PlayerPrefs.SetInt($"Buying_Product_{i}_OriginalQuantity", buyingProducts[i].originalQuantity);
+            Debug.Log($"✅ Saved: {buyingProducts[i].productName}, current: {buyingProducts[i].currentQuantity}, original: {buyingProducts[i].originalQuantity}");
         }
         PlayerPrefs.Save();
     }
+
     public void LoadInventory()
     {
         for (int i = 0; i < buyingProducts.Count; i++)
         {
-            string currentKey = $"{"Buying"}_Product_{i}_CurrentQuantity";
-            string originalKey = $"{"Buying"}_Product_{i}_OriginalQuantity";
+            string currentKey = $"Buying_Product_{i}_CurrentQuantity";
+            string originalKey = $"Buying_Product_{i}_OriginalQuantity";
 
             if (PlayerPrefs.HasKey(currentKey) && PlayerPrefs.HasKey(originalKey))
             {
                 buyingProducts[i].currentQuantity = PlayerPrefs.GetInt(currentKey);
                 buyingProducts[i].originalQuantity = PlayerPrefs.GetInt(originalKey);
+                Debug.Log($"✅ Loaded: {buyingProducts[i].productName}, current: {buyingProducts[i].currentQuantity}, original: {buyingProducts[i].originalQuantity}");
             }
+        }
+
+        // ✅ 加这个：确保 UI 数量被正确更新
+        for (int i = 0; i < buyingProducts.Count; i++)
+        {
+            UpdateButtonDisplay(i);
         }
     }
     private void OnApplicationQuit()
+    {
+        SaveInventory();
+    }
+    private void OnDisable()
     {
         SaveInventory();
     }

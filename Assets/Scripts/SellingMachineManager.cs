@@ -24,8 +24,12 @@ public class SellingMachineManager : MonoBehaviour
 
     private void Start()
     {
-        SetupButtons();
+        LoadInventory(); // ✅ 加载卖出库存
+        SetupButtons();  // 如果你有 SetupButtons
     }
+
+
+
 
     private void SetupButtons()
     {
@@ -95,31 +99,46 @@ public class SellingMachineManager : MonoBehaviour
         UpdateTotalPriceDisplay();
     }
     public void SaveInventory()
+{
+    for (int i = 0; i < sellingProducts.Count; i++)
     {
-        for (int i = 0; i < sellingProducts.Count; i++)
-        {
-            PlayerPrefs.SetInt($"{"Selling"}_Product_{i}_CurrentQuantity", sellingProducts[i].currentQuantity);
-            PlayerPrefs.SetInt($"{"Selling"}_Product_{i}_OriginalQuantity", sellingProducts[i].originalQuantity);
-        }
-        PlayerPrefs.Save();
+        PlayerPrefs.SetInt($"Selling_Product_{i}_CurrentQuantity", sellingProducts[i].currentQuantity);
+        PlayerPrefs.SetInt($"Selling_Product_{i}_OriginalQuantity", sellingProducts[i].originalQuantity);
+        Debug.Log($"✅ [SellingMachine] Saved: {sellingProducts[i].productName}, current: {sellingProducts[i].currentQuantity}, original: {sellingProducts[i].originalQuantity}");
     }
+    PlayerPrefs.Save();
+}
+
     public void LoadInventory()
     {
         for (int i = 0; i < sellingProducts.Count; i++)
         {
-            string currentKey = $"{"Selling"}_Product_{i}_CurrentQuantity";
-            string originalKey = $"{"Selling"}_Product_{i}_OriginalQuantity";
+            string currentKey = $"Selling_Product_{i}_CurrentQuantity";
+            string originalKey = $"Selling_Product_{i}_OriginalQuantity";
 
             if (PlayerPrefs.HasKey(currentKey) && PlayerPrefs.HasKey(originalKey))
             {
                 sellingProducts[i].currentQuantity = PlayerPrefs.GetInt(currentKey);
                 sellingProducts[i].originalQuantity = PlayerPrefs.GetInt(originalKey);
+                Debug.Log($"✅ [SellingMachine] Loaded: {sellingProducts[i].productName}, current: {sellingProducts[i].currentQuantity}, original: {sellingProducts[i].originalQuantity}");
             }
         }
+
+        // 刷新 UI
+        for (int i = 0; i < sellingProducts.Count; i++)
+        {
+            UpdateButtonDisplay(i);
+        }
     }
+
     private void OnApplicationQuit()
     {
-        SaveInventory();
+        SaveInventory(); // 退出游戏时保存
+    }
+
+    private void OnDisable()
+    {
+        SaveInventory(); // 离开场景/关闭对象时保存
     }
 
 }

@@ -12652,6 +12652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff55089afbec46742b16cb9e3cac1946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buyingMachineManager: {fileID: 2045994268}
 --- !u!4 &1734038343
 Transform:
   m_ObjectHideFlags: 0
@@ -14181,10 +14182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada9ab49030930e47884660da7b5c2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredLevel: 5
-  isUnlocked: 0
-  cloudController: {fileID: 0}
-  hintText: {fileID: 0}
 --- !u!1 &2014709297
 GameObject:
   m_ObjectHideFlags: 0

@@ -359,7 +359,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 115337716}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 991378677b46ead4d9317c48da3d6ffa, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &115337716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3054,9 +3066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada9ab49030930e47884660da7b5c2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredLevel: 5
-  isUnlocked: 0
-  cloudController: {fileID: 0}
 --- !u!1 &1172199951
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,7 +5490,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924457855}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2328014e3fec943439ebef57c3102b68, type: 3}
   m_Name: 
@@ -5495,7 +5504,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924457855}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 991378677b46ead4d9317c48da3d6ffa, type: 3}
   m_Name: 

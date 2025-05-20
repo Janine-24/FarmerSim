@@ -32,8 +32,33 @@ public class PlayerCoinManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateCoinDisplay(); // 游戏开始时初始化金币 UI 显示
+        LoadCoins();            // 加载上次保存的金币
+        UpdateCoinDisplay();    // 更新 UI
     }
+
+    private void OnApplicationQuit()
+    {
+        SaveCoins();            // 应用退出时保存金币
+    }
+
+    private void OnDisable()
+    {
+        SaveCoins();            // 场景卸载或物体禁用时保存金币
+    }
+
+    public void SaveCoins()
+    {
+        PlayerPrefs.SetInt("PlayerCoins", currentCoinAmount);
+        PlayerPrefs.Save();
+        Debug.Log("✅ Coins saved: " + currentCoinAmount);
+    }
+
+    public void LoadCoins()
+    {
+        currentCoinAmount = PlayerPrefs.GetInt("PlayerCoins", currentCoinAmount); // 默认使用已有值
+        Debug.Log("✅ Coins loaded: " + currentCoinAmount);
+    }
+
 
     /// <summary>
     /// 更新 UI 显示当前金币数
@@ -45,34 +70,23 @@ public class PlayerCoinManager : MonoBehaviour
             coinText.text = "$" + currentCoinAmount;
     }
 
-    /// <summary>
-    /// 花费金币（如果有足够的金币）
-    /// Deduct coins from player if enough coins are available
-    /// </summary>
     public void SpendCoins(int amount)
     {
         if (currentCoinAmount >= amount)
         {
             currentCoinAmount -= amount;
-            UpdateCoinDisplay(); // 更新金币显示
+            SaveCoins();
+            UpdateCoinDisplay();
         }
-        // 注意：金币不足时此处不处理 UI 提示，由调用者处理
     }
 
-    /// <summary>
-    /// 增加金币
-    /// Adds coins to the player's total
-    /// </summary>
     public void AddCoins(int amount)
     {
         currentCoinAmount += amount;
+        SaveCoins();
         UpdateCoinDisplay();
     }
 
-    /// <summary>
-    /// 检查是否有足够的金币
-    /// Checks if the player has enough coins
-    /// </summary>
     public bool HasEnoughCoins(int amount)
     {
         return currentCoinAmount >= amount;
