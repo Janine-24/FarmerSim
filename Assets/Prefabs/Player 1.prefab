@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 5884434793891316926}
   - component: {fileID: 3342538373909227281}
   - component: {fileID: 4032931661029597881}
+  - component: {fileID: 2060055474731017817}
+  - component: {fileID: 7445804916942227632}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -226,3 +228,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: SkinInterface
+--- !u!114 &2060055474731017817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897973464228203033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5277cea5842a0f647a8aa132b408c90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 7445804916942227632}
+--- !u!114 &7445804916942227632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897973464228203033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e3fe2a1caa83f4f9aa9ccced5f7eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolbarUI: {fileID: 0}
+  backpack:
+    slots:
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+    selectedSlot:
+      itemName: 
+      count: 0
+      maxAllowed: 99
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+  backpackSlotsCount: 36
+  toolbar:
+    slots: []
+    selectedSlot:
+      itemName: 
+      count: 0
+      maxAllowed: 99
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+  toolbarSlotsCount: 6

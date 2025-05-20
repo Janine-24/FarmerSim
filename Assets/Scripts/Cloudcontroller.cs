@@ -8,6 +8,7 @@ public class CloudController : MonoBehaviour
     public GameObject particleEffectPrefab;
     
 
+
     public void UnlockCloud()
     {
         animator.SetTrigger("FadeOutTrigger");

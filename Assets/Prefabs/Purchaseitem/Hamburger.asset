@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9269dbba0e3b3bf409221a15ec747b68, type: 3}
+  m_Name: Hamburger
+  m_EditorClassIdentifier: 
+  itemName: Hamburger
+  icon: {fileID: 35376870070047095, guid: 7175462c8eca8f2479262cf9e1d1f57c, type: 3}
+  price: 200
+  requiredLevel: 6
+  prefabToPlace: {fileID: 1476859362983040747, guid: 7f238f5ab0964f94b838e80d4df66cb9, type: 3}
+  itemType: 3
+  previewPrefab: {fileID: 1476859362983040747, guid: 34975e6c9504602489b87cf878faf559, type: 3}

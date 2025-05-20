@@ -14,7 +14,12 @@ public class InteractableTileManager : MonoBehaviour
     {
         foreach (var position in interactableMap.cellBounds.allPositionsWithin)
         {
-            interactableMap.SetTile(position, hiddenInteractableTile);
+            TileBase tile = interactableMap.GetTile(position);
+
+            if (tile != null && tile.name == "interactable_visible")
+            {
+                interactableMap.SetTile(position, hiddenInteractableTile);
+            }
         }
     }
 
@@ -79,5 +84,20 @@ public class InteractableTileManager : MonoBehaviour
         cue.transform.position = worldPos;
 
         return true;
+    }
+
+    public string GetTileName(Vector3Int position)
+    {
+        if (interactableMap != null)
+        {
+            TileBase tile = interactableMap.GetTile(position);
+
+            if (tile != null)
+            {
+                return tile.name;
+            }
+        }
+
+        return "";
     }
 }

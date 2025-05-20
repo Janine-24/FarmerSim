@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9269dbba0e3b3bf409221a15ec747b68, type: 3}
+  m_Name: Sweater
+  m_EditorClassIdentifier: 
+  itemName: Sweater
+  icon: {fileID: 9171124879905365256, guid: f8e3be21337bab047bbb897203832f7a, type: 3}
+  price: 200
+  requiredLevel: 7
+  prefabToPlace: {fileID: 832170335591844702, guid: cf753a8ae62d295469adb65f452c3e54, type: 3}
+  itemType: 3
+  previewPrefab: {fileID: 832170335591844702, guid: c3268f1cd0c8f284ea505ae2da5f4631, type: 3}

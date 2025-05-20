@@ -1,56 +1,97 @@
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragToPlace : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragManager : MonoBehaviour
 {
-    public GameObject prefabToPlace; // Drag the prefab here in the Inspector
-    private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
+    public static DragManager Instance;
+    public TextMeshProUGUI hintText;
 
-    void Awake()
+    private GameObject currentDraggedObject;
+    private ShopItem currentItem;
+
+    public void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        hintText.gameObject.SetActive(false);
+    }   
+    private void Awake()
+    {
+        Instance = this;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void StartDragging(ShopItem item)
     {
-        canvasGroup.blocksRaycasts = false;
-    }
+        currentItem = item;
+        Debug.Log("Start dragging: " + item.itemName);  
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        rectTransform.anchoredPosition += eventData.delta / transform.lossyScale;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        canvasGroup.blocksRaycasts = true;
-
-        // Raycast to check if mouse is over the farm area
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("FarmArea"));
-
-        if (hit.collider != null)
+        if (item.previewPrefab == null)
         {
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            worldPosition.z = 0;
-
-            if (prefabToPlace != null)
-            {
-                Instantiate(prefabToPlace, worldPosition, Quaternion.identity);
-                Debug.Log("Placed successfully: " + prefabToPlace.name);
-            }
-            else
-            {
-                Debug.LogWarning("No prefab assigned!");
-            }
+            Debug.LogWarning("Haven't setting previewPrefab，direct use prefabToPlace to show！");
+            currentDraggedObject = Instantiate(item.prefabToPlace);
         }
         else
         {
-            Debug.Log("Placement failed: outside of farm area.");
+            currentDraggedObject = Instantiate(item.previewPrefab); // 拖影预览
         }
 
-        Destroy(gameObject);
+        currentDraggedObject.GetComponent<Collider2D>().enabled = false; // 防止干扰
     }
+
+    private void Update()
+    {
+        if (currentDraggedObject != null)
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            currentDraggedObject.transform.position = mousePos;
+
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                PlaceItem();
+            }
+        }
+    }
+    private void ShowHint(string message)
+    {
+        if (hintText == null)
+            return;
+        hintText.text = message;
+        hintText.gameObject.SetActive(true);
+        CancelInvoke(nameof(HideHint));// Cancel any ongoing invocation of HideHint
+        Invoke(nameof(HideHint), 2f); // occur in 2 second
+    }
+    private void HideHint()
+    {
+        if (hintText != null)
+            hintText.gameObject.SetActive(false);
+    }
+    void PlaceItem()
+    {
+        Vector2 placePos = currentDraggedObject.transform.position;
+
+        if (CanPlace(placePos))
+        {
+            Instantiate(currentItem.prefabToPlace, placePos, Quaternion.identity);
+            Destroy(currentDraggedObject);
+            currentDraggedObject = null;
+        }
+        else
+        {
+            Debug.Log("Cannot place here, have obstacles");
+            ShowHint("Have obstacle");
+        }
+    }
+    bool CanPlace(Vector2 position)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.5f);
+        foreach (var col in colliders)
+        {
+            if (!col.isTrigger) // 不是 trigger 的算作障碍或已放置物体
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }

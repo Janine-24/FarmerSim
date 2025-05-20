@@ -9,8 +9,6 @@ public class ShopManager : MonoBehaviour
     public LevelSystem levelSystem;
     public Transform contentPanel;
     public List<ShopItem> allItems;
-    public int playerLevel = 1;
-    public int playerMoney = 1000;
 
     private void Start()
     {
@@ -40,20 +38,22 @@ public class ShopManager : MonoBehaviour
 
     public void TryPurchase(ShopItem item)
     {
-        if (playerLevel >= item.requiredLevel && playerMoney >= item.price)
+        int currentLevel = LevelSystem.Instance.level;
+        bool hasCoins = PlayerCoinManager.Instance.HasEnoughCoins(item.price);
+        if (currentLevel >= item.requiredLevel && hasCoins)
         {
-            playerMoney -= item.price;
+            PlayerCoinManager.Instance.SpendCoins(item.price);
             StartDragging(item);
             Debug.Log("Purchase:" + item.itemName);
         }
         else
         {
-            Debug.Log("Level or Money insufficient");
+            Debug.Log("Cannot purchase. Need level " + item.requiredLevel + ", coins: " + item.price);
         }
     }
 
     void StartDragging(ShopItem item)
     {
-        GameObject dragging = Instantiate(item.prefabToPlace);
+        DragManager.Instance.StartDragging(item);
     }
 }

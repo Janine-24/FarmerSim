@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9269dbba0e3b3bf409221a15ec747b68, type: 3}
+  m_Name: Bread
+  m_EditorClassIdentifier: 
+  itemName: Bread
+  icon: {fileID: 8954780131591197589, guid: 0ac6953112dfb2643b4c336254a78393, type: 3}
+  price: 100
+  requiredLevel: 2
+  prefabToPlace: {fileID: 3524390586461385895, guid: 0a37263997c91e243805cb359862682f, type: 3}
+  itemType: 3
+  previewPrefab: {fileID: 3524390586461385895, guid: 46bdd1bb33f2a47429e5fef572ee7075, type: 3}
