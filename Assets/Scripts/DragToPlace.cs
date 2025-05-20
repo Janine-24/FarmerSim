@@ -1,13 +1,19 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DragManager : MonoBehaviour
 {
     public static DragManager Instance;
+    public TextMeshProUGUI hintText;
 
     private GameObject currentDraggedObject;
     private ShopItem currentItem;
 
+    public void Start()
+    {
+        hintText.gameObject.SetActive(false);
+    }   
     private void Awake()
     {
         Instance = this;
@@ -44,7 +50,20 @@ public class DragManager : MonoBehaviour
             }
         }
     }
-
+    private void ShowHint(string message)
+    {
+        if (hintText == null)
+            return;
+        hintText.text = message;
+        hintText.gameObject.SetActive(true);
+        CancelInvoke(nameof(HideHint));// Cancel any ongoing invocation of HideHint
+        Invoke(nameof(HideHint), 2f); // occur in 2 second
+    }
+    private void HideHint()
+    {
+        if (hintText != null)
+            hintText.gameObject.SetActive(false);
+    }
     void PlaceItem()
     {
         Vector2 placePos = currentDraggedObject.transform.position;
@@ -58,6 +77,7 @@ public class DragManager : MonoBehaviour
         else
         {
             Debug.Log("Cannot place here, have obstacles");
+            ShowHint("Have obstacle");
         }
     }
     bool CanPlace(Vector2 position)
@@ -72,5 +92,6 @@ public class DragManager : MonoBehaviour
         }
         return true;
     }
+
 
 }

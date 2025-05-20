@@ -18,7 +18,8 @@ public class ShopItemUI : MonoBehaviour
         icon.sprite = item.icon;
         nameText.text = item.itemName;
         priceText.text = "$" + item.price;
-        buyButton.interactable = manager.playerLevel >= item.requiredLevel;
+        int playerLevel = LevelSystem.Instance.level;  //CHECK THE LEVEL SYSTEM
+        buyButton.interactable = playerLevel >= item.requiredLevel;
         buyButton.onClick.AddListener(() => shopManager.TryPurchase(item));
     }
 }
