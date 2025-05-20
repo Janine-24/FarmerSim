@@ -3,9 +3,12 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class BuyingMachineManager : MonoBehaviour
 {
+
+
     [Header("Product Setup")]
     public List<Product> buyingProducts;
     public List<Button> buyingButtons;
@@ -25,6 +28,7 @@ public class BuyingMachineManager : MonoBehaviour
 
     private void Start()
     {
+        CheckAndRefreshDailyStock(); // 新加的函数
         SetupButtons();
     }
 
@@ -104,11 +108,6 @@ public class BuyingMachineManager : MonoBehaviour
         totalPrice = 0;
         UpdateTotalPriceDisplay();
     }
-
-
-
-
-
     private IEnumerator ClearSpendText()
     {
         yield return new WaitForSeconds(2f);
@@ -125,4 +124,50 @@ public class BuyingMachineManager : MonoBehaviour
         }
         UpdateTotalPriceDisplay();
     }
+    private void CheckAndRefreshDailyStock()
+    {
+        string lastRefreshDate = PlayerPrefs.GetString("LastStockRefreshDate", "");
+        string today = System.DateTime.Now.ToString("yyyy-MM-dd");
+
+        if (lastRefreshDate != today)
+        {
+            ResetBuyingMachine(); // 调用你已经写好的函数来刷新库存
+            PlayerPrefs.SetString("LastStockRefreshDate", today);
+            PlayerPrefs.Save();
+            Debug.Log("Daily stock has been refreshed.");
+        }
+        else
+        {
+            Debug.Log("Stock already refreshed today.");
+        }
+    }
+    public void SaveInventory()
+    {
+        for (int i = 0; i < buyingProducts.Count; i++)
+        {
+            PlayerPrefs.SetInt($"{"Buying"}_Product_{i}_CurrentQuantity", buyingProducts[i].currentQuantity);
+            PlayerPrefs.SetInt($"{"Buying"}_Product_{i}_OriginalQuantity", buyingProducts[i].originalQuantity);
+        }
+        PlayerPrefs.Save();
+    }
+    public void LoadInventory()
+    {
+        for (int i = 0; i < buyingProducts.Count; i++)
+        {
+            string currentKey = $"{"Buying"}_Product_{i}_CurrentQuantity";
+            string originalKey = $"{"Buying"}_Product_{i}_OriginalQuantity";
+
+            if (PlayerPrefs.HasKey(currentKey) && PlayerPrefs.HasKey(originalKey))
+            {
+                buyingProducts[i].currentQuantity = PlayerPrefs.GetInt(currentKey);
+                buyingProducts[i].originalQuantity = PlayerPrefs.GetInt(originalKey);
+            }
+        }
+    }
+    private void OnApplicationQuit()
+    {
+        SaveInventory();
+    }
+
 }
+

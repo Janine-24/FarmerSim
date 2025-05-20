@@ -9,4 +9,5 @@ public class LateSNB : MonoBehaviour
         Debug.Log("Go to main page");
         SceneManager.LoadScene("main page"); // Make sure this matches your scene name
     }
+    
 }

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class SellingMachineManager : MonoBehaviour
 {
@@ -93,4 +94,32 @@ public class SellingMachineManager : MonoBehaviour
         }
         UpdateTotalPriceDisplay();
     }
+    public void SaveInventory()
+    {
+        for (int i = 0; i < sellingProducts.Count; i++)
+        {
+            PlayerPrefs.SetInt($"{"Selling"}_Product_{i}_CurrentQuantity", sellingProducts[i].currentQuantity);
+            PlayerPrefs.SetInt($"{"Selling"}_Product_{i}_OriginalQuantity", sellingProducts[i].originalQuantity);
+        }
+        PlayerPrefs.Save();
+    }
+    public void LoadInventory()
+    {
+        for (int i = 0; i < sellingProducts.Count; i++)
+        {
+            string currentKey = $"{"Selling"}_Product_{i}_CurrentQuantity";
+            string originalKey = $"{"Selling"}_Product_{i}_OriginalQuantity";
+
+            if (PlayerPrefs.HasKey(currentKey) && PlayerPrefs.HasKey(originalKey))
+            {
+                sellingProducts[i].currentQuantity = PlayerPrefs.GetInt(currentKey);
+                sellingProducts[i].originalQuantity = PlayerPrefs.GetInt(originalKey);
+            }
+        }
+    }
+    private void OnApplicationQuit()
+    {
+        SaveInventory();
+    }
+
 }
