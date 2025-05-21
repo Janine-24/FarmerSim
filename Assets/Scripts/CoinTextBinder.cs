@@ -6,28 +6,28 @@ public class CoinTextBinder : MonoBehaviour
 {
     public TextMeshProUGUI coinTextUI;
 
-    private void Start()
+    private IEnumerator Start()
     {
-        StartCoroutine(DelayedBind());
-    }
+        if (coinTextUI == null)
+            coinTextUI = GetComponentInChildren<TextMeshProUGUI>();
 
-    private IEnumerator DelayedBind()
-    {
-        int maxTries = 10;
-        while ((PlayerCoinManager.Instance == null || coinTextUI == null) && maxTries-- > 0)
+        float timeout = 2f;
+        float elapsed = 0f;
+
+        while ((PlayerCoinManager.Instance == null || coinTextUI == null) && elapsed < timeout)
         {
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
         if (PlayerCoinManager.Instance != null && coinTextUI != null)
         {
             PlayerCoinManager.Instance.SetCoinText(coinTextUI);
-            Debug.Log("Coin Text bound successfully.");
+            Debug.Log("✅ CoinTextBinder: Coin text bound successfully.");
         }
         else
         {
-            Debug.LogWarning("Coin Text binding failed: Instance or UI is still null after retries.");
+            Debug.LogError("❌ CoinTextBinder: 绑定失败，请确保PlayerCoinManager存在且coinTextUI设置正确。");
         }
     }
-
 }
