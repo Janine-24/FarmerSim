@@ -6,14 +6,18 @@ public class DragManager : MonoBehaviour
 {
     public static DragManager Instance;
     public TextMeshProUGUI hintText;
-
     private GameObject currentDraggedObject;
     private ShopItem currentItem;
+    public LayerMask obstacleLayer;
+    public Transform habitatArea;
+    public Bounds habitatBounds; // Store the bounds of the habitat area
+    public LayerMask habitatLayer;
+    private GameObject placedObject;
 
     public void Start()
     {
         hintText.gameObject.SetActive(false);
-    }   
+    }
     private void Awake()
     {
         Instance = this;
@@ -22,7 +26,7 @@ public class DragManager : MonoBehaviour
     public void StartDragging(ShopItem item)
     {
         currentItem = item;
-        Debug.Log("Start dragging: " + item.itemName);  
+        Debug.Log("Start dragging: " + item.itemName);
 
         if (item.previewPrefab == null)
         {
@@ -34,7 +38,9 @@ public class DragManager : MonoBehaviour
             currentDraggedObject = Instantiate(item.previewPrefab); // 拖影预览
         }
 
-        currentDraggedObject.GetComponent<Collider2D>().enabled = false; // 防止干扰
+        Collider2D col = currentDraggedObject.GetComponent<Collider2D>();
+        if (col != null)
+            col.enabled = false;
     }
 
     private void Update()
@@ -82,16 +88,12 @@ public class DragManager : MonoBehaviour
     }
     bool CanPlace(Vector2 position)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.5f);
-        foreach (var col in colliders)
-        {
-            if (!col.isTrigger) // 不是 trigger 的算作障碍或已放置物体
-            {
-                return false;
-            }
-        }
-        return true;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.5f, obstacleLayer);
+        return colliders.Length == 0;
     }
-
+    bool IsInHabitat(Vector2 position)
+    {
+        return habitatBounds.Contains(position);
+    }
 
 }

@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 8389095033226035271}
   - component: {fileID: 1886162352334724421}
   - component: {fileID: 6555743398729751933}
-  m_Layer: 0
+  - component: {fileID: 7065150088119086216}
+  m_Layer: 3
   m_Name: chicken
   m_TagString: Animal
   m_Icon: {fileID: 0}
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7812178713843837684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 364.82, y: 253.85, z: 1.6010132}
+  m_LocalPosition: {x: 364.82, y: 253.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: 1362219885, guid: ce1c6e06bdfb7d9449bdc366d62c9a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.15, y: 1.29}
@@ -137,32 +138,30 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.16499999, y: -0.225}
-      - {x: 0.255, y: -0.21499999}
-      - {x: 0.405, y: -0.145}
-      - {x: 0.515, y: -0.035}
-      - {x: 0.515, y: -0.005}
-      - {x: 0.505, y: 0.015}
-      - {x: 0.515, y: 0.065}
-      - {x: 0.515, y: 0.285}
-      - {x: 0.435, y: 0.39499998}
-      - {x: 0.21499999, y: 0.39499998}
-      - {x: 0.125, y: 0.255}
-      - {x: 0.035, y: 0.225}
-      - {x: 0.125, y: 0.505}
-      - {x: 0.015, y: 0.59499997}
-      - {x: -0.195, y: 0.59499997}
-      - {x: -0.375, y: 0.415}
-      - {x: -0.525, y: 0.24499999}
-      - {x: -0.525, y: 0.125}
-      - {x: -0.465, y: 0.065}
-      - {x: -0.435, y: -0.145}
-      - {x: -0.315, y: -0.24499999}
-      - {x: -0.405, y: -0.445}
-      - {x: -0.33499998, y: -0.45499998}
-      - {x: 0.175, y: -0.45499998}
-      - {x: 0.21499999, y: -0.405}
-      - {x: 0.21499999, y: -0.325}
+    - - {x: 0.3036499, y: 0.13412476}
+      - {x: 0.30273438, y: 0.1496582}
+      - {x: 0.3199463, y: 0.16000366}
+      - {x: 0.32131836, y: 0.16}
+      - {x: 0.32684326, y: 0.16690063}
+      - {x: 0.28969726, y: 0.2082788}
+      - {x: 0.23361328, y: 0.27581176}
+      - {x: 0.13479981, y: 0.29276365}
+      - {x: 0.05849365, y: 0.29}
+      - {x: -0.11, y: 0.29}
+      - {x: -0.19999999, y: 0.29328245}
+      - {x: -0.28179932, y: 0.2366333}
+      - {x: -0.29296875, y: 0.21600342}
+      - {x: -0.3005371, y: 0.18222046}
+      - {x: -0.3023486, y: 0.14470947}
+      - {x: -0.33475828, y: 0.07551147}
+      - {x: -0.33180663, y: -0.060753174}
+      - {x: -0.33180663, y: -0.22957763}
+      - {x: -0.23523681, y: -0.33035156}
+      - {x: 0.09379394, y: -0.32690307}
+      - {x: 0.19702148, y: -0.3230896}
+      - {x: 0.33736816, y: -0.24904907}
+      - {x: 0.33213377, y: -0.03620605}
+      - {x: 0.30796385, y: 0.079309076}
   m_UseDelaunayMesh: 0
 --- !u!95 &8389095033226035271
 Animator:
@@ -197,8 +196,8 @@ Animation:
   serializedVersion: 4
   m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: 7400000, guid: 7e7d9a5b016190e4fab9d3caa651e267, type: 2}
   - {fileID: 7400000, guid: 9689e5cde37324e4590730cbb6a78a61, type: 2}
+  - {fileID: 7400000, guid: 7e7d9a5b016190e4fab9d3caa651e267, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -231,3 +230,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7065150088119086216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812178713843837684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873032628c6310e41a1d1f863769b4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalType: chicken
+  moveSpeed: 0.7
+  waitTime: 2

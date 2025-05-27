@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9219491805539294223}
   - component: {fileID: 8406455581654401845}
-  - component: {fileID: 6862935338935217773}
   - component: {fileID: 8942851296526489819}
   - component: {fileID: 6143013325807010615}
   - component: {fileID: 2770116722419219724}
-  m_Layer: 0
+  - component: {fileID: 4875736107803257627}
+  - component: {fileID: 3324466903569305412}
+  m_Layer: 3
   m_Name: pig
   m_TagString: Animal
   m_Icon: {fileID: 0}
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8675702892012565045}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 363.58, y: 255.05, z: 1.6010132}
+  m_LocalPosition: {x: 363.58, y: 255.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -91,7 +92,87 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &6862935338935217773
+--- !u!50 &8942851296526489819
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675702892012565045}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!95 &6143013325807010615
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675702892012565045}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fcf1c728f8f86044ae6844a52ebba04, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 1
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &2770116722419219724
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675702892012565045}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 0cc20e3111635d342a163d27897726f8, type: 2}
+  - {fileID: 7400000, guid: c0bda4a082d139f40b28f8d4d08d79ec, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!114 &4875736107803257627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675702892012565045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873032628c6310e41a1d1f863769b4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalType: pig
+--- !u!60 &3324466903569305412
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,103 +218,19 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.074999996, y: -0.59499997}
-      - {x: 0.155, y: -0.575}
-      - {x: 0.235, y: -0.59499997}
-      - {x: 0.645, y: -0.59499997}
-      - {x: 0.765, y: -0.45499998}
-      - {x: 0.755, y: -0.295}
-      - {x: 0.685, y: -0.225}
-      - {x: 0.675, y: 0.105}
-      - {x: 0.73499995, y: 0.145}
-      - {x: 0.835, y: 0.21499999}
-      - {x: 0.835, y: 0.385}
-      - {x: 0.715, y: 0.49499997}
-      - {x: 0.585, y: 0.405}
-      - {x: 0.235, y: 0.375}
-      - {x: 0.205, y: 0.445}
-      - {x: 0.015, y: 0.615}
-      - {x: -0.655, y: 0.615}
-      - {x: -0.765, y: 0.53499997}
-      - {x: -0.84499997, y: 0.435}
-      - {x: -0.84499997, y: 0.325}
-      - {x: -0.775, y: 0.255}
-      - {x: -0.775, y: -0.005}
-      - {x: -0.675, y: -0.095}
-      - {x: -0.60499996, y: -0.16499999}
-      - {x: -0.705, y: -0.375}
-      - {x: -0.675, y: -0.505}
-      - {x: -0.585, y: -0.585}
-      - {x: -0.525, y: -0.59499997}
-      - {x: -0.465, y: -0.59499997}
-      - {x: -0.385, y: -0.515}
-      - {x: -0.24499999, y: -0.45499998}
-      - {x: -0.155, y: -0.59499997}
+    - - {x: 0.26999998, y: -0.25}
+      - {x: 0.35999998, y: -0.11}
+      - {x: 0.42, y: 0.04}
+      - {x: 0.42, y: 0.14}
+      - {x: 0.38, y: 0.26}
+      - {x: 0.22999999, y: 0.19999999}
+      - {x: 0.01, y: 0.29}
+      - {x: -0.35, y: 0.29}
+      - {x: -0.44, y: 0.22}
+      - {x: -0.44, y: 0.04}
+      - {x: -0.42, y: -0.049999997}
+      - {x: -0.25, y: -0.25}
+      - {x: 0.03, y: -0.25}
+      - {x: 0.099999994, y: -0.17}
+      - {x: 0.17999999, y: -0.25}
   m_UseDelaunayMesh: 0
---- !u!50 &8942851296526489819
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8675702892012565045}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!95 &6143013325807010615
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8675702892012565045}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8fcf1c728f8f86044ae6844a52ebba04, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!111 &2770116722419219724
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8675702892012565045}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 0cc20e3111635d342a163d27897726f8, type: 2}
-  - {fileID: 7400000, guid: c0bda4a082d139f40b28f8d4d08d79ec, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
