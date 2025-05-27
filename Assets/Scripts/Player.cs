@@ -68,10 +68,16 @@ public class Player : MonoBehaviour
                 Inventory.Slot selectedSlot = toolbar.selectedSlot;
 
 
-                if (selectedSlot != null && selectedSlot.count > 0 && selectedSlot.itemName.Contains("Seed"))
+                if(selectedSlot != null && selectedSlot.count > 0 && selectedSlot.itemData != null && selectedSlot.itemData.itemType == ItemType.Seed)
                 {
+                    Debug.Log("The itemType selected is " +  selectedSlot.itemData.itemType);
                     Debug.Log("Planted: " + selectedSlot.itemName);
                     GameManager.instance.tileManager.ShowPlantingCue(position);
+
+                    tileManager.PlantSeed(position, selectedSlot.itemData);
+
+
+
 
                     selectedSlot.count--;
 
@@ -86,10 +92,29 @@ public class Player : MonoBehaviour
                         inventoryManager.UpdateToolbarUI();
                     }
                 }
-                else
-                {
-                    Debug.Log("No seeds selected or empty slot.");
-                }
+            
+                    else
+                    {
+                        if (selectedSlot != null)
+                        {
+                            if (selectedSlot.itemData != null)
+                            {
+                                Debug.Log("The itemType selected is " + selectedSlot.itemData.itemType);
+                            }
+                            else
+                            {
+                                Debug.Log("itemData is null");
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("Selected slot is null");
+                        }
+
+                        Debug.Log("No seeds selected or empty slot.");
+                    }
+
+           
             }
             else
             {
