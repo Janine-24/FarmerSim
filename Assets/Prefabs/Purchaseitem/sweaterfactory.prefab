@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1401021945111747586}
   - component: {fileID: 7088162056471030800}
   - component: {fileID: 6142234906023690824}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sweaterfactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832170335591844702}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9159041126328010799}
   - component: {fileID: 3432954093249013201}
   - component: {fileID: -3349142156792668842}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: habitatsheep
   m_TagString: Habitat
   m_Icon: {fileID: 0}
@@ -150,7 +150,6 @@ MonoBehaviour:
   habitatType: sheep
   animalsInHabitat:
   - {fileID: 1443403877343846920, guid: 3b4cbe05db586dc409c00485c142151e, type: 3}
-  productSpawnPoint: {fileID: 0}
   habitatBounds:
     m_Center: {x: 3, y: 2, z: 0}
     m_Extent: {x: 2, y: 2, z: 0}

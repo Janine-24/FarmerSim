@@ -10,6 +10,7 @@ public class ShopManager : MonoBehaviour
     public Transform contentPanel;
     public List<ShopItem> allItems;
     private GameObject currentDraggedObject;
+    public AudioClip shopSound;
 
     private void Start()
     {
@@ -48,7 +49,9 @@ void PopulateShop()
         bool hasCoins = PlayerCoinManager.Instance.HasEnoughCoins(item.price);
         if (currentLevel >= item.requiredLevel && hasCoins)
         {
-            PlayerCoinManager.Instance.SpendCoins(item.price);
+            // sound
+            if (shopSound != null)
+                AudioSource.PlayClipAtPoint(shopSound, transform.position);
             StartDragging(item);
             Debug.Log("Purchase:" + item.itemName);
         }

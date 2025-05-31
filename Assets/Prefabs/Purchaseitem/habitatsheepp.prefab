@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3432954093249013201}
   - component: {fileID: -3349142156792668842}
   - component: {fileID: 6037619819407174083}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: habitatsheepp
   m_TagString: Habitat
   m_Icon: {fileID: 0}
@@ -149,9 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   habitatType: sheep
-  animalsInHabitat:
-  - {fileID: 1443403877343846920, guid: 3b4cbe05db586dc409c00485c142151e, type: 3}
-  productSpawnPoint: {fileID: 1725364176170675702}
+  animalsInHabitat: []
+  maxanimals: 4
   habitatBounds:
     m_Center: {x: 3, y: 2, z: 0}
     m_Extent: {x: 2, y: 2, z: 0}
@@ -357,8 +356,10 @@ PolygonCollider2D:
       - {x: -1.185, y: -1.425}
       - {x: -1.3149999, y: -1.425}
       - {x: -1.375, y: -1.485}
-      - {x: -1.375, y: -1.535}
-      - {x: -1.885, y: -1.535}
+      - {x: -1.375, y: -0.9794885}
+      - {x: 1.765625, y: -1.344696}
+      - {x: 1.7422485, y: 1.3146667}
+      - {x: -1.7359521, y: 1.3915137}
     - - {x: -0.78499997, y: -0.575}
       - {x: -1.625, y: -0.575}
       - {x: -1.655, y: -0.585}
@@ -366,7 +367,7 @@ PolygonCollider2D:
       - {x: -1.625, y: -1.305}
       - {x: -0.865, y: -1.305}
       - {x: -0.715, y: -1.175}
-      - {x: -0.715, y: -0.695}
+      - {x: 0.7889063, y: -1.1150134}
     - - {x: 0.745, y: -1.175}
       - {x: 0.815, y: -1.305}
       - {x: 1.5849999, y: -1.305}

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 9159041126328010799}
   - component: {fileID: 3432954093249013201}
   - component: {fileID: -3349142156792668842}
-  - component: {fileID: 2469947889810852723}
-  m_Layer: 0
+  - component: {fileID: 4697252795976906081}
+  m_Layer: 7
   m_Name: habitatpig
   m_TagString: Habitat
   m_Icon: {fileID: 0}
@@ -149,13 +149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   habitatType: pig
-  animalsInHabitat:
-  - {fileID: 4875736107803257627, guid: 706f95ccad8e5c54a9caf39b512d441d, type: 3}
-  productSpawnPoint: {fileID: 1605547262437154935, guid: 2802cbb02a424ce49b31da3cf5f3516c, type: 3}
+  animalsInHabitat: []
+  maxanimals: 4
   habitatBounds:
     m_Center: {x: 3, y: 2, z: 0}
     m_Extent: {x: 2, y: 2, z: 0}
---- !u!60 &2469947889810852723
+--- !u!60 &4697252795976906081
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,10 +354,12 @@ PolygonCollider2D:
       - {x: -1.115, y: -1.535}
       - {x: -1.125, y: -1.495}
       - {x: -1.185, y: -1.425}
-      - {x: -1.3149999, y: -1.425}
-      - {x: -1.375, y: -1.485}
-      - {x: -1.375, y: -1.535}
-      - {x: -1.885, y: -1.535}
+      - {x: 1.9329249, y: -1.3401611}
+      - {x: 1.7720337, y: 0.56059325}
+      - {x: 1.809082, y: 1.3519592}
+      - {x: 1.1625366, y: 1.3470191}
+      - {x: -0.51000977, y: 1.3156128}
+      - {x: -1.8428857, y: 1.3757972}
     - - {x: -0.78499997, y: -0.575}
       - {x: -1.625, y: -0.575}
       - {x: -1.655, y: -0.585}

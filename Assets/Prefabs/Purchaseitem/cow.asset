@@ -19,3 +19,6 @@ MonoBehaviour:
   prefabToPlace: {fileID: 3532523336198122836, guid: 7fb320b5dbcac374da9bf0bfce6b063b, type: 3}
   itemType: 0
   previewPrefab: {fileID: 3532523336198122836, guid: fa00594180656bf41bdec4feacf5f4e7, type: 3}
+  ignoreHabitatLayer: 1
+  isAnimal: 1
+  animalType: cow

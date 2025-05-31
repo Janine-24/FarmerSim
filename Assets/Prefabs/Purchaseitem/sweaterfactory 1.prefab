@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7986223154737528713}
   - component: {fileID: 1401021945111747586}
   - component: {fileID: 7088162056471030800}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sweaterfactory 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

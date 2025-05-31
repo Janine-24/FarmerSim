@@ -19,3 +19,4 @@ MonoBehaviour:
   prefabToPlace: {fileID: 4715934671889459428, guid: 3c816d14c2b8c024d931915d6fb9f771, type: 3}
   itemType: 2
   previewPrefab: {fileID: 4715934671889459428, guid: c298bbe975835b741afd47981c72198c, type: 3}
+  ignoreHabitatLayer: 0

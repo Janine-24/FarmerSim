@@ -19,3 +19,6 @@ MonoBehaviour:
   prefabToPlace: {fileID: 3420930004063497669, guid: 3b4cbe05db586dc409c00485c142151e, type: 3}
   itemType: 0
   previewPrefab: {fileID: 3420930004063497669, guid: 8c453c41d81d4bd4392b18488febdc7c, type: 3}
+  ignoreHabitatLayer: 1
+  isAnimal: 1
+  animalType: sheep

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1370393569535206014}
   - component: {fileID: 1613105200988966037}
   - component: {fileID: 2107794338641987814}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chesse factory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7086111437926052078}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7721340507074183670}
   - component: {fileID: 3527556895194221900}
   - component: {fileID: 984869226284664520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: breadfactoryupdate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4237056997310429856}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

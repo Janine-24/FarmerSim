@@ -19,3 +19,6 @@ MonoBehaviour:
   prefabToPlace: {fileID: 8675702892012565045, guid: 706f95ccad8e5c54a9caf39b512d441d, type: 3}
   itemType: 0
   previewPrefab: {fileID: 8675702892012565045, guid: c6f5fc420ed49794184d65a128b0baa7, type: 3}
+  ignoreHabitatLayer: 1
+  isAnimal: 1
+  animalType: pig

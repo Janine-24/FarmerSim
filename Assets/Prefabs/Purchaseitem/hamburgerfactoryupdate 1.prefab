@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6484913724290454342}
   - component: {fileID: 3827359883934913988}
   - component: {fileID: 5819425218196051150}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hamburgerfactoryupdate 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

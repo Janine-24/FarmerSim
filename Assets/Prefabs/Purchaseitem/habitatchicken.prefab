@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1725364176170675702}
   - component: {fileID: 9159041126328010799}
   - component: {fileID: 1178841866005208250}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: habitatchicken
   m_TagString: Habitat
   m_Icon: {fileID: 0}

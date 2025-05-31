@@ -19,3 +19,6 @@ MonoBehaviour:
   prefabToPlace: {fileID: 7812178713843837684, guid: 38c6f523527299d4694719ed7fe02afb, type: 3}
   itemType: 0
   previewPrefab: {fileID: 7812178713843837684, guid: b4c0b63f0948732488106e921b49abb9, type: 3}
+  ignoreHabitatLayer: 1
+  isAnimal: 1
+  animalType: chicken

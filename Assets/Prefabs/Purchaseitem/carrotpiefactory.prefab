@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4599629399582350010}
   - component: {fileID: 1892245119263253149}
   - component: {fileID: 8503633969400637991}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: carrotpiefactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2938993142418050364}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

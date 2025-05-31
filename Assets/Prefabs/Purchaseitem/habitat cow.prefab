@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3432954093249013201}
   - component: {fileID: -3349142156792668842}
   - component: {fileID: 3775683124119218682}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: habitat cow
   m_TagString: Habitat
   m_Icon: {fileID: 0}
@@ -149,9 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   habitatType: cow
-  animalsInHabitat:
-  - {fileID: 1463756867370049279, guid: 7fb320b5dbcac374da9bf0bfce6b063b, type: 3}
-  productSpawnPoint: {fileID: 1725364176170675702}
+  animalsInHabitat: []
+  maxanimals: 4
   habitatBounds:
     m_Center: {x: 3, y: 2, z: 0}
     m_Extent: {x: 2, y: 2, z: 0}
@@ -358,10 +357,14 @@ PolygonCollider2D:
       - {x: -1.3149999, y: -1.425}
       - {x: -1.375, y: -1.485}
       - {x: -1.375, y: -1.535}
-      - {x: -1.885, y: -1.535}
+      - {x: -1.4423828, y: -1.2409973}
+      - {x: 1.8366089, y: -1.3319092}
+      - {x: 1.8266602, y: 1.3495483}
+      - {x: -1.6547143, y: 1.3237952}
     - - {x: -0.78499997, y: -0.575}
-      - {x: -1.625, y: -0.575}
-      - {x: -1.655, y: -0.585}
+      - {x: -1.0093994, y: -0.35824585}
+      - {x: -0.74432373, y: -0.18208617}
+      - {x: -1.655, y: -0.5985498}
       - {x: -1.655, y: -1.2149999}
       - {x: -1.625, y: -1.305}
       - {x: -0.865, y: -1.305}

@@ -49,8 +49,8 @@ public class AnimalFeedingUI : MonoBehaviour
     public void ShowHint(string message)
     {
         hintText.text = message;
-        Invoke("ClearHint", 2f); // 2 sec 
-        ClearHint();
+        CancelInvoke(nameof(ClearHint));
+        Invoke(nameof(ClearHint), 2f); // 2 sec 
     }
 
     private void ClearHint()
