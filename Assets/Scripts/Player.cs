@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
             if (selectedSlot.count > 0)
             {
-                if (selectedSlot.itemName == "hoe")
+                if (selectedSlot.itemName == "Shovel3")
                 {
                     if (tileManager.IsInteractable(position))
                     {

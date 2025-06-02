@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -156,6 +156,8 @@ public class Inventory_UI : MonoBehaviour
                 Debug.LogWarning("A Slot_UI is null in the slots list.");
                 continue;
             }
+            Debug.Log($"UI Slots Count: {slots.Count}, Inventory Slots Count: {inventory.slots.Count}");
+
 
             slot.slotID = counter;
             slot.inventory = inventory;

@@ -2015,16 +2015,16 @@ MonoBehaviour:
     originalQuantity: 5
     currentQuantity: 5
     price: 54
-  - productName: Axe
-    productImage: {fileID: -639260001916785282, guid: e058f313f1d9eb540a930746e8ced416, type: 3}
-    originalQuantity: 5
-    currentQuantity: 5
-    price: 36
   - productName: Shovel
-    productImage: {fileID: 2266220343706263663, guid: 8b8179cabe3aa4b4fb508dcd666c340d, type: 3}
+    productImage: {fileID: -2666531865688678537, guid: cc90c462bcab3a745ae8609cdb34a677, type: 3}
     originalQuantity: 5
     currentQuantity: 5
     price: 108
+  - productName: Axe
+    productImage: {fileID: 1559704157218881296, guid: 1115626f36d98ad48b69b891e446a221, type: 3}
+    originalQuantity: 5
+    currentQuantity: 5
+    price: 36
   sellingButtons:
   - {fileID: 182242069}
   - {fileID: 452734104}
@@ -2041,8 +2041,8 @@ MonoBehaviour:
   - {fileID: 289618078}
   - {fileID: 1211917937}
   - {fileID: 1918665266}
-  - {fileID: 188948289}
   - {fileID: 1078014076}
+  - {fileID: 188948289}
   totalPriceText: {fileID: 1808592649}
   playerCoinManager: {fileID: 1947339647}
   earnFeedbackText: {fileID: 958140026}
@@ -2285,7 +2285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -639260001916785282, guid: e058f313f1d9eb540a930746e8ced416, type: 3}
+  m_Sprite: {fileID: 1559704157218881296, guid: 1115626f36d98ad48b69b891e446a221, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7476,7 +7476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2266220343706263663, guid: 8b8179cabe3aa4b4fb508dcd666c340d, type: 3}
+  m_Sprite: {fileID: -2666531865688678537, guid: cc90c462bcab3a745ae8609cdb34a677, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8520,7 +8520,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2266220343706263663, guid: 8b8179cabe3aa4b4fb508dcd666c340d, type: 3}
+  m_Sprite: {fileID: -2666531865688678537, guid: cc90c462bcab3a745ae8609cdb34a677, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12105,7 +12105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -639260001916785282, guid: e058f313f1d9eb540a930746e8ced416, type: 3}
+  m_Sprite: {fileID: 1559704157218881296, guid: 1115626f36d98ad48b69b891e446a221, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14117,7 +14117,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1995526610}
-  - component: {fileID: 1995526611}
   m_Layer: 5
   m_Name: Slots
   m_TagString: Untagged
@@ -14151,18 +14150,6 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: -1.0999985}
   m_SizeDelta: {x: -99.650024, y: -64.53}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1995526611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995526609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada9ab49030930e47884660da7b5c2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2014709297
 GameObject:
   m_ObjectHideFlags: 0
@@ -14390,12 +14377,12 @@ MonoBehaviour:
     currentQuantity: 5
     price: 56
   - productName: Axe
-    productImage: {fileID: -639260001916785282, guid: e058f313f1d9eb540a930746e8ced416, type: 3}
+    productImage: {fileID: 1559704157218881296, guid: 1115626f36d98ad48b69b891e446a221, type: 3}
     originalQuantity: 5
     currentQuantity: 5
     price: 36
   - productName: Shovel
-    productImage: {fileID: 2266220343706263663, guid: 8b8179cabe3aa4b4fb508dcd666c340d, type: 3}
+    productImage: {fileID: -2666531865688678537, guid: cc90c462bcab3a745ae8609cdb34a677, type: 3}
     originalQuantity: 5
     currentQuantity: 5
     price: 108

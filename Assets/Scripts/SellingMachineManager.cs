@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class SellingMachineManager : MonoBehaviour
 {
@@ -21,15 +20,13 @@ public class SellingMachineManager : MonoBehaviour
     [Header("Feedback Text")]
     public TextMeshProUGUI earnFeedbackText;
 
-
     private void Start()
     {
-        LoadInventory(); // ✅ 加载卖出库存
-        SetupButtons();  // 如果你有 SetupButtons
+        LoadInventory();          // ✅ 加载本地保存的数据
+        SetupButtons();           // ✅ 设置按钮
+        SyncFromInventory();      // ✅ 从 Inventory 同步数量
+        
     }
-
-
-
 
     private void SetupButtons()
     {
@@ -78,14 +75,16 @@ public class SellingMachineManager : MonoBehaviour
 
         for (int i = 0; i < sellingProducts.Count; i++)
         {
-            // 卖出后将当前值设为新的 originalQuantity
             sellingProducts[i].originalQuantity = sellingProducts[i].currentQuantity;
-            earnFeedbackText.text = $"You have earned: ${totalPrice}";
-            StartCoroutine(ClearEarnText());
         }
+
+        earnFeedbackText.text = $"You have earned: ${totalPrice}";
+        StartCoroutine(ClearEarnText());
 
         totalPrice = 0;
         UpdateTotalPriceDisplay();
+
+        SyncToInventory(); // ✅ 卖出后同步回 Inventory
     }
 
     public void ResetSellingMachine()
@@ -97,17 +96,20 @@ public class SellingMachineManager : MonoBehaviour
             UpdateButtonDisplay(i);
         }
         UpdateTotalPriceDisplay();
+
+        SyncToInventory(); // ✅ 重置后同步回 Inventory
     }
+
     public void SaveInventory()
-{
-    for (int i = 0; i < sellingProducts.Count; i++)
     {
-        PlayerPrefs.SetInt($"Selling_Product_{i}_CurrentQuantity", sellingProducts[i].currentQuantity);
-        PlayerPrefs.SetInt($"Selling_Product_{i}_OriginalQuantity", sellingProducts[i].originalQuantity);
-        Debug.Log($"✅ [SellingMachine] Saved: {sellingProducts[i].productName}, current: {sellingProducts[i].currentQuantity}, original: {sellingProducts[i].originalQuantity}");
+        for (int i = 0; i < sellingProducts.Count; i++)
+        {
+            PlayerPrefs.SetInt($"Selling_Product_{i}_CurrentQuantity", sellingProducts[i].currentQuantity);
+            PlayerPrefs.SetInt($"Selling_Product_{i}_OriginalQuantity", sellingProducts[i].originalQuantity);
+            Debug.Log($"✅ [SellingMachine] Saved: {sellingProducts[i].productName}, current: {sellingProducts[i].currentQuantity}, original: {sellingProducts[i].originalQuantity}");
+        }
+        PlayerPrefs.Save();
     }
-    PlayerPrefs.Save();
-}
 
     public void LoadInventory()
     {
@@ -124,7 +126,6 @@ public class SellingMachineManager : MonoBehaviour
             }
         }
 
-        // 刷新 UI
         for (int i = 0; i < sellingProducts.Count; i++)
         {
             UpdateButtonDisplay(i);
@@ -133,12 +134,77 @@ public class SellingMachineManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveInventory(); // 退出游戏时保存
+        SaveInventory();
     }
 
     private void OnDisable()
     {
-        SaveInventory(); // 离开场景/关闭对象时保存
+        SaveInventory();
     }
+
+    // ✅ 新增：同步 Inventory → Selling Machine
+    public void SyncFromInventory()
+    {
+        Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
+
+        foreach (Product product in sellingProducts)
+        {
+            foreach (Inventory.Slot slot in backpack.slots)
+            {
+                if (slot != null && slot.itemName == product.productName)
+                {
+                    product.currentQuantity = slot.count;
+                    product.originalQuantity = slot.count; // 可选：也同步原始值
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < sellingProducts.Count; i++)
+        {
+            UpdateButtonDisplay(i);
+        }
+    }
+
+    // ✅ 新增：同步 Selling Machine → Inventory
+   public void SyncToInventory()
+{
+    if (GameManager.instance == null)
+    {
+        Debug.LogError("❌ GameManager.instance is null");
+        return;
+    }
+    if (GameManager.instance.player == null)
+    {
+        Debug.LogError("❌ GameManager.player is null");
+        return;
+    }
+    if (GameManager.instance.player.inventoryManager == null)
+    {
+        Debug.LogError("❌ InventoryManager is null");
+        return;
+    }
+    if (GameManager.instance.player.inventoryManager.backpack == null)
+    {
+        Debug.LogError("❌ Backpack is null");
+        return;
+    }
+
+    Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
+
+    foreach (Product product in sellingProducts)
+    {
+        foreach (Inventory.Slot slot in backpack.slots)
+        {
+            if (slot != null && slot.itemName == product.productName)
+            {
+                slot.count = product.currentQuantity;
+                break;
+            }
+        }
+    }
+
+    GameManager.instance.uiManager.RefreshInventoryUI("backpack");
+}
 
 }
