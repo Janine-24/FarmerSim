@@ -50,6 +50,7 @@ public class Inventory
             {
                 this.itemName = item.data.itemName;
                 this.icon = item.data.icon;
+                this.itemData = item.data;
                 count++;
             }
             else if (item.data.itemName == this.itemName)
@@ -68,6 +69,7 @@ public class Inventory
             this.itemName = itemName;
             this.icon = icon;
             this.maxAllowed = maxAllowed;
+            this.itemData = GameManager.instance.itemManager.GetItemByName(itemName).data; // <-- Add this
             count++;
         }
 
@@ -141,16 +143,55 @@ public class Inventory
             Slot fromSlot = slots[fromIndex];
             Slot toSlot = toInventory.slots[toIndex];
 
-            for (int i = 0; i < numToMove; i++)
+            // Check if stacking is possible
+            if (!toSlot.IsEmpty && toSlot.itemName == fromSlot.itemName && toSlot.count + numToMove <= toSlot.maxAllowed)
             {
-                if (toSlot.IsEmpty || toSlot.CanAddItem(fromSlot.itemName))
+                for (int i = 0; i < numToMove; i++)
                 {
-                    toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed);
+                    toSlot.count++;
                     fromSlot.RemoveItem();
                 }
             }
+            else if (toSlot.IsEmpty)
+            {
+                // Copy full data over
+                toSlot.itemName = fromSlot.itemName;
+                toSlot.icon = fromSlot.icon;
+                toSlot.itemData = fromSlot.itemData; 
+                toSlot.maxAllowed = fromSlot.maxAllowed;
+
+                toSlot.count = 0; // start from 0, then add
+
+                for (int i = 0; i < numToMove; i++)
+                {
+                    toSlot.count++;
+                    fromSlot.RemoveItem();
+                }
+            }
+            else
+            {
+                // Swap items
+                string tempName = toSlot.itemName;
+                Sprite tempIcon = toSlot.icon;
+                int tempCount = toSlot.count;
+                int tempMax = toSlot.maxAllowed;
+                ItemData tempData = toSlot.itemData;
+
+                toSlot.itemName = fromSlot.itemName;
+                toSlot.icon = fromSlot.icon;
+                toSlot.count = fromSlot.count;
+                toSlot.maxAllowed = fromSlot.maxAllowed;
+                toSlot.itemData = fromSlot.itemData;
+
+                fromSlot.itemName = tempName;
+                fromSlot.icon = tempIcon;
+                fromSlot.count = tempCount;
+                fromSlot.maxAllowed = tempMax;
+                fromSlot.itemData = tempData;
+            }
         }
     }
+
 
     public void SelectSlot(int index)
     {

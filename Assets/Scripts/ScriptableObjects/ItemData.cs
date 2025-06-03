@@ -11,10 +11,14 @@ public class ItemData : ScriptableObject
 
     [Header("Seed Info")]
     [SerializeField] public int wateringTime;
-    [SerializeField] public int harvestTime;
+    [SerializeField] public int harvestTime ;
     [SerializeField] public Sprite seedStageSprite;
     [SerializeField] public Sprite sproutStageSprite;
     [SerializeField] public Sprite matureStageSprite;
+
+    [Header("Harvest Info")]
+    public GameObject harvestProductPrefab;
+    public int harvestYield = 3;
 
     [Header("Tool Info")]
     [SerializeField] public int durability;

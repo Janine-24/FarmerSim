@@ -119,6 +119,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &299104195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104809453251219315, guid: 0377c362191796d44bb2005035132773, type: 3}
+  m_PrefabInstance: {fileID: 7101595822824659053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &299104200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299104195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f4009cc03a91e4a84799c3f6bc6c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1273237131
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,11 +327,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 296782749199535432, guid: 0377c362191796d44bb2005035132773, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.46
+      value: 5.09
       objectReference: {fileID: 0}
     - target: {fileID: 296782749199535432, guid: 0377c362191796d44bb2005035132773, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.29
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 296782749199535432, guid: 0377c362191796d44bb2005035132773, type: 3}
       propertyPath: m_LocalPosition.z
@@ -348,14 +365,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5840721276945388714, guid: 0377c362191796d44bb2005035132773, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967537653308229117, guid: 0377c362191796d44bb2005035132773, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967537653308229117, guid: 0377c362191796d44bb2005035132773, type: 3}
+      propertyPath: buyingMachineManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7104809453251219315, guid: 0377c362191796d44bb2005035132773, type: 3}
       propertyPath: m_Name
       value: Vending Machine 1.4_0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5967537653308229117, guid: 0377c362191796d44bb2005035132773, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7104809453251219315, guid: 0377c362191796d44bb2005035132773, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 299104200}
   m_SourcePrefab: {fileID: 100100000, guid: 0377c362191796d44bb2005035132773, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
