@@ -22,3 +22,5 @@ MonoBehaviour:
   ignoreHabitatLayer: 0
   isAnimal: 0
   animalType: 
+  machinelevelup: {fileID: 2938993142418050364, guid: 10d1104eaefbb4840ae1363821e9c3fa, type: 3}
+  requiredLevelup: 6

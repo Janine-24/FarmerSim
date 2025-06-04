@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1370393569535206014}
   - component: {fileID: 1613105200988966037}
   - component: {fileID: 2107794338641987814}
+  - component: {fileID: 7385870975184588513}
   m_Layer: 6
   m_Name: chesse factory
   m_TagString: Untagged
@@ -206,3 +207,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7385870975184588513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086111437926052078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7558cf51c11c04c9f161d156007977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopItem: {fileID: 11400000, guid: 8aa2622c70ab48243b030f96a7860be8, type: 2}

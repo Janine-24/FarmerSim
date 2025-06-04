@@ -16,5 +16,7 @@ public class ShopItem : ScriptableObject
     public bool ignoreHabitatLayer; // use to ignore the habitat layer when place animals
     public bool isAnimal;
     public string animalType; // e.g. "Cow", "Sheep"
+    public GameObject machinelevelup;
+    public int requiredLevelup;
 
 }

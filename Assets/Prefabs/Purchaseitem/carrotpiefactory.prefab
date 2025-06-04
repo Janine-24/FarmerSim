@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4599629399582350010}
   - component: {fileID: 1892245119263253149}
   - component: {fileID: 8503633969400637991}
+  - component: {fileID: 5548389732647138034}
   m_Layer: 6
   m_Name: carrotpiefactory
   m_TagString: Untagged
@@ -224,3 +225,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5548389732647138034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2938993142418050364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7558cf51c11c04c9f161d156007977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopItem: {fileID: 11400000, guid: 722314bb07163c24fb07880cb428baba, type: 2}
