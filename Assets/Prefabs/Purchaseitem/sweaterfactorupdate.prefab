@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4612331079888409525}
   - component: {fileID: 7173814187683858251}
   - component: {fileID: 3691711705412293827}
-  m_Layer: 0
+  - component: {fileID: 9129500100782912571}
+  m_Layer: 6
   m_Name: sweaterfactorupdate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5316271747834095547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 376.78, y: 260.92, z: 1.6010132}
+  m_LocalPosition: {x: 376.78, y: 260.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -234,3 +235,30 @@ PolygonCollider2D:
       - {x: 1.0649999, y: -0.935}
       - {x: 1.055, y: -0.92499995}
   m_UseDelaunayMesh: 0
+--- !u!50 &9129500100782912571
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5316271747834095547}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

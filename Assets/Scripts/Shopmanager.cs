@@ -9,6 +9,8 @@ public class ShopManager : MonoBehaviour
     public LevelSystem levelSystem;
     public Transform contentPanel;
     public List<ShopItem> allItems;
+    private GameObject currentDraggedObject;
+    public AudioClip shopSound;
 
     private void Start()
     {
@@ -20,13 +22,18 @@ public class ShopManager : MonoBehaviour
         PopulateShop();
         Debug.Log("Shop Opened");
     }
-
     public void CloseShop()
     {
-            shopPanel.SetActive(false);
-    }
+        shopPanel.SetActive(false);
+        Debug.Log("Shop Closed");
 
-    void PopulateShop()
+        if (currentDraggedObject != null) //prevent conflict when have next time purchase as they will check have null or not
+        {
+            Destroy(currentDraggedObject); //destroy the drag object when close shop
+            currentDraggedObject = null; //reset reference to drag object
+        }
+        }
+void PopulateShop()
     {
         foreach (var item in allItems)
         {
@@ -42,7 +49,9 @@ public class ShopManager : MonoBehaviour
         bool hasCoins = PlayerCoinManager.Instance.HasEnoughCoins(item.price);
         if (currentLevel >= item.requiredLevel && hasCoins)
         {
-            PlayerCoinManager.Instance.SpendCoins(item.price);
+            // sound
+            if (shopSound != null)
+                AudioSource.PlayClipAtPoint(shopSound, transform.position);
             StartDragging(item);
             Debug.Log("Purchase:" + item.itemName);
         }

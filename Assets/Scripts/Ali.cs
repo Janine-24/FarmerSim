@@ -4,6 +4,7 @@ public class MerchantCharacter : MonoBehaviour
 {
     private Animator animator;
     public ShopManager shopManager;
+    public AudioClip Sound;
 
     void Start()
     {
@@ -14,6 +15,9 @@ public class MerchantCharacter : MonoBehaviour
     {
         if (shopManager != null)
         {
+            // sound
+            if (Sound != null)
+                AudioSource.PlayClipAtPoint(Sound, transform.position);
             shopManager.OpenShop();  // open shop
             Debug.Log("Shop Opened"); 
         }

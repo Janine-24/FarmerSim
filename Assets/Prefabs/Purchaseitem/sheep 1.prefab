@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9096500825618078391}
   - component: {fileID: 7778030988220444531}
   - component: {fileID: 3987587571872016635}
+  - component: {fileID: -6681969847465695626}
   m_Layer: 0
   m_Name: sheep 1
   m_TagString: Animal
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3420930004063497669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 365.43, y: 255.87, z: 1.6010132}
+  m_LocalPosition: {x: 365.43, y: 255.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -233,3 +234,21 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
+--- !u!114 &-6681969847465695626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420930004063497669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873032628c6310e41a1d1f863769b4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  moveRadius: 2
+  animalType: sheep
+  habitatArea: {fileID: 1725364176170675702, guid: 3c816d14c2b8c024d931915d6fb9f771, type: 3}
+  margin: 0.1
+  timeToChangeTarget: 3

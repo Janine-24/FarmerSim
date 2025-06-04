@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9269dbba0e3b3bf409221a15ec747b68, type: 3}
   m_Name: habitat
   m_EditorClassIdentifier: 
-  itemName: Habitat
+  itemName: Habitatchicken
   icon: {fileID: 4014525255541638042, guid: db21c350198b58d42b1489d3479ddab3, type: 3}
   price: 100
   requiredLevel: 2
   prefabToPlace: {fileID: 4715934671889459428, guid: 3c816d14c2b8c024d931915d6fb9f771, type: 3}
   itemType: 2
   previewPrefab: {fileID: 4715934671889459428, guid: c298bbe975835b741afd47981c72198c, type: 3}
+  ignoreHabitatLayer: 0
