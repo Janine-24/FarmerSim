@@ -7,8 +7,17 @@ public class InventoryInitializer : MonoBehaviour
     public List<InitialInventoryItem> itemsToAdd;
 
     public ItemManager itemManager;
+
+    private const string InventoryInitKey = "InventoryInitialized";
+
     private void Start()
     {
+        if (PlayerPrefs.GetInt(InventoryInitKey, 0) == 1)
+        {
+            Debug.Log("Inventory already initialized. Skipping starter items.");
+            return;
+        }
+
         if (GameManager.instance == null || GameManager.instance.player == null)
         {
             Debug.LogError("GameManager or Player is not ready. Cannot initialize inventory.");
@@ -39,5 +48,8 @@ public class InventoryInitializer : MonoBehaviour
         }
 
         GameManager.instance.uiManager.RefreshInventoryUI("backpack");
+
+        PlayerPrefs.SetInt(InventoryInitKey, 1);
+        PlayerPrefs.Save();
     }
 }
