@@ -8,11 +8,15 @@ public class InventoryInitializer : MonoBehaviour
 
     public ItemManager itemManager;
 
-    private static bool inventoryHasBeenInitialized = false;
+    private const string InventoryInitKey = "InventoryInitialized";
+
     private void Start()
     {
-        if(inventoryHasBeenInitialized)
+        if (PlayerPrefs.GetInt(InventoryInitKey, 0) == 1)
+        {
+            Debug.Log("Inventory already initialized. Skipping starter items.");
             return;
+        }
 
         if (GameManager.instance == null || GameManager.instance.player == null)
         {
@@ -44,7 +48,9 @@ public class InventoryInitializer : MonoBehaviour
         }
 
         GameManager.instance.uiManager.RefreshInventoryUI("backpack");
-        inventoryHasBeenInitialized = true;    
+
+        PlayerPrefs.SetInt(InventoryInitKey, 1);
+        PlayerPrefs.Save();
     }
 
 }

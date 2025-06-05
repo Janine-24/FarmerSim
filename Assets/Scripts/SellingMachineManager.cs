@@ -24,10 +24,14 @@ public class SellingMachineManager : MonoBehaviour
     {
         LoadInventory();          // ✅ 加载本地保存的数据
         SetupButtons();           // ✅ 设置按钮
-        SyncFromInventory();      // ✅ 从 Inventory 同步数量
-        
+        StartCoroutine(DelayedSync());
     }
 
+    private IEnumerator DelayedSync()
+    {
+        yield return null; // 延迟一帧，等 GameManager 和背包加载完成
+        SyncFromInventory();
+    }
     private void SetupButtons()
     {
         for (int i = 0; i < sellingButtons.Count; i++)
@@ -84,12 +88,14 @@ public class SellingMachineManager : MonoBehaviour
         totalPrice = 0;
         UpdateTotalPriceDisplay();
 
-        SyncToInventory(); // ✅ 卖出后同步回 Inventory
+        SyncToInventory();   // 关键时刻同步
+        SaveInventory();     // 并保存本地数据
     }
 
     public void ResetSellingMachine()
     {
         totalPrice = 0;
+
         for (int i = 0; i < sellingProducts.Count; i++)
         {
             sellingProducts[i].currentQuantity = sellingProducts[i].originalQuantity;
@@ -135,6 +141,7 @@ public class SellingMachineManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveInventory();
+        SyncToInventory();
     }
 
     private void OnDisable()
@@ -142,10 +149,19 @@ public class SellingMachineManager : MonoBehaviour
         SaveInventory();
     }
 
+
     // ✅ 新增：同步 Inventory → Selling Machine
     public void SyncFromInventory()
     {
+        Debug.Log("✅ 正在执行 SyncFromInventory()");
         Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
+        
+        foreach (Inventory.Slot slot in backpack.slots)
+        {
+            Debug.Log($"🧪 背包槽位: itemName = {slot?.itemName}, count = {slot?.count}");
+        }
+
+        
 
         foreach (Product product in sellingProducts)
         {
@@ -169,7 +185,8 @@ public class SellingMachineManager : MonoBehaviour
     // ✅ 新增：同步 Selling Machine → Inventory
    public void SyncToInventory()
 {
-    if (GameManager.instance == null)
+        Debug.Log("✅ 正在执行 SyncToInventory()");
+        if (GameManager.instance == null)
     {
         Debug.LogError("❌ GameManager.instance is null");
         return;
