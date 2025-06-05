@@ -7,8 +7,13 @@ public class InventoryInitializer : MonoBehaviour
     public List<InitialInventoryItem> itemsToAdd;
 
     public ItemManager itemManager;
+
+    private static bool inventoryHasBeenInitialized = false;
     private void Start()
     {
+        if(inventoryHasBeenInitialized)
+            return;
+
         if (GameManager.instance == null || GameManager.instance.player == null)
         {
             Debug.LogError("GameManager or Player is not ready. Cannot initialize inventory.");
@@ -39,5 +44,7 @@ public class InventoryInitializer : MonoBehaviour
         }
 
         GameManager.instance.uiManager.RefreshInventoryUI("backpack");
+        inventoryHasBeenInitialized = true;    
     }
+
 }
