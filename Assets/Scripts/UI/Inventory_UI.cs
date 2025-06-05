@@ -239,7 +239,6 @@ public class Inventory_UI : MonoBehaviour
             string itemName = PlayerPrefs.GetString($"{inventoryName}_Slot_{i}_ItemName", "");
             int count = PlayerPrefs.GetInt($"{inventoryName}_Slot_{i}_Count", 0);
 
-            // 只有当存档数据有效时才覆盖槽位
             if (!string.IsNullOrEmpty(itemName) && count > 0)
             {
                 var slot = new Inventory.Slot();
@@ -249,16 +248,18 @@ public class Inventory_UI : MonoBehaviour
                 var itemPrefab = GameManager.instance.itemManager.GetItemByName(itemName);
                 if (itemPrefab != null)
                 {
-                    slot.icon = itemPrefab.GetComponent<Item>().data.icon;
+                    var itemComponent = itemPrefab.GetComponent<Item>();
+                    slot.icon = itemComponent.data.icon;
+                    slot.itemData = itemComponent.data; // ✅ 关键：补上这句，避免 null
                 }
 
-                inventory.slots[i] = slot; // 覆盖
+                inventory.slots[i] = slot; // ✅ 覆盖旧数据
             }
-            // 否则保持槽位原数据不变
         }
 
         Refresh();
     }
+
     private void OnApplicationQuit()
     {
         SaveInventoryData();
