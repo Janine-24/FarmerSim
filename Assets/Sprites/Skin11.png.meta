@@ -1,0 +1,858 @@
+fileFormatVersion: 2
+guid: e7d1f59d1776cd6469846d1dc6873c54
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3783313991594884245
+    second: Skin11_0
+  - first:
+      213: 4602553030239947372
+    second: Skin11_1
+  - first:
+      213: -129744662362995279
+    second: Skin11_2
+  - first:
+      213: -9100118992349197267
+    second: Skin11_3
+  - first:
+      213: -1066685661986339513
+    second: Skin11_4
+  - first:
+      213: 4519552577217053743
+    second: Skin11_5
+  - first:
+      213: -8138045701368500601
+    second: Skin11_6
+  - first:
+      213: 2600132889999243002
+    second: Skin11_7
+  - first:
+      213: -3787911345741665763
+    second: Skin11_8
+  - first:
+      213: -2522149509426960863
+    second: Skin11_9
+  - first:
+      213: -3157427495392680669
+    second: Skin11_10
+  - first:
+      213: -1665357586690842164
+    second: Skin11_11
+  - first:
+      213: 8123138453629475300
+    second: Skin11_12
+  - first:
+      213: -6860921534030255357
+    second: Skin11_13
+  - first:
+      213: 3912325835518822893
+    second: Skin11_14
+  - first:
+      213: -4384505543839397138
+    second: Skin11_15
+  - first:
+      213: 4140385445503924841
+    second: Skin11_16
+  - first:
+      213: -2178261590771057895
+    second: Skin11_17
+  - first:
+      213: -4645807651139590331
+    second: Skin11_18
+  - first:
+      213: 8548329679059007869
+    second: Skin11_19
+  - first:
+      213: 6759839586548348428
+    second: Skin11_20
+  - first:
+      213: 4879194094663156182
+    second: Skin11_21
+  - first:
+      213: -7903141963704730217
+    second: Skin11_22
+  - first:
+      213: -168757069779036783
+    second: Skin11_23
+  - first:
+      213: 5890847768706069908
+    second: Skin11_24
+  - first:
+      213: 8271677809879025648
+    second: Skin11_25
+  - first:
+      213: 8196343115448036554
+    second: Skin11_26
+  - first:
+      213: 8961946084031953966
+    second: Skin11_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Skin11_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 824
+        width: 96
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b63c83138f7fe7bc0800000000000000
+      internalID: -3783313991594884245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 824
+        width: 96
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6a895b789d8fdf30800000000000000
+      internalID: 4602553030239947372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_2
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 824
+        width: 96
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b5c950caed033ef0800000000000000
+      internalID: -129744662362995279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_3
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 824
+        width: 96
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2c8d3fadf1e5b180800000000000000
+      internalID: -9100118992349197267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_4
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 824
+        width: 96
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7454d4eba0f5231f0800000000000000
+      internalID: -1066685661986339513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_5
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 824
+        width: 95
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2449b49f1da8be30800000000000000
+      internalID: 4519552577217053743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_6
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 614
+        width: 98
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78e29044d8adf0f80800000000000000
+      internalID: -8138045701368500601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 614
+        width: 100
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af6f63d5617851420800000000000000
+      internalID: 2600132889999243002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_8
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 614
+        width: 98
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1a656443b2ae6bc0800000000000000
+      internalID: -3787911345741665763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_9
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 614
+        width: 99
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1262e2452668ffcd0800000000000000
+      internalID: -2522149509426960863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_10
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 614
+        width: 96
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3256115fb609e24d0800000000000000
+      internalID: -3157427495392680669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_11
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 614
+        width: 98
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc16a4d291673e8e0800000000000000
+      internalID: -1665357586690842164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_12
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 404
+        width: 98
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e996e5a26f2bb070800000000000000
+      internalID: 8123138453629475300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_13
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 406
+        width: 98
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b6c4c273c19c0a0800000000000000
+      internalID: -6860921534030255357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_14
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 404
+        width: 98
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de9cea77e9f5b4630800000000000000
+      internalID: 3912325835518822893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_15
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 408
+        width: 96
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeac8bf107b1723c0800000000000000
+      internalID: -4384505543839397138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_16
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 408
+        width: 98
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96a757040aa957930800000000000000
+      internalID: 4140385445503924841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_17
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 406
+        width: 98
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91bb636cf9245c1e0800000000000000
+      internalID: -2178261590771057895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_18
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 188
+        width: 140
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 547680b4e86c68fb0800000000000000
+      internalID: -4645807651139590331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_19
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 186
+        width: 104
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d79bd375d84c1a670800000000000000
+      internalID: 8548329679059007869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_20
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 174
+        width: 86
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0676dee946cfcd50800000000000000
+      internalID: 6759839586548348428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_21
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 186
+        width: 98
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d1c4929d2166b340800000000000000
+      internalID: 4879194094663156182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_22
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 188
+        width: 96
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d75e3b146625290800000000000000
+      internalID: -7903141963704730217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_23
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 188
+        width: 122
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1951c72d65478adf0800000000000000
+      internalID: -168757069779036783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_24
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0
+        width: 92
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 495b0a7a5de70c150800000000000000
+      internalID: 5890847768706069908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_25
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 104
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f702529427eac270800000000000000
+      internalID: 8271677809879025648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_26
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 0
+        width: 96
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: accaf7d23a24fb170800000000000000
+      internalID: 8196343115448036554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skin11_27
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 0
+        width: 98
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2c7de22b7a3f5c70800000000000000
+      internalID: 8961946084031953966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Skin11_0: -3783313991594884245
+      Skin11_1: 4602553030239947372
+      Skin11_10: -3157427495392680669
+      Skin11_11: -1665357586690842164
+      Skin11_12: 8123138453629475300
+      Skin11_13: -6860921534030255357
+      Skin11_14: 3912325835518822893
+      Skin11_15: -4384505543839397138
+      Skin11_16: 4140385445503924841
+      Skin11_17: -2178261590771057895
+      Skin11_18: -4645807651139590331
+      Skin11_19: 8548329679059007869
+      Skin11_2: -129744662362995279
+      Skin11_20: 6759839586548348428
+      Skin11_21: 4879194094663156182
+      Skin11_22: -7903141963704730217
+      Skin11_23: -168757069779036783
+      Skin11_24: 5890847768706069908
+      Skin11_25: 8271677809879025648
+      Skin11_26: 8196343115448036554
+      Skin11_27: 8961946084031953966
+      Skin11_3: -9100118992349197267
+      Skin11_4: -1066685661986339513
+      Skin11_5: 4519552577217053743
+      Skin11_6: -8138045701368500601
+      Skin11_7: 2600132889999243002
+      Skin11_8: -3787911345741665763
+      Skin11_9: -2522149509426960863
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

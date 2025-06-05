@@ -4,7 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public Vector3 offset;
-    public float smoothSpeed = 5f;
+    public float smoothSpeed = 100f;
 
     void LateUpdate()
     {
