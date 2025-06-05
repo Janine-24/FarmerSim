@@ -64,7 +64,7 @@ public class DragManager : MonoBehaviour
 
         currentItem = item;
         Debug.Log("Start dragging: " + item.itemName);
-}
+    }
 
     private void Update()
     {
@@ -211,10 +211,10 @@ public class DragManager : MonoBehaviour
         if (currentRenderer == null) // if no have spriterenderer
             return false;  // dilarang letak dalam scene
 
-        Vector2 size = currentRenderer.bounds.size; 
+        Vector2 size = currentRenderer.bounds.size;
 
         //obstacle layer
-        Collider2D obstacleHit = Physics2D.OverlapBox(position, size, 0f, obstacleLayer); 
+        Collider2D obstacleHit = Physics2D.OverlapBox(position, size, 0f, obstacleLayer);
         if (obstacleHit != null)
             return false;
         //habitat layer
@@ -234,10 +234,10 @@ public class DragManager : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-            if (currentDraggedObject != null && currentRenderer != null)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireCube(currentDraggedObject.transform.position, currentRenderer.bounds.size);
-            }
+        if (currentDraggedObject != null && currentRenderer != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(currentDraggedObject.transform.position, currentRenderer.bounds.size);
+        }
     }
 }

@@ -9,6 +9,12 @@ public class InventoryInitializer : MonoBehaviour
     public ItemManager itemManager;
     private void Start()
     {
+        if (GameManager.instance == null || GameManager.instance.player == null)
+        {
+            Debug.LogError("GameManager or Player is not ready. Cannot initialize inventory.");
+            return;
+        }
+
         var inventoryManager = GameManager.instance.player.inventoryManager;
 
         foreach (InitialInventoryItem entry in itemsToAdd)

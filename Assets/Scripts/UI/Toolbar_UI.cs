@@ -14,7 +14,14 @@ public class Toolbar_UI : MonoBehaviour
 
     private void Start()
     {
-        SelectSlot(0);
+        if (GameManager.instance == null || GameManager.instance.player == null)
+        {
+            Debug.LogError("GameManager or Player is not ready. Cannot initialize inventory.");
+            return;
+        }
+
+           SelectSlot(0); // 默认选中第一个格子
+
     }
     public Slot GetSelectedSlot()
     {
@@ -138,5 +145,7 @@ public class Toolbar_UI : MonoBehaviour
             GameManager.instance.uiManager.RefreshAll();
         }
     }
+
+    
 
 }

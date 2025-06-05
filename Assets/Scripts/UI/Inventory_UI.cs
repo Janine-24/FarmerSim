@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Inventory;
 
 public class Inventory_UI : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class Inventory_UI : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.instance == null || GameManager.instance.player == null)
+        {
+            Debug.LogError("GameManager or Player is not ready. Cannot initialize inventory.");
+            return;
+        }
+
         canvas = FindFirstObjectByType<Canvas>();
         inventory = GameManager.instance.player.inventoryManager.GetInventoryByName(inventoryName);
 
@@ -24,6 +31,7 @@ public class Inventory_UI : MonoBehaviour
         }
 
         SetupSlots();
+        LoadInventoryData();
         Refresh();
     }
 
@@ -119,19 +127,42 @@ public class Inventory_UI : MonoBehaviour
         UI_Manager.draggedIcon = null;
     }
 
+
     public void SlotDrop(Slot_UI slot)
     {
         if (UI_Manager.dragSingle)
         {
-            UI_Manager.draggedSlot.inventory.MoveSlot(UI_Manager.draggedSlot.slotID, slot.slotID, slot.inventory);
+            UI_Manager.draggedSlot.inventory.MoveSlot(
+                UI_Manager.draggedSlot.slotID,
+                slot.slotID,
+                slot.inventory);
         }
         else
         {
-            UI_Manager.draggedSlot.inventory.MoveSlot(UI_Manager.draggedSlot.slotID, slot.slotID, slot.inventory, UI_Manager.draggedSlot.inventory.slots[UI_Manager.draggedSlot.slotID].count);
+            UI_Manager.draggedSlot.inventory.MoveSlot(
+                UI_Manager.draggedSlot.slotID,
+                slot.slotID,
+                slot.inventory,
+                UI_Manager.draggedSlot.inventory.slots[UI_Manager.draggedSlot.slotID].count);
+        }
+
+        // 保存被拖出的 inventory
+        var sourceUI = UI_Manager.draggedSlot.GetComponentInParent<Inventory_UI>();
+        if (sourceUI != null)
+        {
+            sourceUI.SaveInventoryData();
+        }
+
+        // 保存被放入的 inventory
+        var targetUI = slot.GetComponentInParent<Inventory_UI>();
+        if (targetUI != null)
+        {
+            targetUI.SaveInventoryData();
         }
 
         GameManager.instance.uiManager.RefreshAll();
     }
+
 
     private void MoveToMousePosition(GameObject toMove)
     {
@@ -164,6 +195,80 @@ public class Inventory_UI : MonoBehaviour
             counter++;
         }
     }
+
+    public void SaveInventoryData()
+    {
+        if (inventory == null) return;
+
+        for (int i = 0; i < inventory.slots.Count; i++)
+        {
+            var slot = inventory.slots[i];
+
+            PlayerPrefs.SetString($"{inventoryName}_Slot_{i}_ItemName", slot.itemName ?? "");
+            PlayerPrefs.SetInt($"{inventoryName}_Slot_{i}_Count", slot.count);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+
+    public void LoadInventoryData()
+    {
+        if (inventory == null) return;
+
+        // 检查是否有任何存档数据
+        bool hasSavedData = false;
+        for (int i = 0; i < inventory.slots.Count; i++)
+        {
+            string savedItemName = PlayerPrefs.GetString($"{inventoryName}_Slot_{i}_ItemName", null);
+            if (!string.IsNullOrEmpty(savedItemName))
+            {
+                hasSavedData = true;
+                break;
+            }
+        }
+
+        if (!hasSavedData)
+        {
+            Debug.Log("No saved inventory data found. Using initialized inventory.");
+            return;
+        }
+
+        for (int i = 0; i < inventory.slots.Count; i++)
+        {
+            string itemName = PlayerPrefs.GetString($"{inventoryName}_Slot_{i}_ItemName", "");
+            int count = PlayerPrefs.GetInt($"{inventoryName}_Slot_{i}_Count", 0);
+
+            // 只有当存档数据有效时才覆盖槽位
+            if (!string.IsNullOrEmpty(itemName) && count > 0)
+            {
+                var slot = new Inventory.Slot();
+                slot.itemName = itemName;
+                slot.count = count;
+
+                var itemPrefab = GameManager.instance.itemManager.GetItemByName(itemName);
+                if (itemPrefab != null)
+                {
+                    slot.icon = itemPrefab.GetComponent<Item>().data.icon;
+                }
+
+                inventory.slots[i] = slot; // 覆盖
+            }
+            // 否则保持槽位原数据不变
+        }
+
+        Refresh();
+    }
+    private void OnApplicationQuit()
+    {
+        SaveInventoryData();
+    }
+
+    private void OnDisable()
+    {
+        SaveInventoryData();
+    }
+
 
 
 }

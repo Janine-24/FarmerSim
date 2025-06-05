@@ -3657,7 +3657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2328014e3fec943439ebef57c3102b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCoinAmount: 10000
+  currentCoinAmount: 3000
   coinText: {fileID: 1924457856}
 --- !u!4 &1294197622
 Transform:

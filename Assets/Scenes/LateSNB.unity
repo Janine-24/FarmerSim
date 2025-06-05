@@ -14092,7 +14092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2328014e3fec943439ebef57c3102b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCoinAmount: 10000
+  currentCoinAmount: 3000
   coinText: {fileID: 308859379}
 --- !u!4 &1947339648
 Transform:
@@ -14437,7 +14437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1690d17d23e42f841a12262dd26b7399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  errorText: {fileID: 0}
   buyingProducts:
   - productName: Wheat
     productImage: {fileID: -2699735826108634396, guid: c05c4bd32aafcac4badf6b5396062829, type: 3}
