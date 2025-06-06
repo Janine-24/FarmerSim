@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Inventory;
@@ -14,7 +14,14 @@ public class Toolbar_UI : MonoBehaviour
 
     private void Start()
     {
-        SelectSlot(0);
+        if (GameManager.instance == null || GameManager.instance.player == null)
+        {
+            Debug.LogError("GameManager or Player is not ready. Cannot initialize inventory.");
+            return;
+        }
+
+           SelectSlot(0); // 默认选中第一个格子
+
     }
     public Slot GetSelectedSlot()
     {
@@ -115,4 +122,30 @@ public class Toolbar_UI : MonoBehaviour
             SelectSlot(6);
         }
     }
+
+    public void UseSelectedItem()
+    {
+        var slot = GetSelectedSlot(); // 取 Toolbar 当前选中的物品
+
+        if (slot != null && slot.count > 0)
+        {
+            slot.count--;
+
+            // 更新 Selling Machine 中对应产品数量
+            var backpack = GameManager.instance.player.inventoryManager.backpack;
+            foreach (var product in GameManager.instance.uiManager.GetComponent<SellingMachineManager>().sellingProducts)
+            {
+                if (product.productName == slot.itemName)
+                {
+                    product.currentQuantity = slot.count;
+                    break;
+                }
+            }
+
+            GameManager.instance.uiManager.RefreshAll();
+        }
+    }
+
+    
+
 }

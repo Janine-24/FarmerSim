@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f0d9fba444d7b4c9f99fe69e64d4ff, type: 3}
+  m_Name: Shovel3
+  m_EditorClassIdentifier: 
+  itemName: Shovel3
+  icon: {fileID: -2666531865688678537, guid: cc90c462bcab3a745ae8609cdb34a677, type: 3}
+  itemType: 1
+  wateringTime: 0
+  harvestTime: 0
+  seedStageSprite: {fileID: -2666531865688678537, guid: cc90c462bcab3a745ae8609cdb34a677, type: 3}
+  sproutStageSprite: {fileID: -2666531865688678537, guid: cc90c462bcab3a745ae8609cdb34a677, type: 3}
+  matureStageSprite: {fileID: -2666531865688678537, guid: cc90c462bcab3a745ae8609cdb34a677, type: 3}
+  harvestProductPrefab: {fileID: 0}
+  harvestYield: 3
+  durability: 5
+  toolActionPrefab: {fileID: 5870824664323908066, guid: a5fbc29c519a71e47b6cc5f164c46a90, type: 3}
+  growthBoost: 0
+  waterCapacity: 0
+  wateringRange: 0
+  isAutoWaterer: 0
+  unlockLevel: 0

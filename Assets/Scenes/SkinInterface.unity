@@ -2903,7 +2903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f40ae5f670b2841aaae7b1a122744b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 6
   currentXP: 0
   xpToNextLevel: 100
   levelText: {fileID: 1160757440}
@@ -3657,7 +3657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2328014e3fec943439ebef57c3102b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCoinAmount: 10000
+  currentCoinAmount: 3000
   coinText: {fileID: 1924457856}
 --- !u!4 &1294197622
 Transform:

@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,26 +8,19 @@ public class GameManager : MonoBehaviour
     public ItemManager itemManager;
     public TileManager tileManager;
     public UI_Manager uiManager;
-
     public Player player;
 
     private void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-
-        DontDestroyOnLoad(this.gameObject);
-
+        instance = this;
+        // 找组件引用（如果需要）
         itemManager = GetComponent<ItemManager>();
         tileManager = GetComponent<TileManager>();
         uiManager = GetComponent<UI_Manager>();
+    }
 
+    private void Start()
+    {
         player = FindFirstObjectByType<Player>();
     }
 }

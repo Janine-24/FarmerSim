@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1401021945111747586}
   - component: {fileID: 7088162056471030800}
   - component: {fileID: 6142234906023690824}
+  - component: {fileID: -1371111786437283202}
   m_Layer: 6
   m_Name: sweaterfactory
   m_TagString: Untagged
@@ -461,3 +462,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
+=======
+--- !u!114 &-1371111786437283202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832170335591844702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7558cf51c11c04c9f161d156007977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopItem: {fileID: 11400000, guid: 021fe0ed5463da449951a6a62a20c375, type: 2}
+>>>>>>> cb37a1ac3187ee009a7b5e6cc2a045b05634a82d

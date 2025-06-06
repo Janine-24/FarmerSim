@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6130478616890812053}
   - component: {fileID: 6984837043289842126}
   - component: {fileID: 6044764181990239895}
+  - component: {fileID: -6815513498517437799}
   m_Layer: 6
   m_Name: hamburgerfactory
   m_TagString: Untagged
@@ -287,3 +288,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
+=======
+--- !u!114 &-6815513498517437799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476859362983040747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7558cf51c11c04c9f161d156007977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopItem: {fileID: 11400000, guid: 0ce9136b051651347af37f2841a2384c, type: 2}
+>>>>>>> cb37a1ac3187ee009a7b5e6cc2a045b05634a82d

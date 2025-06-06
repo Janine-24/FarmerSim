@@ -64,7 +64,7 @@ public class DragManager : MonoBehaviour
 
         currentItem = item;
         Debug.Log("Start dragging: " + item.itemName);
-}
+    }
 
     private void Update()
     {
@@ -211,10 +211,17 @@ public class DragManager : MonoBehaviour
         if (currentRenderer == null) // if no have spriterenderer
             return false;  // dilarang letak dalam scene
 
+<<<<<<< HEAD
         Vector2 size = currentRenderer.bounds.size; 
 
         //obstacle layer
         Collider2D obstacleHit = Physics2D.OverlapBox(position, size, 0f, obstacleLayer); 
+=======
+        Vector2 size = currentRenderer.bounds.size;
+
+        //obstacle layer
+        Collider2D obstacleHit = Physics2D.OverlapBox(position, size, 0f, obstacleLayer);
+>>>>>>> cb37a1ac3187ee009a7b5e6cc2a045b05634a82d
         if (obstacleHit != null)
             return false;
         //habitat layer
@@ -234,6 +241,7 @@ public class DragManager : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
+<<<<<<< HEAD
             if (currentDraggedObject != null && currentRenderer != null)
             {
                 Gizmos.color = Color.red;
@@ -241,3 +249,12 @@ public class DragManager : MonoBehaviour
             }
     }
 }
+=======
+        if (currentDraggedObject != null && currentRenderer != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(currentDraggedObject.transform.position, currentRenderer.bounds.size);
+        }
+    }
+}
+>>>>>>> cb37a1ac3187ee009a7b5e6cc2a045b05634a82d
