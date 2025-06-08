@@ -22,7 +22,7 @@ MonoBehaviour:
   matureStageSprite: {fileID: 0}
   harvestProductPrefab: {fileID: 0}
   harvestYield: 3
-  durability: 0
+  durability: 1
   toolActionPrefab: {fileID: 0}
   growthBoost: 0
   waterCapacity: 0

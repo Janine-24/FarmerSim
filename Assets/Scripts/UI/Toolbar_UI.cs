@@ -64,17 +64,25 @@ public class Toolbar_UI : MonoBehaviour
             selectedSlotIndex = index; // Update the selected index
             selectedSlot.SetHighlight(true); // Highlight the new selection
 
-            // Update the UI with the item name, or "Empty" if there's no item
-            if (selectedSlot != null && selectedSlot.itemName != null)
+            var slotData = GameManager.instance.player.inventoryManager.toolbar.slots[index];
+
+            // 🧠 Show item name + durability (if tool)
+            if (!string.IsNullOrEmpty(slotData.itemName))
             {
-                selectedItemNameText.text = selectedSlot.itemName;
+                if (slotData.itemData != null && slotData.itemData.itemType == ItemType.Tool && slotData.individualDurability.Count > 0)
+                {
+                    selectedItemNameText.text = $"{slotData.itemName} (Durability: {slotData.individualDurability[0]})";
+                }
+                else
+                {
+                    selectedItemNameText.text = slotData.itemName;
+                }
             }
             else
             {
                 selectedItemNameText.text = "Empty";
             }
 
-            // Call this method if needed to update game state
             GameManager.instance.player.inventoryManager.toolbar.SelectSlot(index);
         }
         else
@@ -82,6 +90,7 @@ public class Toolbar_UI : MonoBehaviour
             Debug.LogError("Selected index is out of bounds.");
         }
     }
+
 
 
 
@@ -121,6 +130,11 @@ public class Toolbar_UI : MonoBehaviour
         {
             SelectSlot(6);
         }
+    }
+
+    public int GetSelectedSlotIndex()
+    {
+        return selectedSlotIndex;
     }
 
     public void UseSelectedItem()

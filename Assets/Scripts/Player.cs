@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -17,6 +17,18 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
+            if (hit.collider != null && hit.collider.CompareTag("Machine"))
+            {
+                var machine = hit.collider.GetComponent<ProductionMachine>();
+                machine?.Interact();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
@@ -42,6 +54,34 @@ public class Player : MonoBehaviour
                     else
                     {
                         tileManager.ReverseInteracted(position);
+                    }
+
+                 
+
+                    Debug.Log("Shovel durability: " + selectedSlot.itemData.durability);
+
+                    // 👇 Destroy shovel if durability is 0
+                    if (selectedSlot.individualDurability.Count > 0)
+                    {
+                        selectedSlot.individualDurability[0]--;
+                        Debug.Log("Durability list: " + string.Join(", ", selectedSlot.individualDurability));
+
+                        Debug.Log("Shovel durability: " + selectedSlot.individualDurability[0]);
+
+                        // 👇 If this shovel broke, remove one from stack
+                        if (selectedSlot.individualDurability[0] <= 0)
+                        {
+                            selectedSlot.RemoveItem();
+                            int index = GameManager.instance.player.inventoryManager.toolbarUI.GetSelectedSlotIndex();
+                            GameManager.instance.player.inventoryManager.toolbarUI.SelectSlot(index);
+
+                        }
+
+                        // Refresh UI
+                        GameManager.instance.player.inventoryManager.UpdateToolbarUI();
+                        GameManager.instance.uiManager.RefreshAll();
+                        GameManager.instance.player.inventoryManager.toolbarUI.SelectSlot(GameManager.instance.player.inventoryManager.toolbarUI.GetSelectedSlotIndex());
+
                     }
                 }
                     else
