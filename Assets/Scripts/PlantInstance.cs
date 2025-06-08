@@ -61,6 +61,7 @@ public class PlantInstance : MonoBehaviour
         if (CurrentStage == 2 && growthTimer >= timePerStage)
         {
             SpawnHarvestProduct();
+            GameManager.instance.tileManager.RemoveGrowthCue(tilePosition);
             Destroy(gameObject, 1f); // destroys plant after 1 second
             growthTimer = 0f;
             CurrentStage++; // mark as done

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6991431276287295298}
   - component: {fileID: 3483139329430539916}
   m_Layer: 0
-  m_Name: Harvest_Carrot
+  m_Name: Harvest_Lavenda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 2950869812727453837, guid: 6b4bd23006ef5aa438bb9116be690a33, type: 3}
+  m_Sprite: {fileID: -1372068464998688099, guid: bd2e49ec6aab596499affc29b4671fc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1048389af35fa3745aa8695f1f0cfc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: ac0bf021dc4bca04a902d90fcb1534f3, type: 2}
+  data: {fileID: 11400000, guid: cc08dc0fb2808c14fac1eb1ea7258dc7, type: 2}
   rb2d: {fileID: 0}
 --- !u!114 &6991431276287295298
 MonoBehaviour:
@@ -182,7 +182,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 0.27}
+    oldSize: {x: 1.3125, y: 3.125}
     newSize: {x: 0.3, y: 0.27}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

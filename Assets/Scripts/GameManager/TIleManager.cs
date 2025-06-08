@@ -38,6 +38,12 @@ public class TileManager : MonoBehaviour
     {
         if (!NoPlantOnTile(position)) return;
 
+        if (activeCues.ContainsKey(position))
+        {
+            Destroy(activeCues[position]);
+            activeCues.Remove(position);
+        }
+
         Vector3 worldPos = interactableMap.GetCellCenterWorld(position);
         GameObject plantObj = Instantiate(plantPrefab, worldPos, Quaternion.identity);
         PlantInstance instance = plantObj.GetComponent<PlantInstance>();
@@ -169,6 +175,16 @@ public class TileManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void RemoveGrowthCue(Vector3Int tilePos)
+    {
+        if (growthStageCues.ContainsKey(tilePos))
+        {
+            Destroy(growthStageCues[tilePos]);
+            growthStageCues.Remove(tilePos);
+            Debug.Log($"[TileManager] Removed growth stage cue at {tilePos}");
+        }
     }
 
     public bool ShowPlantingCue(Vector3Int tilePos)
