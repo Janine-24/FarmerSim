@@ -14,9 +14,6 @@ public class SellingMachineManager : MonoBehaviour
     public TextMeshProUGUI totalPriceText;
     private int totalPrice = 0;
 
-    [Header("Player Coin Manager")]
-    public PlayerCoinManager playerCoinManager;
-
     [Header("Feedback Text")]
     public TextMeshProUGUI earnFeedbackText;
 
@@ -75,7 +72,8 @@ public class SellingMachineManager : MonoBehaviour
 
     public void ConfirmSell()
     {
-        playerCoinManager.AddCoins(totalPrice);
+        PlayerCoinManager.Instance.AddCoins(totalPrice);
+
 
         for (int i = 0; i < sellingProducts.Count; i++)
         {
@@ -154,26 +152,34 @@ public class SellingMachineManager : MonoBehaviour
     public void SyncFromInventory()
     {
         Debug.Log("✅ 正在执行 SyncFromInventory()");
-        Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
-        
-        foreach (Inventory.Slot slot in backpack.slots)
-        {
-            Debug.Log($"🧪 背包槽位: itemName = {slot?.itemName}, count = {slot?.count}");
-        }
 
-        
+        Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
+        Inventory toolbar = GameManager.instance.player.inventoryManager.toolbar;
 
         foreach (Product product in sellingProducts)
         {
+            int totalCount = 0;
+
+            // 遍历背包
             foreach (Inventory.Slot slot in backpack.slots)
             {
                 if (slot != null && slot.itemName == product.productName)
                 {
-                    product.currentQuantity = slot.count;
-                    product.originalQuantity = slot.count; // 可选：也同步原始值
-                    break;
+                    totalCount += slot.count;
                 }
             }
+
+            // 遍历 Toolbar
+            foreach (Inventory.Slot slot in toolbar.slots)
+            {
+                if (slot != null && slot.itemName == product.productName)
+                {
+                    totalCount += slot.count;
+                }
+            }
+
+            product.currentQuantity = totalCount;
+            product.originalQuantity = totalCount; // 可选：同时设置原始数量
         }
 
         for (int i = 0; i < sellingProducts.Count; i++)
@@ -182,46 +188,57 @@ public class SellingMachineManager : MonoBehaviour
         }
     }
 
+
     // ✅ 新增：同步 Selling Machine → Inventory
-   public void SyncToInventory()
-{
-        Debug.Log("✅ 正在执行 SyncToInventory()");
-        if (GameManager.instance == null)
+    public void SyncToInventory()
     {
-        Debug.LogError("❌ GameManager.instance is null");
-        return;
-    }
-    if (GameManager.instance.player == null)
-    {
-        Debug.LogError("❌ GameManager.player is null");
-        return;
-    }
-    if (GameManager.instance.player.inventoryManager == null)
-    {
-        Debug.LogError("❌ InventoryManager is null");
-        return;
-    }
-    if (GameManager.instance.player.inventoryManager.backpack == null)
-    {
-        Debug.LogError("❌ Backpack is null");
-        return;
-    }
+        Debug.Log("正在执行 SyncToInventory()");
+        Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
 
-    Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
-
-    foreach (Product product in sellingProducts)
-    {
-        foreach (Inventory.Slot slot in backpack.slots)
+        foreach (Product product in sellingProducts)
         {
-            if (slot != null && slot.itemName == product.productName)
+            bool found = false;
+
+            foreach (Inventory.Slot slot in backpack.slots)
             {
-                slot.count = product.currentQuantity;
-                break;
+                if (slot != null && slot.itemName == product.productName)
+                {
+                    slot.count = product.currentQuantity;
+                    found = true;
+                    break;
+                }
+            }
+
+            // ✅ 如果找不到，尝试插入新的物品
+            if (!found && product.currentQuantity > 0)
+            {
+                for (int i = 0; i < backpack.slots.Count; i++)
+                {
+                    if (string.IsNullOrEmpty(backpack.slots[i].itemName))
+                    {
+                        var itemPrefab = GameManager.instance.itemManager.GetItemByName(product.productName);
+                        if (itemPrefab != null)
+                        {
+                            var itemComponent = itemPrefab.GetComponent<Item>();
+                            var newSlot = new Inventory.Slot
+                            {
+                                itemName = product.productName,
+                                count = product.currentQuantity,
+                                icon = product.productImage,
+                                itemData = itemComponent.data
+                            };
+
+                            backpack.slots[i] = newSlot;
+                            Debug.Log($"新增物品 {product.productName} 到背包中 slot {i}");
+                        }
+                        break;
+                    }
+                }
             }
         }
+
+        GameManager.instance.uiManager.RefreshInventoryUI("backpack");
     }
 
-    GameManager.instance.uiManager.RefreshInventoryUI("backpack");
-}
 
 }

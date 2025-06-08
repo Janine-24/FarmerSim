@@ -18,14 +18,12 @@ public class BuyingMachineManager : MonoBehaviour
     public TextMeshProUGUI totalPriceText;
     private int totalPrice = 0;
 
-    [Header("Player Coin Manager")]
-    public PlayerCoinManager playerCoinManager;
-
     [Header("Feedback Text")]
     public TextMeshProUGUI spendFeedbackText;
 
     private void Start()
     {
+
         LoadInventory(); // ✅ 先加载数据
         CheckAndRefreshDailyStock(); // 然后判断是否需要刷新（不影响旧数据）
         SetupButtons();
@@ -65,10 +63,14 @@ public class BuyingMachineManager : MonoBehaviour
     }
     public void ConfirmBuy()
     {
-        if (!playerCoinManager.HasEnoughCoins(totalPrice)) return;
+        if (!PlayerCoinManager.Instance.HasEnoughCoins(totalPrice))
+        {
+            spendFeedbackText.text = "Not enough coins!";
+            StartCoroutine(ClearSpendText());
+            return;
+        }
 
-        playerCoinManager.SpendCoins(totalPrice);
-
+        PlayerCoinManager.Instance.SpendCoins(totalPrice);
         // 记录购买的物品数量
         for (int i = 0; i < buyingProducts.Count; i++)
         {
@@ -122,6 +124,26 @@ public class BuyingMachineManager : MonoBehaviour
         }
         UpdateTotalPriceDisplay();
     }
+
+    private void RefreshToDailyStock()
+    {
+        for (int i = 0; i < buyingProducts.Count; i++)
+        {
+            buyingProducts[i].currentQuantity = buyingProducts[i].dailyStockQuantity;
+            buyingProducts[i].originalQuantity = buyingProducts[i].dailyStockQuantity;
+        }
+
+        Debug.Log("✅ Refreshed all buying products to daily stock quantity.");
+
+        // 更新 UI
+        for (int i = 0; i < buyingProducts.Count; i++)
+        {
+            UpdateButtonDisplay(i);
+        }
+
+        SaveInventory(); // 保存新的 daily stock
+    }
+
     private void CheckAndRefreshDailyStock()
     {
         string lastRefreshDate = PlayerPrefs.GetString("LastStockRefreshDate", "");
@@ -129,16 +151,17 @@ public class BuyingMachineManager : MonoBehaviour
 
         if (lastRefreshDate != today)
         {
-            ResetBuyingMachine(); // 调用你已经写好的函数来刷新库存
+            RefreshToDailyStock(); // ✅ 每日重设库存
             PlayerPrefs.SetString("LastStockRefreshDate", today);
             PlayerPrefs.Save();
-            Debug.Log("Daily stock has been refreshed.");
+            Debug.Log("✅ Daily stock has been refreshed.");
         }
         else
         {
-            Debug.Log("Stock already refreshed today.");
+            Debug.Log("⚠️ Stock already refreshed today.");
         }
     }
+
     public void SaveInventory()
     {
         for (int i = 0; i < buyingProducts.Count; i++)

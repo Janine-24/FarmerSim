@@ -1,21 +1,32 @@
 ﻿using UnityEngine;
 
-// This class is for selecting a skin and updating the selected AnimatorOverrideController.
 public class SkinSelector : MonoBehaviour
 {
-    // Store current selected skin's AnimatorOverrideController
     public AnimatorOverrideController overrideController;
+    public string skinKeyName; // ✅ 加入这个字段
 
-   
-    // This method sets the selected skin by assigning the overrideController to the SkinManager.
     public void UseSkin()
     {
-        // Store the selected overrideController(skin) to the SkinManager's selectedOverrideController.
+        if (!IsSkinBought())
+        {
+            Debug.Log("❌ Skin not purchased. Cannot use.");
+            return;
+        }
+
         SkinManager.selectedOverrideController = overrideController;
+        PlayerPrefs.SetString("SelectedSkinName", overrideController.name);
+        PlayerPrefs.Save();
 
-        // Log a message in the console to confirm the skin selection.
-        Debug.Log("Selected override set!" + overrideController.name);
+        Debug.Log("🎨 Selected override set: " + overrideController.name);
+    }
 
-        
+    bool IsSkinBought()
+    {
+        return PlayerPrefs.GetInt(GetSkinKey(), 0) == 1;
+    }
+
+    string GetSkinKey()
+    {
+        return "SkinBought_" + skinKeyName;
     }
 }

@@ -20,7 +20,7 @@ public class Toolbar_UI : MonoBehaviour
             return;
         }
 
-           SelectSlot(0); // 默认选中第一个格子
+        SelectSlot(0); // 默认选中第一个格子
 
     }
     public Slot GetSelectedSlot()
@@ -131,6 +131,16 @@ public class Toolbar_UI : MonoBehaviour
         {
             slot.count--;
 
+            var sellingMachine = GameManager.instance.uiManager.GetComponent<SellingMachineManager>();
+            foreach (var product in sellingMachine.sellingProducts)
+            {
+                if (product.productName == slot.itemName && product.currentQuantity > 0)
+                {
+                    product.currentQuantity--;
+                    break;
+                }
+            }
+
             // 更新 Selling Machine 中对应产品数量
             var backpack = GameManager.instance.player.inventoryManager.backpack;
             foreach (var product in GameManager.instance.uiManager.GetComponent<SellingMachineManager>().sellingProducts)
@@ -142,10 +152,13 @@ public class Toolbar_UI : MonoBehaviour
                 }
             }
 
+            
+
+
             GameManager.instance.uiManager.RefreshAll();
         }
     }
 
-    
+
 
 }
