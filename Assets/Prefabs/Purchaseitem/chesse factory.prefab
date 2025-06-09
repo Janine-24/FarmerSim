@@ -283,3 +283,4 @@ MonoBehaviour:
   recipe: {fileID: 11400000, guid: adfe6fba19c870b469d352a4054cb1cb, type: 2}
   isProcessing: 0
   currentTimer: 0
+  machineID: cheesefactory

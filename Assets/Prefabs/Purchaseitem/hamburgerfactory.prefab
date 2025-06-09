@@ -364,3 +364,4 @@ MonoBehaviour:
   recipe: {fileID: 11400000, guid: 91e43fc946d801a4bb47a6129b147709, type: 2}
   isProcessing: 0
   currentTimer: 0
+  machineID: hamburgerfactory

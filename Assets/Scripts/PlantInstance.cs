@@ -12,9 +12,21 @@ public class PlantInstance : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public float GetGrowthTimer() => growthTimer;
+    public void RestoreState(int stage, float timer, float timePassed)
+    {
+        CurrentStage = stage;
+        growthTimer = timer + timePassed;
+        UpdateVisual();
+    }
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sortingOrder = 9; // Force render above soil
+        }
     }
 
     private void SpawnHarvestProduct()

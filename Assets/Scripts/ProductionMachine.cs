@@ -7,6 +7,22 @@ public class ProductionMachine : MonoBehaviour
     public bool isProcessing = false;
     public float currentTimer = 0f;
     private int currentOutputAmount = 0;
+    public int GetRemainingOutputs() => currentOutputAmount;
+    public string machineID; // assign in inspector or on spawn
+
+
+    public void ResumeProcessing(int outputs, float timeLeft)
+    {
+        currentOutputAmount = outputs;
+        currentTimer = timeLeft;
+        isProcessing = true;
+        StartCoroutine(ProcessRoutine());
+    }
+
+    private void Awake()
+    {
+        Debug.Log($"[Machine] Spawned machine: {machineID} at {transform.position}");
+    }
 
     public void Interact()
     {
@@ -23,6 +39,21 @@ public class ProductionMachine : MonoBehaviour
         isProcessing = true;
 
         StartCoroutine(ProcessRoutine());
+    }
+
+    public void RestoreIdleState(string recipeID)
+    {
+        var recipe = Resources.Load<MachineRecipe>($"Recipes/{recipeID}");
+        if (recipe == null)
+        {
+            Debug.LogWarning($"Could not find recipe with ID {recipeID}");
+            return;
+        }
+
+        this.recipe = recipe;
+        this.isProcessing = false;
+        this.currentOutputAmount = 0;
+        this.currentTimer = 0f;
     }
 
     private IEnumerator ProcessRoutine()

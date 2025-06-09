@@ -176,10 +176,22 @@ public class DragManager : MonoBehaviour
 
             PlayerCoinManager.Instance.SpendCoins(currentItem.price); //deduct coin
             GameObject placedAnimal = Instantiate(currentItem.prefabToPlace, placePos, Quaternion.identity); //place item
+            if (placedAnimal.TryGetComponent<ProductionMachine>(out var machine))
+            {
+                machine.machineID = currentItem.prefabToPlace.name;
+
+                if (machine.recipe == null)
+                {
+                    
+                    Debug.Log($"No recipe inside machine {machine.machineID}");
+                }
+            }
             if (placedAnimal.TryGetComponent<SpriteRenderer>(out var sr))
             {
                 sr.color = Color.white;
             }
+            
+
             //clean up drag
             Destroy(currentDraggedObject);
             currentDraggedObject = null;

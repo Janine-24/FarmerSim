@@ -234,6 +234,7 @@ MonoBehaviour:
   recipe: {fileID: 11400000, guid: 49e0d16c92ffdd14f80a55f294e88e5c, type: 2}
   isProcessing: 0
   currentTimer: 0
+  machineID: breadfactoryupdate
 --- !u!61 &4015155995662138914
 BoxCollider2D:
   m_ObjectHideFlags: 0

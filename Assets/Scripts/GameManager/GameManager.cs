@@ -22,5 +22,36 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = FindFirstObjectByType<Player>();
+        WorldSaveManager.LoadWorld();
+
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("🧪 Manual save triggered with Q key");
+            WorldSaveManager.SaveWorld();
+        }
+    }
+
+
+    private void OnApplicationQuit()
+    {
+        Debug.Log("🧪 OnApplicationQuit called");
+        WorldSaveManager.SaveWorld();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        Debug.Log("🧪 OnApplicationPause called");
+        if (pause) WorldSaveManager.SaveWorld();
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("🧪 OnDisable called");
+        WorldSaveManager.SaveWorld();
+    }
+
 }
