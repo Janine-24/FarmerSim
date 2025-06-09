@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterCan
   m_EditorClassIdentifier: 
   itemName: Water Can
-  icon: {fileID: 0}
+  icon: {fileID: -931124597325320162, guid: c877ef61adb6573488eac8771134b2f6, type: 3}
   itemType: 3
   wateringTime: 0
   harvestTime: 0

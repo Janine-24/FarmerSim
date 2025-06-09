@@ -16,8 +16,10 @@ MonoBehaviour:
   inputItems:
   - item: {fileID: 11400000, guid: 59cf908a105ff5e4c8be5848652908ac, type: 2}
     amountPerOutput: 1
+  - item: {fileID: 11400000, guid: fecca72b5b6ec5a4d967a1940ef3f636, type: 2}
+    amountPerOutput: 1
   - item: {fileID: 11400000, guid: 328d378e006e94b4abce7ebd94bc962f, type: 2}
-    amountPerOutput: 2
+    amountPerOutput: 1
   outputItem: {fileID: 11400000, guid: 4f0de74bc2bccd34fa3fae95274dffbd, type: 2}
   outputAmountPerBatch: 1
   processingTimePerBatch: 5
