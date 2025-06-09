@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Animal
   - Habitat
+  - Machine
   layers:
   - Default
   - TransparentFX

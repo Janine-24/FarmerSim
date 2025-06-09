@@ -12,9 +12,21 @@ public class PlantInstance : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public float GetGrowthTimer() => growthTimer;
+    public void RestoreState(int stage, float timer, float timePassed)
+    {
+        CurrentStage = stage;
+        growthTimer = timer + timePassed;
+        UpdateVisual();
+    }
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sortingOrder = 9; // Force render above soil
+        }
     }
 
     private void SpawnHarvestProduct()
@@ -61,9 +73,13 @@ public class PlantInstance : MonoBehaviour
         if (CurrentStage == 2 && growthTimer >= timePerStage)
         {
             SpawnHarvestProduct();
+            GameManager.instance.tileManager.RemoveGrowthCue(tilePosition);
             Destroy(gameObject, 1f); // destroys plant after 1 second
             growthTimer = 0f;
             CurrentStage++; // mark as done
+
+            LevelSystem.Instance.AddXP(10);//level experience add
+
             Debug.Log($"[GrowUpdate] {plantName} harvested.");
             return;
         }

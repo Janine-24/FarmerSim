@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8f0d9fba444d7b4c9f99fe69e64d4ff, type: 3}
-  m_Name: Carrot_Seeds
+  m_Name: WaterCan
   m_EditorClassIdentifier: 
-  itemName: Carrot_Seed
-  icon: {fileID: -5393398564529373947, guid: c0d3d237a397c2c4ab5243b3d22aca27, type: 3}
-  itemType: 0
-  wateringTime: 3
-  harvestTime: 5
-  seedStageSprite: {fileID: 2383185621388321068, guid: c0d3d237a397c2c4ab5243b3d22aca27, type: 3}
-  sproutStageSprite: {fileID: 1683974080300636658, guid: bb3e258bdbaa7b146b001794db8173e0, type: 3}
-  matureStageSprite: {fileID: 2950869812727453837, guid: 351b266a1d103f14d8576bebf6e99bbb, type: 3}
-  durability: 0
+  itemName: Water Can
+  icon: {fileID: -931124597325320162, guid: c877ef61adb6573488eac8771134b2f6, type: 3}
+  itemType: 3
+  wateringTime: 0
+  harvestTime: 0
+  seedStageSprite: {fileID: 0}
+  sproutStageSprite: {fileID: 0}
+  matureStageSprite: {fileID: 0}
+  harvestProductPrefab: {fileID: 0}
+  harvestYield: 3
+  durability: 1
   toolActionPrefab: {fileID: 0}
   growthBoost: 0
   waterCapacity: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Inventory;
 
 [System.Serializable]
 public class Inventory
@@ -13,6 +14,8 @@ public class Inventory
         public int maxAllowed;
         public ItemData itemData;
         public Sprite icon;
+        public List<int> individualDurability = new List<int>();
+
 
         public Slot()
         {
@@ -51,15 +54,14 @@ public class Inventory
                 this.itemName = item.data.itemName;
                 this.icon = item.data.icon;
                 this.itemData = item.data;
-                count++;
             }
-            else if (item.data.itemName == this.itemName)
+
+            count++;
+
+            // ✅ Always add durability if tool
+            if (item.data.itemType == ItemType.Tool)
             {
-                count++;
-            }
-            else
-            {
-                Debug.LogWarning("Trying to add a different item to a non-empty stack.");
+                individualDurability.Add(item.data.durability);
             }
         }
 
@@ -78,11 +80,16 @@ public class Inventory
             if (count > 0)
             {
                 count--;
+                if (individualDurability.Count > 0)
+                {
+                    individualDurability.RemoveAt(0);
+                }
 
                 if (count == 0)
                 {
                     icon = null;
                     itemName = "";
+                    itemData = null;
                 }
             }
         }
@@ -199,3 +206,5 @@ public class Inventory
         }
     }
 }
+
+

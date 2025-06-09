@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1048389af35fa3745aa8695f1f0cfc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 73651d02b3736b946902d3400f705937, type: 2}
+  data: {fileID: 11400000, guid: ac0bf021dc4bca04a902d90fcb1534f3, type: 2}
   rb2d: {fileID: 0}
 --- !u!114 &6991431276287295298
 MonoBehaviour:

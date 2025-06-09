@@ -206,6 +206,11 @@ public class Inventory_UI : MonoBehaviour
 
             PlayerPrefs.SetString($"{inventoryName}_Slot_{i}_ItemName", slot.itemName ?? "");
             PlayerPrefs.SetInt($"{inventoryName}_Slot_{i}_Count", slot.count);
+            PlayerPrefs.SetInt($"{inventoryName}_Slot_{i}_DurabilityCount", slot.individualDurability.Count);
+            for (int d = 0; d < slot.individualDurability.Count; d++)
+            {
+                PlayerPrefs.SetInt($"{inventoryName}_Slot_{i}_Durability_{d}", slot.individualDurability[d]);
+            }
         }
 
         PlayerPrefs.Save();
@@ -251,6 +256,15 @@ public class Inventory_UI : MonoBehaviour
                     var itemComponent = itemPrefab.GetComponent<Item>();
                     slot.icon = itemComponent.data.icon;
                     slot.itemData = itemComponent.data; // ✅ 关键：补上这句，避免 null
+                    // Load durability list
+                    slot.individualDurability = new List<int>();
+                    int durabilityCount = PlayerPrefs.GetInt($"{inventoryName}_Slot_{i}_DurabilityCount", 0);
+                    for (int d = 0; d < durabilityCount; d++)
+                    {
+                        int durabilityValue = PlayerPrefs.GetInt($"{inventoryName}_Slot_{i}_Durability_{d}", itemComponent.data.durability);
+                        slot.individualDurability.Add(durabilityValue);
+                    }
+
                 }
 
                 inventory.slots[i] = slot; // ✅ 覆盖旧数据
