@@ -21,6 +21,6 @@ public class ChangeOriSkin : MonoBehaviour
         PlayerPrefs.SetString("SelectedSkinName", defaultSkin.name);
         PlayerPrefs.Save();
 
-        Debug.Log("✅ 已切换回默认皮肤：" + defaultSkin.name);
+        Debug.Log("已切换回默认皮肤：" + defaultSkin.name);
     }
 }

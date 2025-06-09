@@ -191,8 +191,6 @@ public class Inventory
             }
         }
     }
-
-
     public void SelectSlot(int index)
     {
         if (slots != null && slots.Count > 0)

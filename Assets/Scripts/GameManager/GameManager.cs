@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        // 找组件引用（如果需要）
+        
         itemManager = GetComponent<ItemManager>();
         tileManager = GetComponent<TileManager>();
         uiManager = GetComponent<UI_Manager>();

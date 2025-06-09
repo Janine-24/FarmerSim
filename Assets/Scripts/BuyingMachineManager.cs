@@ -3,11 +3,10 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class BuyingMachineManager : MonoBehaviour
 {
-    [Header("Product Setup")]
+    [Header("All Products")]
     public List<Product> buyingProducts;
     public List<Button> buyingButtons;
 
@@ -24,37 +23,37 @@ public class BuyingMachineManager : MonoBehaviour
     private void Start()
     {
 
-        LoadInventory(); // ✅ 先加载数据
-        CheckAndRefreshDailyStock(); // 然后判断是否需要刷新（不影响旧数据）
-        SetupButtons();
+        LoadInventory(); // load data first
+        CheckAndRefreshDailyStock(); // check need to refresh or not
+        MakeButtonsFunction();
     }
-    private void SetupButtons()
+    private void MakeButtonsFunction()//connect ui button in buying machine (change quantity ,click on it able to function)
     {
-        for (int i = 0; i < buyingButtons.Count; i++)
+        for (int i = 0; i < buyingButtons.Count; i+=1)//run{}theni+=1
         {
-            int index = i;
+            int index = i;//save i into index avoid connect button wrongly(button save self index)
             UpdateButtonDisplay(index);
-            buyingButtons[i].onClick.AddListener(() => OnProductClicked(index));
+            buyingButtons[i].onClick.AddListener(() => OnProductClicked(index));//addlis-after click run onproductclicked
         }
     }
 
-    private void OnProductClicked(int index)
+    private void OnProductClicked(int index)//click on button quantity decrease, add to total price
     {
-        Product product = buyingProducts[index];
+        Product product = buyingProducts[index];//link to product
         if (product.currentQuantity > 0)
         {
-            product.currentQuantity--;
-            totalPrice += product.price;
-            UpdateButtonDisplay(index);
-            UpdateTotalPriceDisplay();
+            product.currentQuantity--;//product quantity minus 1
+            totalPrice += product.price;//add product price to totalprice text
+            UpdateButtonDisplay(index);//update word and image
+            UpdateTotalPriceDisplay();//show in totalpricetext
         }
     }
-    private void UpdateButtonDisplay(int index)
+    private void UpdateButtonDisplay(int index)//update button's image and word
     {
         Product product = buyingProducts[index];
         Button button = buyingButtons[index];
-        button.GetComponentInChildren<TextMeshProUGUI>().text = product.currentQuantity.ToString();
-        button.image.sprite = product.productImage;
+        button.GetComponentInChildren<TextMeshProUGUI>().text = product.currentQuantity.ToString();//find button text(ui is string nit number)
+        button.image.sprite = product.productImage;//Replace the image on the button with the image product i put.
     }
 
     private void UpdateTotalPriceDisplay()
@@ -105,8 +104,9 @@ public class BuyingMachineManager : MonoBehaviour
         // 重置总价格并更新显示
         totalPrice = 0;
         UpdateTotalPriceDisplay();
+        sellingMachineManager.SyncToInventory();
         sellingMachineManager.SaveInventory(); // ✅ 同步保存卖出机状态
-
+        
     }
     private IEnumerator ClearSpendText()
     {
@@ -151,14 +151,14 @@ public class BuyingMachineManager : MonoBehaviour
 
         if (lastRefreshDate != today)
         {
-            RefreshToDailyStock(); // ✅ 每日重设库存
+            RefreshToDailyStock(); 
             PlayerPrefs.SetString("LastStockRefreshDate", today);
             PlayerPrefs.Save();
-            Debug.Log("✅ Daily stock has been refreshed.");
+            Debug.Log("Daily stock has been refreshed.");
         }
         else
         {
-            Debug.Log("⚠️ Stock already refreshed today.");
+            Debug.Log("Stock already refreshed today.");
         }
     }
 
@@ -168,7 +168,7 @@ public class BuyingMachineManager : MonoBehaviour
         {
             PlayerPrefs.SetInt($"Buying_Product_{i}_CurrentQuantity", buyingProducts[i].currentQuantity);
             PlayerPrefs.SetInt($"Buying_Product_{i}_OriginalQuantity", buyingProducts[i].originalQuantity);
-            Debug.Log($"✅ Saved: {buyingProducts[i].productName}, current: {buyingProducts[i].currentQuantity}, original: {buyingProducts[i].originalQuantity}");
+            Debug.Log($"Saved: {buyingProducts[i].productName}, current: {buyingProducts[i].currentQuantity}, original: {buyingProducts[i].originalQuantity}");
         }
         PlayerPrefs.Save();
     }

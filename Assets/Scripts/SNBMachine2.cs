@@ -6,6 +6,6 @@ public class SNBMachine2 : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Machine clicked!");
-        SceneManager.LoadScene("LateSNB");
+        SceneManager.LoadScene("LateSNB");//scene name
     }
 }

@@ -125,7 +125,7 @@ public class Toolbar_UI : MonoBehaviour
 
     public void UseSelectedItem()
     {
-        var slot = GetSelectedSlot(); // 取 Toolbar 当前选中的物品
+        var slot = GetSelectedSlot(); // get toolbar selected item
 
         if (slot != null && slot.count > 0)
         {
@@ -141,7 +141,7 @@ public class Toolbar_UI : MonoBehaviour
                 }
             }
 
-            // 更新 Selling Machine 中对应产品数量
+            // Update the corresponding product quantity in Selling Machine
             var backpack = GameManager.instance.player.inventoryManager.backpack;
             foreach (var product in GameManager.instance.uiManager.GetComponent<SellingMachineManager>().sellingProducts)
             {
