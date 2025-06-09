@@ -70,6 +70,8 @@ public class ProductionMachine : MonoBehaviour
             Instantiate(recipe.outputItem.harvestProductPrefab, transform.position + offset, Quaternion.identity);
         }
 
+        LevelSystem.Instance.AddXP(10);//add level experience
+
         isProcessing = false;
         Debug.Log(" Production complete.");
     }
