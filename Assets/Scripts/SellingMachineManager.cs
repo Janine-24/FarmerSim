@@ -192,53 +192,93 @@ public class SellingMachineManager : MonoBehaviour
     // ✅ 新增：同步 Selling Machine → Inventory
     public void SyncToInventory()
     {
-        Debug.Log("正在执行 SyncToInventory()");
+        Debug.Log("✅ 正在执行 SyncToInventory()");
+
         Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
+        Inventory toolbar = GameManager.instance.player.inventoryManager.toolbar;
 
         foreach (Product product in sellingProducts)
         {
-            bool found = false;
+            int remainingToAssign = product.currentQuantity;
+            bool foundInBackpack = false;
+            bool foundInToolbar = false;
 
+            // 👜 尝试更新背包中的对应物品数量
             foreach (Inventory.Slot slot in backpack.slots)
             {
                 if (slot != null && slot.itemName == product.productName)
                 {
-                    slot.count = product.currentQuantity;
-                    found = true;
+                    slot.count = remainingToAssign;
+                    foundInBackpack = true;
+                    remainingToAssign = 0;
                     break;
                 }
             }
 
-            // ✅ 如果找不到，尝试插入新的物品
-            if (!found && product.currentQuantity > 0)
+            // 🧰 如果背包没找到，尝试更新 Toolbar
+            if (!foundInBackpack)
             {
+                foreach (Inventory.Slot slot in toolbar.slots)
+                {
+                    if (slot != null && slot.itemName == product.productName)
+                    {
+                        slot.count = remainingToAssign;
+                        foundInToolbar = true;
+                        remainingToAssign = 0;
+                        break;
+                    }
+                }
+            }
+
+            // 🆕 如果两个地方都没找到，插入到背包或 Toolbar 的空位
+            if (!foundInBackpack && !foundInToolbar && remainingToAssign > 0)
+            {
+                var itemPrefab = GameManager.instance.itemManager.GetItemByName(product.productName);
+                if (itemPrefab == null) continue;
+
+                var itemComponent = itemPrefab.GetComponent<Item>();
+                var newSlot = new Inventory.Slot
+                {
+                    itemName = product.productName,
+                    count = remainingToAssign,
+                    icon = product.productImage,
+                    itemData = itemComponent.data
+                };
+
+                bool inserted = false;
+
+                // 插入到背包空位
                 for (int i = 0; i < backpack.slots.Count; i++)
                 {
                     if (string.IsNullOrEmpty(backpack.slots[i].itemName))
                     {
-                        var itemPrefab = GameManager.instance.itemManager.GetItemByName(product.productName);
-                        if (itemPrefab != null)
-                        {
-                            var itemComponent = itemPrefab.GetComponent<Item>();
-                            var newSlot = new Inventory.Slot
-                            {
-                                itemName = product.productName,
-                                count = product.currentQuantity,
-                                icon = product.productImage,
-                                itemData = itemComponent.data
-                            };
-
-                            backpack.slots[i] = newSlot;
-                            Debug.Log($"新增物品 {product.productName} 到背包中 slot {i}");
-                        }
+                        backpack.slots[i] = newSlot;
+                        inserted = true;
+                        Debug.Log($"✅ 新增 {product.productName} 到背包 slot {i}");
                         break;
+                    }
+                }
+
+                // 插入到 Toolbar 空位（如果背包没插入成功）
+                if (!inserted)
+                {
+                    for (int i = 0; i < toolbar.slots.Count; i++)
+                    {
+                        if (string.IsNullOrEmpty(toolbar.slots[i].itemName))
+                        {
+                            toolbar.slots[i] = newSlot;
+                            Debug.Log($"✅ 新增 {product.productName} 到 Toolbar slot {i}");
+                            break;
+                        }
                     }
                 }
             }
         }
 
         GameManager.instance.uiManager.RefreshInventoryUI("backpack");
+        GameManager.instance.uiManager.RefreshInventoryUI("toolbar");
     }
+
 
 
 }

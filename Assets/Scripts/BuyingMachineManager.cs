@@ -73,7 +73,6 @@ public class BuyingMachineManager : MonoBehaviour
         // 记录购买的物品数量
         for (int i = 0; i < buyingProducts.Count; i++)
         {
-            // 计算购买的数量（购买的是 originalQuantity 和 currentQuantity 之间的差值）
             int boughtAmount = buyingProducts[i].originalQuantity - buyingProducts[i].currentQuantity;
 
             // 调试输出，查看每个商品的变化

@@ -64,13 +64,15 @@ public class ProductionMachine : MonoBehaviour
             yield return null;
         }
 
+        int totalProductCount = currentOutputAmount * recipe.outputAmountPerBatch;//1 product 10 star
+
         for (int i = 0; i < currentOutputAmount * recipe.outputAmountPerBatch; i++)
         {
             Vector3 offset = Random.insideUnitCircle * 0.3f;
             Instantiate(recipe.outputItem.harvestProductPrefab, transform.position + offset, Quaternion.identity);
         }
 
-        LevelSystem.Instance.AddXP(10);//add level experience
+        LevelSystem.Instance.AddXP(totalProductCount * 10);//add level experience
 
         isProcessing = false;
         Debug.Log(" Production complete.");

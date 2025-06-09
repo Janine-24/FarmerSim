@@ -176,6 +176,9 @@ public class DragManager : MonoBehaviour
 
             PlayerCoinManager.Instance.SpendCoins(currentItem.price); //deduct coin
             GameObject placedAnimal = Instantiate(currentItem.prefabToPlace, placePos, Quaternion.identity); //place item
+
+            LevelSystem.Instance.AddXP(10);//add level experience after place item
+
             if (placedAnimal.TryGetComponent<ProductionMachine>(out var machine))
             {
                 machine.machineID = currentItem.prefabToPlace.name;
