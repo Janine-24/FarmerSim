@@ -19,6 +19,7 @@ public class PlantSaveData
     public string seedID;
     public int currentStage;
     public float growthTimer;
+    public int currentWaterCount;
 }
 
 [Serializable]

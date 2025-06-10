@@ -15,8 +15,8 @@ MonoBehaviour:
   itemName: Wheat3
   icon: {fileID: -2699735826108634396, guid: c05c4bd32aafcac4badf6b5396062829, type: 3}
   itemType: 0
-  wateringTime: 5
-  harvestTime: 10
+  wateringTime: 20
+  harvestTime: 20
   seedStageSprite: {fileID: -2007879195102778466, guid: c0d3d237a397c2c4ab5243b3d22aca27, type: 3}
   sproutStageSprite: {fileID: 3071275207095628571, guid: 65f362cadd50bda48b1dd2af8b97be7c, type: 3}
   matureStageSprite: {fileID: 469099454673311673, guid: c8763161fe92cff4bb4f03c5d0d77842, type: 3}

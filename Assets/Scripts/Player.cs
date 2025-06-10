@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 1f), 0f);
+        foreach (var hit in hits)
+        {
+            Debug.Log($"📦 Physics2D Hit: {hit.name}");
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -95,6 +100,26 @@ public class Player : MonoBehaviour
                 }
             
         }
+
+        if (Input.GetKeyDown(KeyCode.G)) // 或改成靠近自动触发
+        {
+            Vector2 pos = transform.position;
+            Collider2D[] testHits = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 1f), 0f);
+            foreach (var hit in testHits)
+            {
+                Debug.Log($"📦 Physics2D Hit: {hit.name}");
+            }
+
+            foreach (var hit in hits)
+            {
+                if (hit.TryGetComponent<PlantInstance>(out var plant) && plant.CanBeWatered)
+                {
+                    PlantWateringUI.Instance.OpenPanel(plant);
+                    break;
+                }
+            }
+        }
+
 
 
         if (Input.GetKeyDown(KeyCode.P))
