@@ -7,8 +7,20 @@ public class CloudController : MonoBehaviour
     public GameObject cloudVisual;
     public Animator animator;
     public GameObject particleEffectPrefab;
+    private string cloudKey;
 
-    public void UnlockCloud()
+    private void Start()
+    {
+        cloudKey = "CloudUnlocked_" + gameObject.name;
+
+        isUnlocked = PlayerPrefs.GetInt(cloudKey, 0) == 1;
+
+        if (isUnlocked)
+        {
+            gameObject.SetActive(false); // disappear cloud if already unlocked
+        }
+    }
+    public void UnlockCloud() //logic for unlock cloud
     {
         if (isUnlocked) return;
         isUnlocked = true;
@@ -20,12 +32,14 @@ public class CloudController : MonoBehaviour
         }
 
         StartCoroutine(DelayedDestroy(1.2f)); // delay destroy cloud
+        PlayerPrefs.SetInt(cloudKey, 1);
+        PlayerPrefs.Save();
     }
     public CloudData ExportData()
     {
         return new CloudData()
         {
-            position = transform.position,
+            position = (Vector2)transform.position,
             isUnlocked = this.isUnlocked
         };
     }
@@ -33,9 +47,17 @@ public class CloudController : MonoBehaviour
     // retore status
     public void LoadFromData(CloudData data)
     {
-        isUnlocked = data.isUnlocked;
-        if (isUnlocked)
-            Destroy(gameObject);
+        transform.position = data.position;
+        if (data.isUnlocked)
+        {
+            gameObject.SetActive(false); 
+        }
+        else
+        {
+            isUnlocked = false;
+            if (cloudVisual != null)
+                cloudVisual.SetActive(true);
+        }
     }
 
     private System.Collections.IEnumerator DelayedDestroy(float delay) //waiting(IEnumerator) for 1.2 seconds and destroy the object

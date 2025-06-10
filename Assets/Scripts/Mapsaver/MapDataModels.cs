@@ -43,3 +43,4 @@ public class ProductData
     public string productType;
     public bool isCollected;
 }
+

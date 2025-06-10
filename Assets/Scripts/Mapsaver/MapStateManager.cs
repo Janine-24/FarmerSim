@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance;
+    public Transform machineParent; //state the produc produce place
+    public List<GameObject> machinePrefabs;
     // save data
     public MapData mapData = new();
     // prefab mapping for easy instantiation during loading
@@ -102,12 +104,6 @@ public class GameStateManager : MonoBehaviour
     {
         mapData = new MapData();
 
-        // save animals
-        foreach (var animal in Object.FindObjectsByType<AnimalFood>(FindObjectsSortMode.None))
-        {
-            mapData.animals.Add(animal.ExportData());
-        }
-
         //save habitat
         foreach (var habitat in Object.FindObjectsByType<Habitat>(FindObjectsSortMode.None))
         {
@@ -116,6 +112,12 @@ public class GameStateManager : MonoBehaviour
                 habitatType = habitat.habitatType,
                 position = (Vector2)habitat.transform.position
             });
+        }
+
+        // save animals
+        foreach (var animal in Object.FindObjectsByType<AnimalFood>(FindObjectsSortMode.None))
+        {
+            mapData.animals.Add(animal.ExportData());
         }
 
         // save cloud 
@@ -138,6 +140,8 @@ public class GameStateManager : MonoBehaviour
                 isCollected = product.isCollected //save collect status
             });
         }
+
+
         //save player level
         mapData.playerLevel = LevelSystem.Instance.level;
 
@@ -232,7 +236,9 @@ public class GameStateManager : MonoBehaviour
 
             Debug.Log("Map state loaded.");
         }
-        void ClearCurrentMapObjects()
+    } 
+    private static void ClearCurrentMapObjects()
+    {
         {
             foreach (var obj in Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
             {
