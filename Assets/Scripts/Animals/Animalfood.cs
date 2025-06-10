@@ -13,7 +13,6 @@ public class AnimalFood : MonoBehaviour
     public AudioClip feedSound; //sound
     public AnimalFeedingUI panel; //that the UI panel for feeding animals
     private bool isProducing = false;
-    public Sprite feedImage;
 
 
     // export status to save data

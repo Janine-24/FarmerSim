@@ -1,6 +1,6 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class CoinTextBinder : MonoBehaviour
 {
@@ -23,11 +23,11 @@ public class CoinTextBinder : MonoBehaviour
         if (PlayerCoinManager.Instance != null && coinTextUI != null)
         {
             PlayerCoinManager.Instance.SetCoinText(coinTextUI);
-            Debug.Log("✅ CoinTextBinder: Coin text bound successfully.");
+            Debug.Log("CoinTextBinder: Coin text bound successfully.");
         }
         else
         {
-            Debug.LogError("❌ CoinTextBinder: 绑定失败，请确保PlayerCoinManager存在且coinTextUI设置正确。");
+            Debug.LogError("CoinTextBinder: 绑定失败，请确保PlayerCoinManager存在且coinTextUI设置正确。");
         }
     }
 }

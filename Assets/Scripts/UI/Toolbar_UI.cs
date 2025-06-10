@@ -20,7 +20,7 @@ public class Toolbar_UI : MonoBehaviour
             return;
         }
 
-           SelectSlot(0); // 默认选中第一个格子
+        SelectSlot(0); // 默认选中第一个格子
 
     }
     public Slot GetSelectedSlot()
@@ -64,17 +64,25 @@ public class Toolbar_UI : MonoBehaviour
             selectedSlotIndex = index; // Update the selected index
             selectedSlot.SetHighlight(true); // Highlight the new selection
 
-            // Update the UI with the item name, or "Empty" if there's no item
-            if (selectedSlot != null && selectedSlot.itemName != null)
+            var slotData = GameManager.instance.player.inventoryManager.toolbar.slots[index];
+
+            // 🧠 Show item name + durability (if tool)
+            if (!string.IsNullOrEmpty(slotData.itemName))
             {
-                selectedItemNameText.text = selectedSlot.itemName;
+                if (slotData.itemData != null && slotData.itemData.itemType == ItemType.Tool && slotData.individualDurability.Count > 0)
+                {
+                    selectedItemNameText.text = $"{slotData.itemName} (Durability: {slotData.individualDurability[0]})";
+                }
+                else
+                {
+                    selectedItemNameText.text = slotData.itemName;
+                }
             }
             else
             {
                 selectedItemNameText.text = "Empty";
             }
 
-            // Call this method if needed to update game state
             GameManager.instance.player.inventoryManager.toolbar.SelectSlot(index);
         }
         else
@@ -82,6 +90,7 @@ public class Toolbar_UI : MonoBehaviour
             Debug.LogError("Selected index is out of bounds.");
         }
     }
+
 
 
 
@@ -123,15 +132,30 @@ public class Toolbar_UI : MonoBehaviour
         }
     }
 
+    public int GetSelectedSlotIndex()
+    {
+        return selectedSlotIndex;
+    }
+
     public void UseSelectedItem()
     {
-        var slot = GetSelectedSlot(); // 取 Toolbar 当前选中的物品
+        var slot = GetSelectedSlot(); // get toolbar selected item
 
         if (slot != null && slot.count > 0)
         {
             slot.count--;
 
-            // 更新 Selling Machine 中对应产品数量
+            var sellingMachine = GameManager.instance.uiManager.GetComponent<SellingMachineManager>();
+            foreach (var product in sellingMachine.sellingProducts)
+            {
+                if (product.productName == slot.itemName && product.currentQuantity > 0)
+                {
+                    product.currentQuantity--;
+                    break;
+                }
+            }
+
+            // Update the corresponding product quantity in Selling Machine
             var backpack = GameManager.instance.player.inventoryManager.backpack;
             foreach (var product in GameManager.instance.uiManager.GetComponent<SellingMachineManager>().sellingProducts)
             {
@@ -142,10 +166,13 @@ public class Toolbar_UI : MonoBehaviour
                 }
             }
 
+            
+
+
             GameManager.instance.uiManager.RefreshAll();
         }
     }
 
-    
+
 
 }

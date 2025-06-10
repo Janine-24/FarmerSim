@@ -40,10 +40,6 @@ public class AnimalFeedingUI : MonoBehaviour
         currentAnimal = animal;
         panel.SetActive(true);
         hintText.text = $"Press F for feeding ${animal.feedCost}";
-        if (feedImageUI != null && animal.feedImage != null)
-        {
-            feedImageUI.sprite = animal.feedImage;
-        }
         if (animal.IsProducing())
         {
             progressBar.gameObject.SetActive(true);

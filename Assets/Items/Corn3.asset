@@ -15,12 +15,12 @@ MonoBehaviour:
   itemName: Corn3
   icon: {fileID: -6521346793507321066, guid: d24efe0c69880f5418b19fd10302cf2d, type: 3}
   itemType: 0
-  wateringTime: 0
-  harvestTime: 0
-  seedStageSprite: {fileID: 0}
-  sproutStageSprite: {fileID: 0}
-  matureStageSprite: {fileID: 0}
-  harvestProductPrefab: {fileID: 0}
+  wateringTime: 5
+  harvestTime: 5
+  seedStageSprite: {fileID: 2383185621388321068, guid: 65b23563c7cca36468b79bff687a8927, type: 3}
+  sproutStageSprite: {fileID: 6814270295091660069, guid: 04823a1adfda74644a54c97b9f5dcabb, type: 3}
+  matureStageSprite: {fileID: 5779961065635027912, guid: 2f8238bf11e42534ea00eacda590ce26, type: 3}
+  harvestProductPrefab: {fileID: 6709782327416367699, guid: a154d0dd96356bc4685a8b63855f61b4, type: 3}
   harvestYield: 3
   durability: 0
   toolActionPrefab: {fileID: 0}

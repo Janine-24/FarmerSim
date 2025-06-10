@@ -5031,3 +5031,4 @@ MonoBehaviour:
   collectSound: {fileID: 8300000, guid: 18628fecb2ba3df40a504a8d92d0019e, type: 3}
   collectEffectPrefab: {fileID: 4992088693912058306}
   productType: bacon
+  isCollected: 0

@@ -5756,7 +5756,7 @@ MonoBehaviour:
   productSpawnPoint: {fileID: 1292074520324265605}
   feedSound: {fileID: 8300000, guid: 1ce034cd93fb6924795fc417a140d3a4, type: 3}
   panel: {fileID: 5344890050496297171}
-  feedImage: {fileID: 0}
+  feedImage: {fileID: -344963653498383846, guid: 760edb57bc21d8a41af24c65c06acf81, type: 3}
 --- !u!1 &8138825461595327098
 GameObject:
   m_ObjectHideFlags: 0

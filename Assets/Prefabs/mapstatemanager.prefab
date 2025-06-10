@@ -48,22 +48,32 @@ MonoBehaviour:
     animals: []
     habitats: []
     clouds: []
+    products: []
     playerLevel: 1
   animalPrefabs:
   - animalType: chicken
     prefab: {fileID: 7812178713843837684, guid: 38c6f523527299d4694719ed7fe02afb, type: 3}
   - animalType: sheep
     prefab: {fileID: 3420930004063497669, guid: 3b4cbe05db586dc409c00485c142151e, type: 3}
-  - animalType: Cow
+  - animalType: cow
     prefab: {fileID: 3532523336198122836, guid: 7fb320b5dbcac374da9bf0bfce6b063b, type: 3}
   - animalType: pig
     prefab: {fileID: 8675702892012565045, guid: 706f95ccad8e5c54a9caf39b512d441d, type: 3}
   habitatPrefabs:
-  - habitatType: habitat chicken
+  - habitatType: chicken
     prefab: {fileID: 4715934671889459428, guid: 3c816d14c2b8c024d931915d6fb9f771, type: 3}
-  - habitatType: habtat cow
+  - habitatType: cow
     prefab: {fileID: 4715934671889459428, guid: 02e7285b1b3aa6745b35f31cc9178979, type: 3}
-  - habitatType: habitatpig
+  - habitatType: pig
     prefab: {fileID: 4715934671889459428, guid: 1462556f964feb14f9f75c67a26a2a27, type: 3}
-  - habitatType: habitatsheep
+  - habitatType: sheep
     prefab: {fileID: 4715934671889459428, guid: 25d87a75e3a9c5245b6beb12d13b0160, type: 3}
+  productPrefabs:
+  - productType: egg
+    prefab: {fileID: 4115738965657009716, guid: 43e2e49e3af38774aa4d7fde261e7313, type: 3}
+  - productType: milk
+    prefab: {fileID: 5757601368711066013, guid: 5f7ccbd0dc60f8d4a94f4864667a930e, type: 3}
+  - productType: bacon
+    prefab: {fileID: 6872406656183434756, guid: 2802cbb02a424ce49b31da3cf5f3516c, type: 3}
+  - productType: wool
+    prefab: {fileID: 6086269873913755058, guid: 0ecb43be8ebfaa9499f6947ccc281079, type: 3}

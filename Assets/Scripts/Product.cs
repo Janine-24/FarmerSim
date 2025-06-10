@@ -8,4 +8,5 @@ public class Product
     public int originalQuantity;
     public int currentQuantity;
     public int price;
+    public int dailyStockQuantity;
 }

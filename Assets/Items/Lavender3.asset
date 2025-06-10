@@ -15,12 +15,12 @@ MonoBehaviour:
   itemName: Lavender3
   icon: {fileID: -8663483488638039611, guid: 0ff8eb0567bae074dba75b40f17f8363, type: 3}
   itemType: 0
-  wateringTime: 0
-  harvestTime: 0
-  seedStageSprite: {fileID: 0}
-  sproutStageSprite: {fileID: 0}
-  matureStageSprite: {fileID: 0}
-  harvestProductPrefab: {fileID: 0}
+  wateringTime: 5
+  harvestTime: 5
+  seedStageSprite: {fileID: 2383185621388321068, guid: 65b23563c7cca36468b79bff687a8927, type: 3}
+  sproutStageSprite: {fileID: 2393309730721828145, guid: 1382bd640457c8f4694fd7f776bb65f9, type: 3}
+  matureStageSprite: {fileID: 8358850006609346466, guid: 8c87ddeac0dd72041889b68b2b917878, type: 3}
+  harvestProductPrefab: {fileID: 6709782327416367699, guid: f9295ac347557d54198ba94eed95b399, type: 3}
   harvestYield: 3
   durability: 0
   toolActionPrefab: {fileID: 0}

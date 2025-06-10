@@ -4,6 +4,8 @@ public class MachineUpgrade : MonoBehaviour
 {
     public ShopItem shopItem;
     private bool hasUpgraded = false;
+    private int lastCheckedLevel = -1;
+
 
     void Start()
     {
@@ -12,7 +14,11 @@ public class MachineUpgrade : MonoBehaviour
 
     void Update()
     {
-        CheckUpgrade(); // 每帧检查玩家等级是否达标
+        if (LevelSystem.Instance != null && LevelSystem.Instance.level != lastCheckedLevel)
+        {
+            lastCheckedLevel = LevelSystem.Instance.level;
+            CheckUpgrade();
+        }
     }
 
     void CheckUpgrade()
@@ -40,13 +46,24 @@ public class MachineUpgrade : MonoBehaviour
 
         GameObject upgraded = Instantiate(shopItem.machinelevelup, position, rotation);
 
-        // 如果新机器也需要继续自动升级，可以复制当前的 shopItem 或设置新的
-        MachineUpgrade upgradedController = upgraded.GetComponent<MachineUpgrade>();
-        if (upgradedController != null)
+        if (upgraded.TryGetComponent<MachineUpgrade>(out var upgradedController))
         {
-            upgradedController.shopItem = this.shopItem; // 或者设为更高级的 ShopItem
+            upgradedController.shopItem = this.shopItem; // or a new ShopItem for the upgraded version
+        }
+
+        if (upgraded.TryGetComponent<ProductionMachine>(out var newMachine))
+        {
+            newMachine.machineID = shopItem.machinelevelup.name;
+
+            var oldMachine = GetComponent<ProductionMachine>();
+            if (oldMachine != null && oldMachine.isProcessing)
+            {
+                newMachine.recipe = oldMachine.recipe;
+                newMachine.ResumeProcessing(oldMachine.GetRemainingOutputs(), oldMachine.currentTimer);
+            }
         }
 
         Destroy(gameObject);
     }
+
 }

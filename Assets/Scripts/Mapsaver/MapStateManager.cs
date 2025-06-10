@@ -33,7 +33,7 @@ public class GameStateManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode _)
     {
-        if (scene.name == "main page") 
+        if (scene.name == "main page")
         {
             LoadMapState();
         }
@@ -134,8 +134,8 @@ public class GameStateManager : MonoBehaviour
             mapData.products.Add(new ProductData
             {
                 position = product.transform.position,
-                productType = product.productType
-
+                productType = product.productType,
+                isCollected = product.isCollected //save collect status
             });
         }
         //save player level
@@ -206,30 +206,45 @@ public class GameStateManager : MonoBehaviour
         // restore havent collect products
         foreach (var productData in mapData.products)
         {
+            if (productData.isCollected) continue;
             GameObject prefab = GetProductPrefab(productData.productType);
             if (prefab != null)
             {
-                Instantiate(prefab, productData.position, Quaternion.identity);
+                GameObject productInstance = Instantiate(prefab, productData.position, Quaternion.identity);
+                productInstance.transform.position = new Vector3(productData.position.x, productData.position.y, -5); // set z position to -5 for 2D view to near with camera(prevent block by other objects)
+
+                if (productInstance.TryGetComponent<Collectproduct>(out var collect))
+                {
+                    collect.isCollected = false;
+
+                    // ensure the collider is enabled for collection
+                    if (collect.TryGetComponent<Collider2D>(out var col))
+                    {
+                        collect.productType = productData.productType;
+                        col.enabled = true;
+                        col.isTrigger = false;
+                    }
+                    productInstance.layer = LayerMask.NameToLayer("Default");
+                }
             }
+            // restore player level
+            LevelSystem.Instance.level = mapData.playerLevel;
+
+            Debug.Log("Map state loaded.");
         }
-
-        // restore player level
-        LevelSystem.Instance.level = mapData.playerLevel;
-
-        Debug.Log("Map state loaded.");
-    }
-    void ClearCurrentMapObjects()
-    {
-        foreach (var obj in Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
+        void ClearCurrentMapObjects()
         {
-            if (obj is AnimalFood or Habitat or Collectproduct)
-                Destroy(obj.gameObject);
+            foreach (var obj in Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
+            {
+                if (obj is AnimalFood or Habitat or Collectproduct)
+                    Destroy(obj.gameObject);
+            }
         }
     }
 
     private void OnApplicationQuit()
     {
-        SaveMapState(); 
+        SaveMapState();
     }
 
 }

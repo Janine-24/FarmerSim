@@ -7,6 +7,6 @@ public class SNBMachine2 : MonoBehaviour
     {
         GameStateManager.Instance.SaveMapState();
         Debug.Log("Machine clicked!");
-        SceneManager.LoadScene("LateSNB");
+        SceneManager.LoadScene("LateSNB");//scene name
     }
 }

@@ -13,6 +13,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private GameObject plantPrefab;
 
     public List<PlantInstance> plantedCrops = new List<PlantInstance>();
+    public HashSet<Vector3Int> hoedTiles = new(); // Track hoed/interacted tiles
 
     private Dictionary<Vector3Int, GameObject> activeCues = new Dictionary<Vector3Int, GameObject>();
     private Dictionary<Vector3Int, GameObject> growthStageCues = new Dictionary<Vector3Int, GameObject>();
@@ -37,6 +38,12 @@ public class TileManager : MonoBehaviour
     public void PlantSeed(Vector3Int position, ItemData seedData)
     {
         if (!NoPlantOnTile(position)) return;
+
+        if (activeCues.ContainsKey(position))
+        {
+            Destroy(activeCues[position]);
+            activeCues.Remove(position);
+        }
 
         Vector3 worldPos = interactableMap.GetCellCenterWorld(position);
         GameObject plantObj = Instantiate(plantPrefab, worldPos, Quaternion.identity);
@@ -150,11 +157,14 @@ public class TileManager : MonoBehaviour
         }
 
         interactableMap.SetTile(position, hiddenInteractableTile);
+        hoedTiles.Remove(position);
     }
 
     public void SetInteracted(Vector3Int position)
     {
         interactableMap.SetTile(position, interactedTile);
+
+        hoedTiles.Add(position);
     }
 
     public bool IsPlantable(Vector3Int position)
@@ -169,6 +179,29 @@ public class TileManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void RemoveGrowthCue(Vector3Int tilePos)
+    {
+        if (growthStageCues.ContainsKey(tilePos))
+        {
+            Destroy(growthStageCues[tilePos]);
+            growthStageCues.Remove(tilePos);
+            Debug.Log($"[TileManager] Removed growth stage cue at {tilePos}");
+        }
+    }
+
+    public void RestorePlantedSeed(Vector3Int position, ItemData seedData, int stage, float timer, float timePassed)
+    {
+        Vector3 worldPos = interactableMap.GetCellCenterWorld(position);
+        GameObject plantObj = Instantiate(plantPrefab, worldPos, Quaternion.identity);
+        PlantInstance instance = plantObj.GetComponent<PlantInstance>();
+        instance.plantName = seedData.itemName;
+        instance.tilePosition = position;
+        instance.seedData = seedData;
+        instance.RestoreState(stage, timer, timePassed);
+        plantedCrops.Add(instance);
+        ShowGrowthStage(instance);
     }
 
     public bool ShowPlantingCue(Vector3Int tilePos)

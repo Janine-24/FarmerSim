@@ -18,8 +18,8 @@ MonoBehaviour:
   wateringTime: 3
   harvestTime: 5
   seedStageSprite: {fileID: -2007879195102778466, guid: bb3e258bdbaa7b146b001794db8173e0, type: 3}
-  sproutStageSprite: {fileID: -4964467975926673830, guid: c0d3d237a397c2c4ab5243b3d22aca27, type: 3}
-  matureStageSprite: {fileID: -62387344811293004, guid: bb3e258bdbaa7b146b001794db8173e0, type: 3}
+  sproutStageSprite: {fileID: -6127414478568179047, guid: 3ec1423239f03a044810ee9b073d91fc, type: 3}
+  matureStageSprite: {fileID: -6127414478568179047, guid: 3ec1423239f03a044810ee9b073d91fc, type: 3}
   harvestProductPrefab: {fileID: 6709782327416367699, guid: b11974713446d0140b20d3e9c342ce66, type: 3}
   harvestYield: 3
   durability: 0

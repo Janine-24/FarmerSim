@@ -40,5 +40,6 @@ public class CloudData
 public class ProductData
 {
     public Vector2 position;
-    public string productType; 
+    public string productType;
+    public bool isCollected;
 }
