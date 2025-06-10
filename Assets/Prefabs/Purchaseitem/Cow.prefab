@@ -5017,6 +5017,7 @@ MonoBehaviour:
   panel: {fileID: 8066064621818187173}
   hintText: {fileID: 8015221134722579828}
   progressBar: {fileID: 205619566314313490}
+  feedImageUI: {fileID: 8806598705228362088}
 --- !u!1 &2789856374032955345
 GameObject:
   m_ObjectHideFlags: 0
@@ -5440,8 +5441,8 @@ MonoBehaviour:
   productPrefab: {fileID: 5757601368711066013, guid: 5f7ccbd0dc60f8d4a94f4864667a930e, type: 3}
   productSpawnPoint: {fileID: 783631103537480801}
   feedSound: {fileID: 8300000, guid: 26b171d9f1c321f408458f1815998f96, type: 3}
-  feedEffect: {fileID: 7536623834827859304}
   panel: {fileID: 3903214875340579555}
+  feedImage: {fileID: 0}
 --- !u!1 &4149560606873883608
 GameObject:
   m_ObjectHideFlags: 0

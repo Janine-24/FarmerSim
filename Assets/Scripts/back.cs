@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class back: MonoBehaviour
+public class back : MonoBehaviour
 
 {
     public void Loadmainpage()
@@ -10,3 +10,4 @@ public class back: MonoBehaviour
         SceneManager.LoadScene("main page"); // Make sure this matches your scene name
     }
 }
+

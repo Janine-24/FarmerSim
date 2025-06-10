@@ -16,7 +16,22 @@ public class Habitat : MonoBehaviour
             habitatBounds = collider.bounds;
         }
     }
+    //Can add ways to export current habitat to MapData.HabitatData:
+    public HabitatData ExportData()
+    {
+        return new HabitatData()
+        {
+            habitatType = this.habitatType,
+            position = transform.position
+        };
+    }
 
+    // add to load data form file
+    public void LoadFromData(HabitatData data)
+    {
+        this.habitatType = data.habitatType;
+        transform.position = data.position;
+    }
     public void RegisterAnimal(Animal animal)
     {
         if (!animalsInHabitat.Contains(animal)) 

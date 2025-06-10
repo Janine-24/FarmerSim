@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3502126009710387673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365881325679488805}
+  - component: {fileID: 6225582766489647862}
+  m_Layer: 0
+  m_Name: mapstatemanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1365881325679488805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502126009710387673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 802.1093, y: 289.3611, z: -19.961794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6225582766489647862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502126009710387673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d66b098dabe2944d8c942049c0764b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapData:
+    animals: []
+    habitats: []
+    clouds: []
+    playerLevel: 1
+  animalPrefabs:
+  - animalType: chicken
+    prefab: {fileID: 7812178713843837684, guid: 38c6f523527299d4694719ed7fe02afb, type: 3}
+  - animalType: sheep
+    prefab: {fileID: 3420930004063497669, guid: 3b4cbe05db586dc409c00485c142151e, type: 3}
+  - animalType: Cow
+    prefab: {fileID: 3532523336198122836, guid: 7fb320b5dbcac374da9bf0bfce6b063b, type: 3}
+  - animalType: pig
+    prefab: {fileID: 8675702892012565045, guid: 706f95ccad8e5c54a9caf39b512d441d, type: 3}
+  habitatPrefabs:
+  - habitatType: habitat chicken
+    prefab: {fileID: 4715934671889459428, guid: 3c816d14c2b8c024d931915d6fb9f771, type: 3}
+  - habitatType: habtat cow
+    prefab: {fileID: 4715934671889459428, guid: 02e7285b1b3aa6745b35f31cc9178979, type: 3}
+  - habitatType: habitatpig
+    prefab: {fileID: 4715934671889459428, guid: 1462556f964feb14f9f75c67a26a2a27, type: 3}
+  - habitatType: habitatsheep
+    prefab: {fileID: 4715934671889459428, guid: 25d87a75e3a9c5245b6beb12d13b0160, type: 3}

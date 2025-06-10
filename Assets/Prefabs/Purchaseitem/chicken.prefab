@@ -498,7 +498,7 @@ Transform:
   m_GameObject: {fileID: 5057510428573315682}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 134.4, y: -4, z: 1.6010132}
+  m_LocalPosition: {x: 61.6, y: 1.1, z: 1.6010132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -521,7 +521,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -640,7 +640,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -758,7 +758,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1075,7 +1075,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 1
-    maxNumParticles: 10000
+    maxNumParticles: 1000000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -1222,7 +1222,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 10
       mode: 0
       spread: 0
       speed:
@@ -5755,8 +5755,8 @@ MonoBehaviour:
   productPrefab: {fileID: 4115738965657009716, guid: 43e2e49e3af38774aa4d7fde261e7313, type: 3}
   productSpawnPoint: {fileID: 1292074520324265605}
   feedSound: {fileID: 8300000, guid: 1ce034cd93fb6924795fc417a140d3a4, type: 3}
-  feedEffect: {fileID: 8726487303510620564}
   panel: {fileID: 5344890050496297171}
+  feedImage: {fileID: 0}
 --- !u!1 &8138825461595327098
 GameObject:
   m_ObjectHideFlags: 0
@@ -6001,6 +6001,7 @@ MonoBehaviour:
   panel: {fileID: 2453949209977418084}
   hintText: {fileID: 7920663429054922030}
   progressBar: {fileID: 3370147719414835967}
+  feedImageUI: {fileID: 7415493163877490617}
 --- !u!1 &9199179855595541039
 GameObject:
   m_ObjectHideFlags: 0

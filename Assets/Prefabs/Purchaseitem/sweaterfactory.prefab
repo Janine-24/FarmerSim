@@ -462,8 +462,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
-<<<<<<< HEAD
-=======
 --- !u!114 &-1371111786437283202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,4 +475,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopItem: {fileID: 11400000, guid: 021fe0ed5463da449951a6a62a20c375, type: 2}
->>>>>>> cb37a1ac3187ee009a7b5e6cc2a045b05634a82d

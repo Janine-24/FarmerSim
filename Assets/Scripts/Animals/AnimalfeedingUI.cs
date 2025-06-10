@@ -4,15 +4,16 @@ using TMPro;
 
 public class AnimalFeedingUI : MonoBehaviour
 {
-    public static AnimalFeedingUI Instance;
     public GameObject panel;
     public TextMeshProUGUI hintText;
     public Slider progressBar;
     private AnimalFood currentAnimal;
+    private Coroutine progressCoroutine;
+    public Image feedImageUI; 
+
 
     private void Awake()
     {
-        Instance = this;
         panel.SetActive(false);
         progressBar.gameObject.SetActive(false);
         ClearHint();
@@ -31,13 +32,22 @@ public class AnimalFeedingUI : MonoBehaviour
                 ClosePanel();
             }
         }
+        return;
     }
 
     public void OpenPanel(AnimalFood animal)
     {
         currentAnimal = animal;
         panel.SetActive(true);
-        hintText.text = "Press F for feeding $10";
+        hintText.text = $"Press F for feeding ${animal.feedCost}";
+        if (feedImageUI != null && animal.feedImage != null)
+        {
+            feedImageUI.sprite = animal.feedImage;
+        }
+        if (animal.IsProducing())
+        {
+            progressBar.gameObject.SetActive(true);
+        }
     }
 
     public void ClosePanel()
@@ -60,20 +70,30 @@ public class AnimalFeedingUI : MonoBehaviour
 
     public void StartProgress(float duration, System.Action onComplete)
     {
-        StartCoroutine(ProgressCoroutine(duration, onComplete));
+        if (progressCoroutine != null)
+        {
+            StopCoroutine(progressCoroutine);
+        }
+        progressCoroutine = StartCoroutine(ProgressCoroutine(duration, onComplete));
+    }
+    public void UpdateProgressBar(float normalizedValue)
+    {
+        progressBar.value = Mathf.Clamp01(normalizedValue);
     }
 
     private System.Collections.IEnumerator ProgressCoroutine(float duration, System.Action onComplete)
     {
         progressBar.gameObject.SetActive(true);
+        progressBar.value = 0f;
         float time = 0f;
         while (time < duration)
         {
             time += Time.deltaTime;
             progressBar.value = time / duration;
-            yield return null;
+            yield return null; //wait for next frame to continue repeat loop 
         }
         progressBar.gameObject.SetActive(false);
-        onComplete?.Invoke();
+        progressCoroutine = null; //clear the reference to coroutine
+        onComplete?.Invoke(); // invoke the callback when progress complete
     }
 }

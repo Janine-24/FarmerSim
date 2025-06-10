@@ -10,16 +10,16 @@ public class SampleScene : MonoBehaviour //base script that lets code run in the
 
     void Update() //runs every single frame while the game is playing. It’s perfect for checking for key presses, movement
     {
-        if (Input.GetKeyDown(KeyCode.Return)) //This checks if the player has pressed the Enter key (Return is Enter). GetKeyDown = only triggers once when the key is first pressed
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("Starting game...");
             StartGame();
-            SceneManager.LoadScene("main page");//game starts when the player presses Enter.
+            SceneManager.LoadScene("main page");
         }
-        if (Input.GetKeyDown(KeyCode.Escape)) //This checks if the player has pressed the Escape key
+        if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             Debug.Log("Exiting game...");
-            Application.Quit(); //this quits the application
+            Application.Quit(); 
         }
     }
 }

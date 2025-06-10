@@ -1,5 +1,8 @@
+﻿using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
+
 
 public class AnimalFood : MonoBehaviour
 {
@@ -8,13 +11,58 @@ public class AnimalFood : MonoBehaviour
     public GameObject productPrefab; //the product that will be produced after feeding
     public Transform productSpawnPoint; // the point where the product will be occur
     public AudioClip feedSound; //sound
-    public ParticleSystem feedEffect; //effect
     public AnimalFeedingUI panel; //that the UI panel for feeding animals
-
     private bool isProducing = false;
+    public Sprite feedImage;
+
+
+    // export status to save data
+    public AnimalData ExportData()
+    {
+        return new AnimalData()
+        {
+            animalType = GetComponent<Animal>().animalType,
+            position = transform.position,
+            isFed = isProducing,
+            productionStartTime = isProducing ? System.DateTime.UtcNow.ToString("o") : "",
+            productionDuration = isProducing ? productionTime : 0f
+        };
+    }
+
+    public void LoadFromData(AnimalData data)
+    {
+        if (data.isFed)
+        {
+            isProducing = true;
+
+            // 解析开始时间
+            if (DateTime.TryParse(data.productionStartTime, out DateTime startTime))
+            {
+                float timePassed = (float)(DateTime.Now - startTime).TotalSeconds;
+
+                if (timePassed >= data.productionDuration)
+                {
+                    // 已经生产完成
+                    OnProductionComplete(); // 直接生成产品
+                }
+                else
+                {
+                    // 继续生产：还剩下多久
+                    float remainingTime = data.productionDuration - timePassed;
+                    StartProduction(remainingTime);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Failed to parse production start time.");
+            }
+        }
+    }
+
+
     private void OnMouseDown()
     {
-        AnimalFeedingUI.Instance.OpenPanel(this);
+        panel.OpenPanel(this);
     }
     public void TryFeedAnimal()
     {
@@ -26,8 +74,8 @@ public class AnimalFood : MonoBehaviour
         }
         else
         {
-            AnimalFeedingUI.Instance.ShowHint("Insufficient money");
-            AnimalFeedingUI.Instance.ClosePanel();
+            panel.ShowHint("Insufficient money");
+            panel.ClosePanel();
             return;
         }
 
@@ -37,14 +85,10 @@ public class AnimalFood : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(feedSound, transform.position);
         }
-        
-
-        if (feedEffect != null)
-            feedEffect.Play();
 
         isProducing = true;
-        AnimalFeedingUI.Instance.ClosePanel();
-        AnimalFeedingUI.Instance.StartProgress(productionTime, OnProductionComplete);
+        panel.ClosePanel();
+        panel.StartProgress(productionTime, OnProductionComplete);
     }
 
 
@@ -64,4 +108,32 @@ public class AnimalFood : MonoBehaviour
         }
         Instantiate(productPrefab, transform.position, Quaternion.identity); //produce product at the animals
     }
+
+    public bool IsProducing()
+    {
+        return isProducing;
+    }
+
+    public void StartProduction(float duration)
+    {
+        isProducing = true;
+        StartCoroutine(ProduceCoroutine(duration));
+    }
+
+    private IEnumerator ProduceCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        OnProductionComplete();
+    }
+
+    //restore the status of animals
+    public void RestoreProducingState()
+    {
+        if (!isProducing)
+        {
+            isProducing = true;
+            panel.StartProgress(productionTime, OnProductionComplete);
+        }
+    }
+
 }
