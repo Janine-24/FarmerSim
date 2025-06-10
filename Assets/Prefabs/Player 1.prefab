@@ -18,9 +18,10 @@ GameObject:
   - component: {fileID: 4032931661029597881}
   - component: {fileID: 2060055474731017817}
   - component: {fileID: 7445804916942227632}
+  - component: {fileID: 8516869601844793848}
   m_Layer: 6
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_Sprite: {fileID: -2311659948842064771, guid: 20787def9b8add14d92618fbcb84dead, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,7 +104,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3897973464228203033}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -227,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7d2d5d2411ef54eb8b416d610a82e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: SkinInterface
 --- !u!114 &2060055474731017817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,44 +261,286 @@ MonoBehaviour:
       maxAllowed: 0
       itemData: {fileID: 0}
       icon: {fileID: 0}
+      individualDurability: 
     - itemName: 
       count: 0
       maxAllowed: 0
       itemData: {fileID: 0}
       icon: {fileID: 0}
+      individualDurability: 
     - itemName: 
       count: 0
       maxAllowed: 0
       itemData: {fileID: 0}
       icon: {fileID: 0}
+      individualDurability: 
     - itemName: 
       count: 0
       maxAllowed: 0
       itemData: {fileID: 0}
       icon: {fileID: 0}
+      individualDurability: 
     - itemName: 
       count: 0
       maxAllowed: 0
       itemData: {fileID: 0}
       icon: {fileID: 0}
+      individualDurability: 
     - itemName: 
       count: 0
       maxAllowed: 0
       itemData: {fileID: 0}
       icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
     selectedSlot:
       itemName: 
       count: 0
       maxAllowed: 99
       itemData: {fileID: 0}
       icon: {fileID: 0}
+      individualDurability: 
   backpackSlotsCount: 36
   toolbar:
-    slots: []
+    slots:
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      itemData: {fileID: 0}
+      icon: {fileID: 0}
+      individualDurability: 
     selectedSlot:
       itemName: 
       count: 0
       maxAllowed: 99
       itemData: {fileID: 0}
       icon: {fileID: 0}
+      individualDurability: 
   toolbarSlotsCount: 6
+--- !u!114 &8516869601844793848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897973464228203033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109bc6133e33b5c4ca0b627f1db62b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 413944577763425480}
+  allSkins:
+  - {fileID: 22100000, guid: f7e8974198d60a0449859f6dcee4cf18, type: 2}
+  - {fileID: 22100000, guid: 80f836419d0d7ac468f2ef38dcd5b7bd, type: 2}
+  - {fileID: 22100000, guid: 8971b2b052ef63944a394d556cf912f3, type: 2}
+  defaultSkin: {fileID: 0}

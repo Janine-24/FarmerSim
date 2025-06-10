@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -191,7 +191,7 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    public void RestorePlantedSeed(Vector3Int position, ItemData seedData, int stage, float timer, float timePassed)
+    public void RestorePlantedSeed(Vector3Int position, ItemData seedData, int stage, float timer, float timePassed, int waterCount)
     {
         Vector3 worldPos = interactableMap.GetCellCenterWorld(position);
         GameObject plantObj = Instantiate(plantPrefab, worldPos, Quaternion.identity);
@@ -199,7 +199,7 @@ public class TileManager : MonoBehaviour
         instance.plantName = seedData.itemName;
         instance.tilePosition = position;
         instance.seedData = seedData;
-        instance.RestoreState(stage, timer, timePassed);
+        instance.RestoreState(stage, timer, timePassed, waterCount); // ✅ Fix is here
         plantedCrops.Add(instance);
         ShowGrowthStage(instance);
     }

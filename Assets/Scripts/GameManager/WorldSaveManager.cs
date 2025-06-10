@@ -40,7 +40,8 @@ public static class WorldSaveManager
                 tilePosition = plant.tilePosition,
                 seedID = plant.seedData.itemName,
                 currentStage = plant.CurrentStage,
-                growthTimer = plant.GetGrowthTimer()
+                growthTimer = plant.GetGrowthTimer(),
+                currentWaterCount = plant.WaterCount
             };
 
             data.plantedCrops.Add(pd);
@@ -104,7 +105,8 @@ public static class WorldSaveManager
             ItemData seed = GameManager.instance.itemManager.GetItemByName(saved.seedID)?.data;
             if (seed == null) continue;
 
-            GameManager.instance.tileManager.RestorePlantedSeed(saved.tilePosition, seed, saved.currentStage, saved.growthTimer, elapsed);
+            GameManager.instance.tileManager.RestorePlantedSeed(saved.tilePosition, seed, saved.currentStage, saved.growthTimer, elapsed, saved.currentWaterCount);
+
         }
 
         // Restore machines

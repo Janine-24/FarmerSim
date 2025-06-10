@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlantInstance : MonoBehaviour
 {
@@ -6,19 +6,85 @@ public class PlantInstance : MonoBehaviour
     public Vector3Int tilePosition;
     public ItemData seedData;
     [SerializeField] private GameObject harvestProductPrefab;
+    
+
 
     public int CurrentStage { get; private set; } = 0;
+    public int maxWaterCount = 4;
+    private int currentWaterCount = 0;
+    private float lastWaterTime = 0f;
+    private float waterResetDuration = 5f; // 必须在 30s 内继续浇水
+
+    public bool CanBeWatered => CurrentStage < 2 && currentWaterCount < maxWaterCount;
     private float growthTimer = 0f;
 
     private SpriteRenderer spriteRenderer;
 
     public float GetGrowthTimer() => growthTimer;
-    public void RestoreState(int stage, float timer, float timePassed)
+    public int WaterCount => currentWaterCount;
+
+    public void RestoreState(int stage, float timer, float timePassed, int waterCount)
     {
         CurrentStage = stage;
         growthTimer = timer + timePassed;
+        currentWaterCount = waterCount;
         UpdateVisual();
     }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && CanBeWatered)
+        {
+            PlantWateringUI.Instance.OpenPanel(this);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlantWateringUI.Instance.ClosePanel();
+        }
+    }
+
+    public void TryWater()
+    {
+        if (!CanBeWatered)
+        {
+            PlantWateringUI.Instance.ShowHint("Already fully watered!");
+            return;
+        }
+
+        int waterCost = 10;
+
+        if (PlayerCoinManager.Instance.HasEnoughCoins(waterCost))
+        {
+            PlayerCoinManager.Instance.SpendCoins(waterCost);
+        }
+        else
+        {
+            PlantWateringUI.Instance.ShowHint("Insufficient money");
+            PlantWateringUI.Instance.ClosePanel();
+            return;
+        }
+
+        
+
+        // Start watering progress
+        PlantWateringUI.Instance.StartProgress(1f, () =>
+        {
+            currentWaterCount++;
+            Debug.Log($"🌿 {plantName} watered: {currentWaterCount}/{maxWaterCount}");
+
+            PlantWateringUI.Instance.ShowHint($"Watered ({currentWaterCount}/{maxWaterCount})");
+
+            GameManager.instance.uiManager.RefreshAll(); // Optional UI update
+        });
+    }
+
+
+
 
     private void Awake()
     {
@@ -37,7 +103,8 @@ public class PlantInstance : MonoBehaviour
             return;
         }
 
-        int yieldCount = Mathf.Max(seedData.harvestYield, 1);
+        int yieldCount = Mathf.Max(seedData.harvestYield + currentWaterCount, 1);
+
         Debug.Log($"Spawning {yieldCount}x {seedData.harvestProductPrefab.name}");
 
         for(int i = 0; i < yieldCount; i++)
@@ -84,7 +151,7 @@ public class PlantInstance : MonoBehaviour
             return;
         }
 
-        Debug.Log($"[GrowUpdate] {plantName} timer: {growthTimer}, stage: {CurrentStage}");
+        //Debug.Log($"[GrowUpdate] {plantName} timer: {growthTimer}, stage: {CurrentStage}")
     }
 
 
