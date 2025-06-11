@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,8 +9,6 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance;
-    public Transform machineParent; //state the produc produce place
-    public List<GameObject> machinePrefabs;
     // save data
     public MapData mapData = new();
     // prefab mapping for easy instantiation during loading
@@ -17,6 +16,7 @@ public class GameStateManager : MonoBehaviour
     public List<AnimalPrefabEntry> animalPrefabs = new();
     public List<HabitatPrefabEntry> habitatPrefabs = new();
     public List<ProductPrefabEntry> productPrefabs = new();
+    public List<ProductionMachinePrefabEntry> machinePrefabs = new();
 
     private void Awake()
     {
@@ -70,6 +70,13 @@ public class GameStateManager : MonoBehaviour
         public GameObject prefab;
     }
 
+    [System.Serializable]
+    public class ProductionMachinePrefabEntry
+    {
+        public string machineType;
+        public GameObject prefab;
+    }
+
     // get prefab according to the aniamls tpyes
     public GameObject GetAnimalPrefab(string animalType)
     {
@@ -89,7 +96,7 @@ public class GameStateManager : MonoBehaviour
         Debug.LogWarning($"Habitat prefab not found for type: {habitatType}");
         return null;
     }
-
+    // get prefab from each production machine
     public GameObject GetProductPrefab(string productType)
     {
         foreach (var entry in productPrefabs)
@@ -98,6 +105,16 @@ public class GameStateManager : MonoBehaviour
         Debug.LogWarning($"Product prefab not found for type: {productType}");
         return null;
     }
+    // get prefab from each production machine
+    public GameObject GetMachinePrefab(string machineType)
+    {
+        foreach (var entry in machinePrefabs)
+            if (entry.machineType == machineType)
+                return entry.prefab;
+        Debug.LogWarning($"Machine prefab not found for type: {machineType}");
+        return null;
+    }
+
 
     // save curretn status to mapData.cs
     public void SaveMapState()
@@ -130,7 +147,7 @@ public class GameStateManager : MonoBehaviour
             }
             );
         }
-
+        // save products
         foreach (var product in Object.FindObjectsByType<Collectproduct>(FindObjectsSortMode.None))
         {
             mapData.products.Add(new ProductData
@@ -139,6 +156,11 @@ public class GameStateManager : MonoBehaviour
                 productType = product.productType,
                 isCollected = product.isCollected //save collect status
             });
+        }
+        // save production machines
+        foreach (var machine in Object.FindObjectsByType<ProductionMachine>(FindObjectsSortMode.None))
+        {
+            mapData.machines.Add(machine.GetSaveData());
         }
 
 
@@ -189,8 +211,6 @@ public class GameStateManager : MonoBehaviour
                 {
                     food.LoadFromData(data);
                 }
-
-
             }
         }
         // restore cloud satus
@@ -231,18 +251,51 @@ public class GameStateManager : MonoBehaviour
                     productInstance.layer = LayerMask.NameToLayer("Default");
                 }
             }
+        }
+
+            foreach (var machineData in mapData.machines)
+            {
+                GameObject machinePrefab = GetMachinePrefab(machineData.machineType);
+                if (machinePrefab == null)
+                {
+                    continue;
+                }
+                GameObject machineGO = Instantiate(machinePrefab, machineData.position, Quaternion.identity);
+                var machine = machineGO.GetComponent<ProductionMachine>();
+
+                var recipe = Resources.Load<MachineRecipe>($"Recipes/{machineData.currentRecipe}");
+                if (recipe == null)
+                {
+                    Debug.LogWarning($"Missing recipe asset: {machineData.currentRecipe}");
+                    continue;
+                }
+
+                machine.recipe = recipe;
+                machine.machineID = machineData.machineType; // or some unique ID
+
+                if (machineData.isProducing)
+                {
+                    machine.ResumeProcessing(machineData.remainingOutputCount, machineData.remainingTime);
+                }
+                else
+                {
+                    machine.RestoreIdleState(machineData.currentRecipe);
+                }
+            }
+
             // restore player level
             LevelSystem.Instance.level = mapData.playerLevel;
 
             Debug.Log("Map state loaded.");
         }
-    } 
+    
+                
     private static void ClearCurrentMapObjects()
     {
         {
             foreach (var obj in Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
             {
-                if (obj is AnimalFood or Habitat or Collectproduct)
+                if (obj is AnimalFood or Habitat or Collectproduct or ProductionMachine)
                     Destroy(obj.gameObject);
             }
         }

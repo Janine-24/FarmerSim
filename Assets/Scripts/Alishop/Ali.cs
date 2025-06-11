@@ -11,6 +11,9 @@ public class MerchantCharacter : MonoBehaviour
 
     void Start()
     {
+        Vector3 newPos = transform.position;
+        newPos.z = -5f;
+        transform.position = newPos; //near the camera to prevent player cannot click Ali
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>(); // get AudioSource
         if (audioSource == null)

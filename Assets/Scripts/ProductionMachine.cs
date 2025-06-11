@@ -11,6 +11,7 @@ public class ProductionMachine : MonoBehaviour
     public string machineID; // assign in inspector or on spawn
 
 
+
     public void ResumeProcessing(int outputs, float timeLeft)
     {
         currentOutputAmount = outputs;
@@ -55,6 +56,20 @@ public class ProductionMachine : MonoBehaviour
         this.currentOutputAmount = 0;
         this.currentTimer = 0f;
     }
+    public ProductionMachineData GetSaveData()
+    {
+        return new ProductionMachineData
+        {
+            machineType = this.machineID,
+            position = (Vector2)transform.position,
+            currentRecipe = recipe != null ? recipe.name : null,
+            remainingTime = this.currentTimer,
+            isProducing = this.isProcessing,
+            remainingOutputCount = this.currentOutputAmount
+        };
+    }
+
+
 
     private IEnumerator ProcessRoutine()
     {

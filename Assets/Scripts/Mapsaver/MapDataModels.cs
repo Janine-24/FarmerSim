@@ -9,6 +9,7 @@ public class MapData
     public List<HabitatData> habitats = new();
     public List<CloudData> clouds = new();
     public List<ProductData> products = new();
+    public List<ProductionMachineData> machines = new();
     public int playerLevel = 1;
 }
 
@@ -43,4 +44,17 @@ public class ProductData
     public string productType;
     public bool isCollected;
 }
+
+[System.Serializable]
+public class ProductionMachineData
+{
+    public string machineType;
+    public Vector2 position;
+    public string currentRecipe;
+    public float remainingTime;
+    public bool isProducing;
+    public int remainingOutputCount; // the number of outputs left to produce
+}
+
+
 
