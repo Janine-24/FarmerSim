@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MusicToggle : MonoBehaviour
@@ -6,11 +7,11 @@ public class MusicToggle : MonoBehaviour
     public AudioClip bgmClip; 
     public Sprite soundOnSprite;
     public Sprite soundOffSprite;
-    public Image buttonImage;
 
     private static MusicToggle instance;
     private AudioSource bgmSource;
     private bool isMuted;
+    private Image buttonImage;
 
     private void Awake()
     {
@@ -43,11 +44,33 @@ public class MusicToggle : MonoBehaviour
         {
             bgmSource.Play();
         }
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void Start()
+    private void OnDestroy()
     {
-        UpdateButtonImage();
+        SceneManager.sceneLoaded -= OnSceneLoaded; // 清理监听
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // find button in the new scene
+        GameObject btnObj = GameObject.Find("music onoff");
+        if (btnObj != null)
+        {
+            buttonImage = btnObj.GetComponent<Image>();
+
+            // add Onclick
+            Button btn = btnObj.GetComponent<Button>();
+            btn.onClick.RemoveAllListeners(); // remove any existing listeners
+            btn.onClick.AddListener(ToggleMusic);
+
+            UpdateButtonImage();
+        }
+        else
+        {
+            buttonImage = null;
+        }
     }
 
     public void ToggleMusic()

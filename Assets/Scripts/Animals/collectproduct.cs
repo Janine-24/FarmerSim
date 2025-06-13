@@ -20,7 +20,7 @@ public class Collectproduct : MonoBehaviour
         if (col == null)
             Debug.LogWarning("Missing Collider2D!");
 
-        player = FindObjectOfType<Player>();
+        player = Object.FindFirstObjectByType<Player>();
 
         if (item == null)
         {
