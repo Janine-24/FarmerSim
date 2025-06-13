@@ -54,8 +54,8 @@ public class ProductionMachineData
     public float remainingTime;
     public bool isProducing;
     public int remainingOutputCount; // the number of outputs left to produce
-    public string productionStartTime;///
-    public float productionDuration;///
+    public string productionStartTime;
+    public float productionDuration;
 }
 
 

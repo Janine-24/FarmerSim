@@ -10,9 +10,9 @@ public class Animal : MonoBehaviour
     public float waitTime = 2f; //animals wait time after reach target position
     private SpriteRenderer spriteRenderer; // to handle sprite flipping
     private Vector3 lastPosition; // to track last position for movement direction
+    private Animator animator;
 
 
-    
     public void SetHabitat(Habitat habitat)
     {
         assignedHabitat = habitat;
@@ -22,6 +22,7 @@ public class Animal : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         lastPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -43,6 +44,9 @@ public class Animal : MonoBehaviour
             spriteRenderer.flipX = true;
         else if (velocity.x < -0.05f)
             spriteRenderer.flipX = false;
+        //if have speed, change the animation
+        bool isWalking = velocity.magnitude > 0.01f; 
+        animator.SetBool("isWalking", isWalking); 
 
         lastPosition = transform.position;
     }

@@ -163,7 +163,6 @@ public class GameStateManager : MonoBehaviour
             mapData.machines.Add(machine.GetSaveData());
         }
 
-
         //save player level
         mapData.playerLevel = LevelSystem.Instance.level;
 
@@ -178,17 +177,15 @@ public class GameStateManager : MonoBehaviour
     // load status from file and produce object
     public void LoadMapState()
     {
+        string json = PlayerPrefs.GetString("Save_MapData", "{}");
         if (string.IsNullOrEmpty(PlayerPrefs.GetString("Save_MapData")))
         {
             Debug.Log("No saved map data found.");
             return;
         }
 
-        string json = PlayerPrefs.GetString("Save_MapData", "{}");
         mapData = JsonUtility.FromJson<MapData>(json);
-
-        //clear old data, prevet duplicate
-        ClearCurrentMapObjects();
+        ClearCurrentMapObjects(); //clear old data, prevet duplicate
 
         // restore habitat
         foreach (var habitatData in mapData.habitats)
@@ -252,42 +249,42 @@ public class GameStateManager : MonoBehaviour
                 }
             }
         }
-
-            foreach (var machineData in mapData.machines)
+        // restore machine and status 
+        foreach (var machineData in mapData.machines)
+        {
+            GameObject machinePrefab = GetMachinePrefab(machineData.machineType);
+            if (machinePrefab == null)
             {
-                GameObject machinePrefab = GetMachinePrefab(machineData.machineType);
-                if (machinePrefab == null)
-                {
-                    continue;
-                }
-                GameObject machineGO = Instantiate(machinePrefab, machineData.position, Quaternion.identity);
-                var machine = machineGO.GetComponent<ProductionMachine>();
+                continue;
+            }
+            GameObject machineGO = Instantiate(machinePrefab, machineData.position, Quaternion.identity);
+            var machine = machineGO.GetComponent<ProductionMachine>();
 
-                var recipe = Resources.Load<MachineRecipe>($"Recipes/{machineData.currentRecipe}");
-                if (recipe == null)
-                {
-                    Debug.LogWarning($"Missing recipe asset: {machineData.currentRecipe}");
-                    continue;
-                }
-
-                machine.recipe = recipe;
-                machine.machineID = machineData.machineType; // or some unique ID
-
-                if (machineData.isProducing)
-                {
-                    machine.ResumeProcessing(machineData);
-                }
-                else
-                {
-                    machine.RestoreIdleState(machineData.currentRecipe);
-                }
+            var recipe = Resources.Load<MachineRecipe>($"Recipes/{machineData.currentRecipe}");
+            if (recipe == null)
+            {
+                Debug.LogWarning($"Missing recipe asset: {machineData.currentRecipe}");
+                continue;
             }
 
-            // restore player level
-            LevelSystem.Instance.level = mapData.playerLevel;
+            machine.recipe = recipe;
+            machine.machineID = machineData.machineType; // or some unique ID
 
-            Debug.Log("Map state loaded.");
+            if (machineData.isProducing)
+            {
+                    machine.ResumeProcessing(machineData);
+            }
+           else
+           {
+                machine.RestoreIdleState(machineData.currentRecipe);
+           }
         }
+
+        // restore player level
+        LevelSystem.Instance.level = mapData.playerLevel;
+
+        Debug.Log("Map state loaded.");
+    }
     
                 
     private static void ClearCurrentMapObjects()

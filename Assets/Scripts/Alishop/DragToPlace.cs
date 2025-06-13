@@ -86,61 +86,13 @@ public class DragManager : MonoBehaviour
                 {
                     PlaceItem();
                 }
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    CancelPlacement();
-                }
             }
-        }
-    }
-
-    void CancelPlacement()
-    {
-        if (currentDraggedObject != null)
-        {
-            if (currentDraggedObject != null)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                Destroy(currentDraggedObject);
-                ShowHint("Placement cancelled.");
-
-                currentDraggedObject = null;
-                currentItem = null;
-                currentRenderer = null;
-                currentCollider = null;
+                CancelPlacement();
             }
+
         }
-    }
-
-
-    void SetObjectColor(Color color)
-    {
-        if (currentRenderer != null)
-        {
-            if (currentItem != null && currentItem.isAnimal)
-            {
-                // if is animal, original colour
-                currentRenderer.color = Color.white;
-            }
-            else
-            {
-                currentRenderer.color = color;
-            }
-        }
-    }
-
-    private void ShowHint(string message)
-    {
-        if (hintText == null)
-            return;
-        hintText.text = message;
-        hintText.gameObject.SetActive(true);
-        CancelInvoke(nameof(HideHint));// Cancel any ongoing invocation of HideHint
-        Invoke(nameof(HideHint), 2f); // occur in 2 second
-    }
-    private void HideHint()
-    {
-        if (hintText != null)
-            hintText.gameObject.SetActive(false);
     }
 
     void PlaceItem()
@@ -185,7 +137,7 @@ public class DragManager : MonoBehaviour
 
                 if (machine.recipe == null)
                 {
-                    
+
                     Debug.Log($"No recipe inside machine {machine.machineID}");
                 }
             }
@@ -193,7 +145,7 @@ public class DragManager : MonoBehaviour
             {
                 sr.color = Color.white;
             }
-            
+
 
             //clean up drag
             Destroy(currentDraggedObject);
@@ -210,15 +162,21 @@ public class DragManager : MonoBehaviour
         }
     }
 
-    bool HasAvailableHabitatForAnimal(string animalType)
+    void CancelPlacement()
     {
-        var habitats = Object.FindObjectsByType<Habitat>(FindObjectsSortMode.None);
-        foreach (var h in habitats)
+        if (currentDraggedObject != null)
         {
-            if (h.habitatType == animalType && h.animalsInHabitat.Count < h.maxanimals)
-                return true;
+            if (currentDraggedObject != null)
+            {
+                Destroy(currentDraggedObject);
+                ShowHint("Placement cancelled.");
+
+                currentDraggedObject = null;
+                currentItem = null;
+                currentRenderer = null;
+                currentCollider = null;
+            }
         }
-        return false;
     }
 
     bool CanPlace(Vector2 position)
@@ -245,6 +203,49 @@ public class DragManager : MonoBehaviour
             }
         }
         return true; //can place iff not hit with these layers
+    }
+
+    bool HasAvailableHabitatForAnimal(string animalType)
+    {
+        var habitats = Object.FindObjectsByType<Habitat>(FindObjectsSortMode.None);
+        foreach (var h in habitats)
+        {
+            if (h.habitatType == animalType && h.animalsInHabitat.Count < h.maxanimals)
+                return true;
+        }
+        return false;
+    }
+
+    private void ShowHint(string message)
+    {
+        if (hintText == null)
+            return;
+        hintText.text = message;
+        hintText.gameObject.SetActive(true);
+        CancelInvoke(nameof(HideHint));// Cancel any ongoing invocation of HideHint
+        Invoke(nameof(HideHint), 2f); // occur in 2 second
+    }
+
+    private void HideHint()
+    {
+        if (hintText != null)
+            hintText.gameObject.SetActive(false);
+    }
+
+    void SetObjectColor(Color color)
+    {
+        if (currentRenderer != null)
+        {
+            if (currentItem != null && currentItem.isAnimal)
+            {
+                // if is animal, original colour
+                currentRenderer.color = Color.white;
+            }
+            else
+            {
+                currentRenderer.color = color;
+            }
+        }
     }
 
     private void OnDrawGizmos()
