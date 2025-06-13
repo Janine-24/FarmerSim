@@ -5331,11 +5331,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   feedCost: 50
   productionTime: 3600
-  productPrefab: {fileID: 6086269873913755058, guid: 0ecb43be8ebfaa9499f6947ccc281079, type: 3}
+  item: {fileID: 11400000, guid: e2519bba2827fc547b3a0b32f4a8fd9e, type: 2}
   productSpawnPoint: {fileID: 5309284511867234699}
   feedSound: {fileID: 8300000, guid: ded9c29e097d40f44a588345e4341937, type: 3}
   panel: {fileID: 2950432860564472435}
-  feedImage: {fileID: 0}
 --- !u!1 &4821521282012889349
 GameObject:
   m_ObjectHideFlags: 0

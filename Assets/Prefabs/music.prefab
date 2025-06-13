@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236e0c6c5ef14344e9f1a36f69947b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicPrefab: {fileID: 5733075739930163715}
 --- !u!1 &5733075739930163715
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e82b1cf7dbc0314a938e0781292ad24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSource: {fileID: 6221969279743092085}
+  bgmClip: {fileID: 8300000, guid: ee6197b87333249448aabf2d17cb3a85, type: 3}
   soundOnSprite: {fileID: 2701435532276740309, guid: 7829fc34caff7c14ea285087adee9aad, type: 3}
   soundOffSprite: {fileID: -236259521368213681, guid: 7829fc34caff7c14ea285087adee9aad, type: 3}
   buttonImage: {fileID: 0}

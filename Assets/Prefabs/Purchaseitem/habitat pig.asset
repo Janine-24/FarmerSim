@@ -19,3 +19,9 @@ MonoBehaviour:
   prefabToPlace: {fileID: 4715934671889459428, guid: 1462556f964feb14f9f75c67a26a2a27, type: 3}
   itemType: 2
   previewPrefab: {fileID: 4715934671889459428, guid: 4a45904f35951284c8682e246bd65e07, type: 3}
+  ignoreHabitatLayer: 0
+  isAnimal: 0
+  isHabitat: 1
+  animalType: 
+  machinelevelup: {fileID: 0}
+  requiredLevelup: 0

@@ -6091,8 +6091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   feedCost: 40
   productionTime: 1800
-  productPrefab: {fileID: 6872406656183434756, guid: 2802cbb02a424ce49b31da3cf5f3516c, type: 3}
+  item: {fileID: 11400000, guid: 978a41fe2c10bd1488d8b46afb5591e4, type: 2}
   productSpawnPoint: {fileID: 8145802179607050323}
   feedSound: {fileID: 8300000, guid: f6775418fc9d6a04f9548b90d1b5e8ab, type: 3}
   panel: {fileID: 751965269988126505}
-  feedImage: {fileID: 0}

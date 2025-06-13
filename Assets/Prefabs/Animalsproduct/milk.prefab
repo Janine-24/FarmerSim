@@ -4846,6 +4846,7 @@ GameObject:
   - component: {fileID: 5207933745967618409}
   - component: {fileID: 984859694362697649}
   - component: {fileID: 762585633377109932}
+  - component: {fileID: -7533891304661063171}
   m_Layer: 0
   m_Name: milk
   m_TagString: Untagged
@@ -5025,3 +5026,18 @@ MonoBehaviour:
   collectSound: {fileID: 8300000, guid: 18628fecb2ba3df40a504a8d92d0019e, type: 3}
   collectEffectPrefab: {fileID: 9127905784350200730}
   productType: milk
+  isCollected: 0
+--- !u!114 &-7533891304661063171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5757601368711066013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1048389af35fa3745aa8695f1f0cfc0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 5ec45f80e2818d340b64e7cb9b6f5cb8, type: 2}
+  rb2d: {fileID: 0}

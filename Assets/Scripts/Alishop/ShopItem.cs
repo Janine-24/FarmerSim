@@ -13,7 +13,6 @@ public class ShopItem : ScriptableObject
     public GameObject prefabToPlace;// Sprite prefab
     public ShopItemType itemType;
     public GameObject previewPrefab; //to have the shadow when drag
-    public bool ignoreHabitatLayer; // use to ignore the habitat layer when place animals
     public bool isAnimal;
     public string animalType; // e.g. "Cow", "Sheep"
     public GameObject machinelevelup;

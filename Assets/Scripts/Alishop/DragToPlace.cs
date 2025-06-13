@@ -10,25 +10,22 @@ public class DragManager : MonoBehaviour
     private GameObject currentDraggedObject;
     private ShopItem currentItem;
     public LayerMask obstacleLayer;
-    public Transform habitatArea;
     public Bounds habitatBounds; // Store the bounds of the habitat area
     public LayerMask habitatLayer;
     private SpriteRenderer currentRenderer;
     private Collider2D currentCollider;
 
 
-
-    public void Start()
-    {
-        hintText.gameObject.SetActive(false);
-    }
     private void Awake()
     {
         Instance = this;
+        if (hintText != null)
+            hintText.gameObject.SetActive(false);
     }
 
     public void StartDragging(ShopItem item)
     {
+        if (item == null || item.prefabToPlace == null) return;
         if (item.isAnimal && !HasAvailableHabitatForAnimal(item.animalType))
         {
             ShowHint("No available habitat for this animal.");
@@ -72,6 +69,7 @@ public class DragManager : MonoBehaviour
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             currentDraggedObject.transform.position = mousePos;
+            bool canPlace = CanPlace(mousePos);
             if (CanPlace(mousePos))
             {
                 // can place when green
@@ -84,11 +82,14 @@ public class DragManager : MonoBehaviour
             }
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
-                PlaceItem();
-            }
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                CancelPlacement();
+                if (canPlace)
+                {
+                    PlaceItem();
+                }
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    CancelPlacement();
+                }
             }
         }
     }
@@ -126,7 +127,6 @@ public class DragManager : MonoBehaviour
             }
         }
     }
-
 
     private void ShowHint(string message)
     {
@@ -232,21 +232,21 @@ public class DragManager : MonoBehaviour
         Collider2D obstacleHit = Physics2D.OverlapBox(position, size, 0f, obstacleLayer);
         if (obstacleHit != null)
             return false;
-        //habitat layer
-        if (!currentItem.ignoreHabitatLayer)
+        // habitat layer
+        if (currentItem.itemType == ShopItemType.Habitat)
         {
-            Collider2D habitatHit = Physics2D.OverlapBox(position, size, 0f, habitatLayer);
-            if (habitatHit != null)
-                return false;
+            Collider2D[] hits = Physics2D.OverlapBoxAll(position, size, 0f, habitatLayer); // overlap box all for habitat layer
+            foreach (var hit in hits) // check dalam habitat layer
+            {
+                if (hit.gameObject != currentDraggedObject) //not hit itself
+                {
+                    return false;
+                }
+            }
         }
-
         return true; //can place iff not hit with these layers
     }
 
-    bool IsInHabitat(Vector2 position)
-    {
-        return habitatBounds.Contains(position);
-    }
     private void OnDrawGizmos()
     {
         if (currentDraggedObject != null && currentRenderer != null)

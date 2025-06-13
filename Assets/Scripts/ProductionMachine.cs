@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ProductionMachine : MonoBehaviour
 {
@@ -10,13 +11,31 @@ public class ProductionMachine : MonoBehaviour
     public int GetRemainingOutputs() => currentOutputAmount;
     public string machineID; // assign in inspector or on spawn
 
-
-
-    public void ResumeProcessing(int outputs, float timeLeft)
+    public ProductionMachineData GetSaveData()///
     {
-        currentOutputAmount = outputs;
-        currentTimer = timeLeft;
+        return new ProductionMachineData
+        {
+            machineType = machineID,
+            position = transform.position,
+            currentRecipe = recipe?.name ?? "",
+            isProducing = isProcessing,
+            remainingOutputCount = currentOutputAmount,
+            remainingTime = currentTimer,
+            productionStartTime = DateTime.Now.ToString("o"), // 保存当前时间
+            productionDuration = recipe.processingTimePerBatch * currentOutputAmount // 保存总耗时
+        };
+    }
+
+
+    public void ResumeProcessing(ProductionMachineData data)
+    {
+        float passedSeconds = (float)(DateTime.Now - DateTime.Parse(data.productionStartTime)).TotalSeconds;
+        float remaining = data.productionDuration - passedSeconds;
+
+        currentOutputAmount = data.remainingOutputCount;
+        currentTimer = Mathf.Max(0, remaining);
         isProcessing = true;
+
         StartCoroutine(ProcessRoutine());
     }
 
@@ -56,20 +75,6 @@ public class ProductionMachine : MonoBehaviour
         this.currentOutputAmount = 0;
         this.currentTimer = 0f;
     }
-    public ProductionMachineData GetSaveData()
-    {
-        return new ProductionMachineData
-        {
-            machineType = this.machineID,
-            position = (Vector2)transform.position,
-            currentRecipe = recipe != null ? recipe.name : null,
-            remainingTime = this.currentTimer,
-            isProducing = this.isProcessing,
-            remainingOutputCount = this.currentOutputAmount
-        };
-    }
-
-
 
     private IEnumerator ProcessRoutine()
     {
@@ -83,7 +88,7 @@ public class ProductionMachine : MonoBehaviour
 
         for (int i = 0; i < currentOutputAmount * recipe.outputAmountPerBatch; i++)
         {
-            Vector3 offset = Random.insideUnitCircle * 0.3f;
+            Vector3 offset = UnityEngine.Random.insideUnitCircle * 0.3f;
             Instantiate(recipe.outputItem.harvestProductPrefab, transform.position + offset, Quaternion.identity);
         }
 

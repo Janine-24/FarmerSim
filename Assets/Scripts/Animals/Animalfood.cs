@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections;
 
 
 public class AnimalFood : MonoBehaviour
 {
     public int feedCost = 10; //price that can be adjusted 
     public float productionTime = 5f; //time to produce product can be adjuust
-    public GameObject productPrefab; //the product that will be produced after feeding
+    public ItemData item; //the product that will be produced after feeding
     public Transform productSpawnPoint; // the point where the product will be occur
     public AudioClip feedSound; //sound
     public AnimalFeedingUI panel; //that the UI panel for feeding animals
@@ -34,19 +34,19 @@ public class AnimalFood : MonoBehaviour
         {
             isProducing = true;
 
-            // 解析开始时间
+            // unlock start time
             if (DateTime.TryParse(data.productionStartTime, out DateTime startTime))
             {
                 float timePassed = (float)(DateTime.Now - startTime).TotalSeconds;
 
                 if (timePassed >= data.productionDuration)
                 {
-                    // 已经生产完成
-                    OnProductionComplete(); // 直接生成产品
+                    // already completed, produce product directly
+                    OnProductionComplete(); // produce product
                 }
                 else
                 {
-                    // 继续生产：还剩下多久
+                    // continue production
                     float remainingTime = data.productionDuration - timePassed;
                     StartProduction(remainingTime);
                 }
@@ -95,7 +95,7 @@ public class AnimalFood : MonoBehaviour
     {
         isProducing = false;  //finish produce
         Debug.Log("Producing product...");
-        if (productPrefab == null)
+        if (item.harvestProductPrefab == null)
         {
             Debug.LogWarning("Product prefab is not assigned!");
             return;
@@ -105,7 +105,17 @@ public class AnimalFood : MonoBehaviour
             Debug.LogWarning("Product spawn point is not assigned!");
             return;
         }
-        Instantiate(productPrefab, transform.position, Quaternion.identity); //produce product at the animals
+        GameObject product = Instantiate(item.harvestProductPrefab, transform.position, Quaternion.identity); //produce product at the animals
+        Debug.Log("Product produced: " + item.itemName);
+
+        if (product.TryGetComponent<Collectproduct>(out var cp) &&
+    product.TryGetComponent<Item>(out var itemComponent))
+        {
+            itemComponent.data = item;
+            cp.item = itemComponent;
+            cp.productType = item.itemName;
+        }
+
     }
 
     public bool IsProducing()

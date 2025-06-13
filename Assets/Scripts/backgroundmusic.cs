@@ -3,41 +3,49 @@ using UnityEngine.UI;
 
 public class MusicToggle : MonoBehaviour
 {
-    public AudioSource bgmSource;        
-    public Sprite soundOnSprite;        
-    public Sprite soundOffSprite;        
+    public AudioClip bgmClip; 
+    public Sprite soundOnSprite;
+    public Sprite soundOffSprite;
     public Image buttonImage;
-    private static MusicToggle instance;
 
-    private bool isMuted = false;
+    private static MusicToggle instance;
+    private AudioSource bgmSource;
+    private bool isMuted;
 
     private void Awake()
     {
-        // ensure this is a singleton instance
-        if (instance != null && instance != this)
+        if (instance != null)
         {
-            Destroy(gameObject); // prevent the music duplicated when change scene
+            Destroy(gameObject);
             return;
         }
-        // set as singleton instance
+
         instance = this;
-        DontDestroyOnLoad(gameObject); // not destroy when change scene  
-        Debug.Log("设为 DontDestroyOnLoad 成功");
+        DontDestroyOnLoad(gameObject);
 
-        isMuted = PlayerPrefs.GetInt("MusicMuted", 0) == 1;
-
-        if (bgmSource != null)
+        // add or get AudioSource
+        bgmSource = GetComponent<AudioSource>();
+        if (bgmSource == null)
         {
-            bgmSource.loop = true;
-            bgmSource.mute = isMuted;
+            bgmSource = gameObject.AddComponent<AudioSource>();
+        }
 
-            if (!isMuted && !bgmSource.isPlaying) //if bgm playing, dont stop
-            {
-                bgmSource.Play();
-            }
+        // set play bool
+        bgmSource.clip = bgmClip;
+        bgmSource.loop = true;
+        bgmSource.playOnAwake = false;
+
+        // load mute state from PlayerPrefs
+        isMuted = PlayerPrefs.GetInt("MusicMuted", 0) == 1;
+        bgmSource.mute = isMuted;
+
+        if (!isMuted)
+        {
+            bgmSource.Play();
         }
     }
-    void Start()
+
+    private void Start()
     {
         UpdateButtonImage();
     }
@@ -49,9 +57,9 @@ public class MusicToggle : MonoBehaviour
 
         if (!isMuted && !bgmSource.isPlaying)
         {
-            bgmSource.Play();
+            bgmSource.Play(); // repeat play if not muted
         }
-        //save status to prevent when change scene restart the music
+
         PlayerPrefs.SetInt("MusicMuted", isMuted ? 1 : 0);
         PlayerPrefs.Save();
 
@@ -61,6 +69,8 @@ public class MusicToggle : MonoBehaviour
     private void UpdateButtonImage()
     {
         if (buttonImage != null)
+        {
             buttonImage.sprite = isMuted ? soundOffSprite : soundOnSprite;
+        }
     }
 }

@@ -70,14 +70,24 @@ MonoBehaviour:
   - habitatType: sheep
     prefab: {fileID: 4715934671889459428, guid: 25d87a75e3a9c5245b6beb12d13b0160, type: 3}
   productPrefabs:
-  - productType: egg
-    prefab: {fileID: 4115738965657009716, guid: 43e2e49e3af38774aa4d7fde261e7313, type: 3}
-  - productType: milk
-    prefab: {fileID: 5757601368711066013, guid: 5f7ccbd0dc60f8d4a94f4864667a930e, type: 3}
-  - productType: bacon
-    prefab: {fileID: 6872406656183434756, guid: 2802cbb02a424ce49b31da3cf5f3516c, type: 3}
-  - productType: wool
-    prefab: {fileID: 6086269873913755058, guid: 0ecb43be8ebfaa9499f6947ccc281079, type: 3}
+  - productType: Egg3
+    prefab: {fileID: 158665329964737262, guid: 380e6dbe14cef3b45bfbeb174c46c199, type: 3}
+  - productType: Milk3
+    prefab: {fileID: 3220352609163031576, guid: cafd5e79ee86312408378987c08ef6b7, type: 3}
+  - productType: Bacon3
+    prefab: {fileID: 7533797594409393161, guid: 11212b6a29721cb4bb852e6c38c8c611, type: 3}
+  - productType: Wool3
+    prefab: {fileID: 3315596234490270589, guid: db6ed891f1b47054e9e643869428b3ce, type: 3}
+  - productType: Bread3
+    prefab: {fileID: 136248063312171056, guid: 995a3c148bdbfaa47b4796fe71e2d9b6, type: 3}
+  - productType: CarrotPie3
+    prefab: {fileID: 1971296763523597479, guid: 2ca1e9614ec26634d95bfcad95fa3ce0, type: 3}
+  - productType: Cheese3
+    prefab: {fileID: 5068729170454238163, guid: 27f0283ba31e0a14097888585e9d30a4, type: 3}
+  - productType: Sweater3
+    prefab: {fileID: 4962381950166121661, guid: 6d5b72dfc6d3a6041ab8204c3db670fd, type: 3}
+  - productType: Hamburger3
+    prefab: {fileID: 8802405890612054163, guid: 63e840fb6587025468bba13a5a72e8bd, type: 3}
   machinePrefabs:
   - machineType: breadfactory
     prefab: {fileID: 3524390586461385895, guid: 0a37263997c91e243805cb359862682f, type: 3}

@@ -20,8 +20,8 @@ MonoBehaviour:
   seedStageSprite: {fileID: 0}
   sproutStageSprite: {fileID: 0}
   matureStageSprite: {fileID: 0}
-  harvestProductPrefab: {fileID: 0}
-  harvestYield: 3
+  harvestProductPrefab: {fileID: 3315596234490270589, guid: db6ed891f1b47054e9e643869428b3ce, type: 3}
+  harvestYield: 1
   durability: 0
   toolActionPrefab: {fileID: 0}
   growthBoost: 0

@@ -59,7 +59,9 @@ public class MachineUpgrade : MonoBehaviour
             if (oldMachine != null && oldMachine.isProcessing)
             {
                 newMachine.recipe = oldMachine.recipe;
-                newMachine.ResumeProcessing(oldMachine.GetRemainingOutputs(), oldMachine.currentTimer);
+                var data = oldMachine.GetSaveData();/// only can get data when machine is processing
+                newMachine.ResumeProcessing(data); /// resume processing with old data
+
             }
         }
 

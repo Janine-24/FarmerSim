@@ -18,10 +18,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 1f), 0f);
-        foreach (var hit in hits)
-        {
-            Debug.Log($"📦 Physics2D Hit: {hit.name}");
-        }
+       
 
         if (Input.GetMouseButtonDown(0))
         {

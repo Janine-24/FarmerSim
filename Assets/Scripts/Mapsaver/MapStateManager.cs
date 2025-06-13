@@ -234,8 +234,8 @@ public class GameStateManager : MonoBehaviour
             GameObject prefab = GetProductPrefab(productData.productType);
             if (prefab != null)
             {
-                GameObject productInstance = Instantiate(prefab, productData.position, Quaternion.identity);
-                productInstance.transform.position = new Vector3(productData.position.x, productData.position.y, -5); // set z position to -5 for 2D view to near with camera(prevent block by other objects)
+                Vector3 spawnPosition = new (productData.position.x, productData.position.y, -5f); // 保证 z = -5
+                GameObject productInstance = Instantiate(prefab, spawnPosition, Quaternion.identity);
 
                 if (productInstance.TryGetComponent<Collectproduct>(out var collect))
                 {
@@ -245,7 +245,7 @@ public class GameStateManager : MonoBehaviour
                     if (collect.TryGetComponent<Collider2D>(out var col))
                     {
                         collect.productType = productData.productType;
-                        col.enabled = true;
+                        collect.InitializeClick(); // initialize click system
                         col.isTrigger = false;
                     }
                     productInstance.layer = LayerMask.NameToLayer("Default");
@@ -275,7 +275,7 @@ public class GameStateManager : MonoBehaviour
 
                 if (machineData.isProducing)
                 {
-                    machine.ResumeProcessing(machineData.remainingOutputCount, machineData.remainingTime);
+                    machine.ResumeProcessing(machineData);
                 }
                 else
                 {

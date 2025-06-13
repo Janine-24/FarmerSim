@@ -20,3 +20,8 @@ MonoBehaviour:
   itemType: 2
   previewPrefab: {fileID: 4715934671889459428, guid: c298bbe975835b741afd47981c72198c, type: 3}
   ignoreHabitatLayer: 0
+  isAnimal: 0
+  isHabitat: 1
+  animalType: 
+  machinelevelup: {fileID: 0}
+  requiredLevelup: 0

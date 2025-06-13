@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wool2_0: -2437366969738783205
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

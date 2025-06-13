@@ -127,7 +127,12 @@ public static class WorldSaveManager
             // Resume if was processing, or restore as idle
             if (saved.amountLeft > 0)
             {
-                machine.ResumeProcessing(saved.amountLeft, saved.timerLeft);
+                machine.ResumeProcessing(new ProductionMachineData
+                {
+                    remainingOutputCount = machine.GetRemainingOutputs(),
+                    remainingTime = machine.currentTimer,
+
+                });
             }
             else
             {

@@ -796,14 +796,13 @@ MonoBehaviour:
   hintText: {fileID: 0}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
-  habitatArea: {fileID: 0}
+    m_Bits: 64
   habitatBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 3, y: 2, z: 0}
+    m_Extent: {x: 2, y: 2, z: 0}
   habitatLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 136
 --- !u!1 &4773147803604262100
 GameObject:
   m_ObjectHideFlags: 0
