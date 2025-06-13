@@ -19,6 +19,7 @@ public class LevelSystem : MonoBehaviour
     void Start()
     {
         int Level = LevelSystem.Instance.level;
+        LoadLevelData();
         UpdateUI();
     }
     public void SaveLevel()
@@ -105,5 +106,34 @@ public class LevelSystem : MonoBehaviour
         if (levelUpPopup != null)
             levelUpPopup.SetActive(false);
     }
+
+    public void SaveLevelData()
+    {
+        PlayerPrefs.SetInt("PlayerLevel", level);
+        PlayerPrefs.SetInt("PlayerCurrentXP", currentXP);
+        PlayerPrefs.SetInt("PlayerXPToNextLevel", xpToNextLevel);
+        PlayerPrefs.Save();
+        Debug.Log("Level data saved");
+    }
+
+    public void LoadLevelData()
+    {
+        level = PlayerPrefs.GetInt("PlayerLevel", 1);
+        currentXP = PlayerPrefs.GetInt("PlayerCurrentXP", 0);
+        xpToNextLevel = PlayerPrefs.GetInt("PlayerXPToNextLevel", 100);
+        Debug.Log($"✅ Level data loaded: Level {level}, XP {currentXP}/{xpToNextLevel}");
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveLevelData();
+    }
+
+    private void OnDisable()
+    {
+        SaveLevelData();
+    }
+
+
 
 }

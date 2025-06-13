@@ -70,42 +70,30 @@ public class BuyingMachineManager : MonoBehaviour
         }
 
         PlayerCoinManager.Instance.SpendCoins(totalPrice);
-        // 记录购买的物品数量
-        for (int i = 0; i < buyingProducts.Count; i++)
+        
+        for (int i = 0; i < buyingProducts.Count; i++) //Record the number of items purchased
         {
             int boughtAmount = buyingProducts[i].originalQuantity - buyingProducts[i].currentQuantity;
-
-            // 调试输出，查看每个商品的变化
             Debug.Log($"Bought {boughtAmount} of {buyingProducts[i].productName}");
-
-            // 更新 buying machine 中的 originalQuantity（设置为当前数量）
-            buyingProducts[i].originalQuantity = buyingProducts[i].currentQuantity;
-
-            // 将购买的商品数量同步到 selling machine
-            sellingMachineManager.sellingProducts[i].currentQuantity += boughtAmount;
-
-            // 同步更新 selling machine 中的 originalQuantity
-            sellingMachineManager.sellingProducts[i].originalQuantity = sellingMachineManager.sellingProducts[i].currentQuantity;
-
-            // 调试输出，确保 selling machine 的商品数量已经更新
+            
+            buyingProducts[i].originalQuantity = buyingProducts[i].currentQuantity; // Update originalQuantity in buying machine (set to current quantity)
+            sellingMachineManager.sellingProducts[i].currentQuantity += boughtAmount;// Sync the quantity of product quantity purchased to the selling machine
+            sellingMachineManager.sellingProducts[i].originalQuantity = sellingMachineManager.sellingProducts[i].currentQuantity;// Update n sync originalQuantity in selling machine 
             Debug.Log($"Selling Machine Updated {sellingMachineManager.sellingProducts[i].productName}: " +
                 $"OriginalQuantity: {sellingMachineManager.sellingProducts[i].originalQuantity}, " +
                 $"CurrentQuantity: {sellingMachineManager.sellingProducts[i].currentQuantity}");
 
-            // 更新 selling machine UI
-            sellingMachineManager.UpdateButtonDisplay(i);
+            sellingMachineManager.UpdateButtonDisplay(i); // Update selling machine UI
         }
-
-        // 显示花费的金额反馈
-        spendFeedbackText.text = $"You have spent: ${totalPrice}";
+        
+        spendFeedbackText.text = $"You have spent: ${totalPrice}"; // Display the amount spent
         StartCoroutine(ClearSpendText());
 
-        // 重置总价格并更新显示
-        totalPrice = 0;
+        totalPrice = 0; // Reset the total price and update the display
         UpdateTotalPriceDisplay();
         sellingMachineManager.SyncToInventory();
-        sellingMachineManager.SaveInventory(); // ✅ 同步保存卖出机状态
-        
+        sellingMachineManager.SaveInventory(); //Sync n save the selling machine status
+
     }
     private IEnumerator ClearSpendText()
     {
@@ -132,15 +120,15 @@ public class BuyingMachineManager : MonoBehaviour
             buyingProducts[i].originalQuantity = buyingProducts[i].dailyStockQuantity;
         }
 
-        Debug.Log("✅ Refreshed all buying products to daily stock quantity.");
+        Debug.Log("Refreshed all buying products to daily stock quantity.");
 
-        // 更新 UI
+        // update UI
         for (int i = 0; i < buyingProducts.Count; i++)
         {
             UpdateButtonDisplay(i);
         }
 
-        SaveInventory(); // 保存新的 daily stock
+        SaveInventory(); // Save new daily stock
     }
 
     private void CheckAndRefreshDailyStock()
@@ -183,11 +171,11 @@ public class BuyingMachineManager : MonoBehaviour
             {
                 buyingProducts[i].currentQuantity = PlayerPrefs.GetInt(currentKey);
                 buyingProducts[i].originalQuantity = PlayerPrefs.GetInt(originalKey);
-                Debug.Log($"✅ Loaded: {buyingProducts[i].productName}, current: {buyingProducts[i].currentQuantity}, original: {buyingProducts[i].originalQuantity}");
+                Debug.Log($"Loaded: {buyingProducts[i].productName}, current: {buyingProducts[i].currentQuantity}, original: {buyingProducts[i].originalQuantity}");
             }
         }
 
-        // ✅ 加这个：确保 UI 数量被正确更新
+        //  update ui product quantity 
         for (int i = 0; i < buyingProducts.Count; i++)
         {
             UpdateButtonDisplay(i);

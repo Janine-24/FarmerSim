@@ -46,32 +46,6 @@ public static class WorldSaveManager
             data.plantedCrops.Add(pd);
         }
 
-        foreach (var machine in UnityEngine.Object.FindObjectsOfType<ProductionMachine>())
-        {
-            if (string.IsNullOrEmpty(machine.machineID))
-                Debug.LogWarning($"❌ Machine at {machine.transform.position} is missing machineID!");
-            if (string.IsNullOrEmpty(machine.machineID))
-            {
-                Debug.LogWarning($"❌ Skipping machine at {machine.transform.position} — machineID is missing");
-                continue;
-            }
-
-            if (machine.recipe == null)
-            {
-                Debug.LogWarning($"❌ Skipping machine {machine.machineID} — recipe is missing");
-                continue;
-            }
-            Debug.Log($"🧪 Saving machine: ID={machine.machineID}, Pos={machine.transform.position}");
-            data.activeMachines.Add(new MachineSaveData
-            {
-                recipeID = machine.recipe.recipeName,
-                prefabName = machine.machineID,
-                position = machine.transform.position,
-                timerLeft = machine.currentTimer,
-                amountLeft = machine.GetRemainingOutputs()
-            });
-        }
-
 
         foreach (var tile in GameManager.instance.tileManager.hoedTiles)
         {
@@ -107,41 +81,5 @@ public static class WorldSaveManager
             GameManager.instance.tileManager.RestorePlantedSeed(saved.tilePosition, seed, saved.currentStage, saved.growthTimer, elapsed);
         }
 
-        // Restore machines
-        foreach (var saved in data.activeMachines)
-        {
-            GameObject prefab = Resources.Load<GameObject>($"Machines/{saved.prefabName}");
-            if (prefab == null)
-            {
-                Debug.LogWarning($"❌ Missing prefab: Machines/{saved.prefabName}");
-                continue;
-            }
-
-
-            GameObject machineObj = GameObject.Instantiate(prefab, saved.position, Quaternion.identity);
-            var machine = machineObj.GetComponent<ProductionMachine>();
-            if (machine == null) continue;
-
-            // Resume if was processing, or restore as idle
-            if (saved.amountLeft > 0)
-            {
-                machine.ResumeProcessing(saved.amountLeft, saved.timerLeft);
-            }
-            else
-            {
-                machine.RestoreIdleState(saved.recipeID); // <--- You need to implement this
-            }
-        }
-
-    }
-
-    private static ProductionMachine FindMachineAt(Vector3 pos)
-    {
-        foreach (var m in UnityEngine.Object.FindObjectsOfType<ProductionMachine>())
-        {
-            if (Vector3.Distance(m.transform.position, pos) < 0.1f)
-                return m;
-        }
-        return null;
     }
 }

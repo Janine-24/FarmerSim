@@ -9,7 +9,7 @@ public class MachineUpgrade : MonoBehaviour
 
     void Start()
     {
-        CheckUpgrade(); // 放下后立即检查是否该升级
+        CheckUpgrade(); // Check immediately after drop machine to see need to upgrade or not
     }
 
     void Update()

@@ -30,8 +30,8 @@ public class InventoryInitializer : MonoBehaviour
         {
             if (entry.itemData != null && entry.quantity > 0)
             {
-                // 根据 itemData 获取对应的 Item prefab 实例
-                var itemPrefab = itemManager.GetItemByName(entry.itemData.itemName);
+                
+                var itemPrefab = itemManager.GetItemByName(entry.itemData.itemName);// Get the corresponding Item prefab instance according to itemData
                 if (itemPrefab == null)
                 {
                     Debug.LogWarning($"Item prefab not found for: {entry.itemData.itemName}");
@@ -40,8 +40,7 @@ public class InventoryInitializer : MonoBehaviour
 
                 for (int i = 0; i < entry.quantity; i++)
                 {
-                    // 实例化一个新 Item 并添加进 Inventory
-                    Item itemInstance = Instantiate(itemPrefab);
+                    Item itemInstance = Instantiate(itemPrefab);// Instantiate a new Item and add it to the Inventory
                     inventoryManager.Add("backpack", itemInstance);
                 }
             }

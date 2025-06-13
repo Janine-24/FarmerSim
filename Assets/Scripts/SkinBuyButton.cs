@@ -5,7 +5,7 @@ public class SkinBuyButton : MonoBehaviour
 {
     public int skinPrice = 1000;
     public Button buyButton;
-    public string skinKeyName; // ✅ 加入这个字段
+    public string skinKeyName; 
 
     private void Start()
     {

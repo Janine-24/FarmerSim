@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class Product
@@ -9,4 +9,8 @@ public class Product
     public int currentQuantity;
     public int price;
     public int dailyStockQuantity;
+    
+
+
+
 }

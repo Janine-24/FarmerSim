@@ -20,7 +20,7 @@ public class Toolbar_UI : MonoBehaviour
             return;
         }
 
-        SelectSlot(0); // 默认选中第一个格子
+        SelectSlot(0); // choose fist coloum default
 
     }
     public Slot GetSelectedSlot()
@@ -90,10 +90,6 @@ public class Toolbar_UI : MonoBehaviour
             Debug.LogError("Selected index is out of bounds.");
         }
     }
-
-
-
-
     private void CheckAlphaNumericKeys()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -165,10 +161,6 @@ public class Toolbar_UI : MonoBehaviour
                     break;
                 }
             }
-
-            
-
-
             GameManager.instance.uiManager.RefreshAll();
         }
     }
