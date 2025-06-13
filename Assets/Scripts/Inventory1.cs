@@ -71,7 +71,7 @@ public class Inventory
             this.itemName = itemName;
             this.icon = icon;
             this.maxAllowed = maxAllowed;
-            this.itemData = GameManager.instance.itemManager.GetItemByName(itemName).data; // <-- Add this
+            this.itemData = GameManager.instance.itemManager.GetItemByName(itemName).data; 
             count++;
         }
 

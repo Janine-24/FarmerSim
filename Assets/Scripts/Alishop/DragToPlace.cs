@@ -131,6 +131,7 @@ public class DragManager : MonoBehaviour
 
             LevelSystem.Instance.AddXP(10);//add level experience after place item
 
+
             if (placedAnimal.TryGetComponent<ProductionMachine>(out var machine))
             {
                 machine.machineID = currentItem.prefabToPlace.name;

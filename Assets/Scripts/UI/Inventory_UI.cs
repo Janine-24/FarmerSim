@@ -146,14 +146,14 @@ public class Inventory_UI : MonoBehaviour
                 UI_Manager.draggedSlot.inventory.slots[UI_Manager.draggedSlot.slotID].count);
         }
 
-        // 保存被拖出的 inventory
+        //Save the dragged product from inventory
         var sourceUI = UI_Manager.draggedSlot.GetComponentInParent<Inventory_UI>();
         if (sourceUI != null)
         {
             sourceUI.SaveInventoryData();
         }
 
-        // 保存被放入的 inventory
+        // save the drop product from inventory
         var targetUI = slot.GetComponentInParent<Inventory_UI>();
         if (targetUI != null)
         {
@@ -221,7 +221,7 @@ public class Inventory_UI : MonoBehaviour
     {
         if (inventory == null) return;
 
-        // 检查是否有任何存档数据
+        // Check if there is any save data
         bool hasSavedData = false;
         for (int i = 0; i < inventory.slots.Count; i++)
         {
@@ -255,7 +255,7 @@ public class Inventory_UI : MonoBehaviour
                 {
                     var itemComponent = itemPrefab.GetComponent<Item>();
                     slot.icon = itemComponent.data.icon;
-                    slot.itemData = itemComponent.data; // ✅ 关键：补上这句，避免 null
+                    slot.itemData = itemComponent.data; // avoid null
                     // Load durability list
                     slot.individualDurability = new List<int>();
                     int durabilityCount = PlayerPrefs.GetInt($"{inventoryName}_Slot_{i}_DurabilityCount", 0);
@@ -267,7 +267,7 @@ public class Inventory_UI : MonoBehaviour
 
                 }
 
-                inventory.slots[i] = slot; // ✅ 覆盖旧数据
+                inventory.slots[i] = slot; //Overwrite old data
             }
         }
 

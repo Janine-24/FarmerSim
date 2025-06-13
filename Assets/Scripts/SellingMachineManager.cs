@@ -19,17 +19,18 @@ public class SellingMachineManager : MonoBehaviour
 
     private void Start()
     {
-        LoadInventory();          // ✅ 加载本地保存的数据
-        SetupButtons();           // ✅ 设置按钮
+        LoadInventory();          // Loading locally saved data
+        MakeButtonsFunction();
         StartCoroutine(DelayedSync());
+        
     }
 
     private IEnumerator DelayedSync()
     {
-        yield return null; // 延迟一帧，等 GameManager 和背包加载完成
+        yield return null; //Delay one frame until the GameManager and backpack are loaded
         SyncFromInventory();
     }
-    private void SetupButtons()
+    private void MakeButtonsFunction()
     {
         for (int i = 0; i < sellingButtons.Count; i++)
         {
@@ -42,13 +43,18 @@ public class SellingMachineManager : MonoBehaviour
     private void OnProductClicked(int index)
     {
         Product product = sellingProducts[index];
-        if (product.currentQuantity > 0)
+
+        if (product.currentQuantity <= 0)
         {
-            product.currentQuantity--;
-            totalPrice += product.price;
-            UpdateButtonDisplay(index);
-            UpdateTotalPriceDisplay();
+            Debug.Log("❌ No more items to sell!");
+            return;
         }
+
+        product.currentQuantity -= 1; // 只是减少 UI 上的显示
+        totalPrice += product.price;
+
+        UpdateButtonDisplay(index);
+        UpdateTotalPriceDisplay();
     }
 
     public void UpdateButtonDisplay(int index)
@@ -86,8 +92,8 @@ public class SellingMachineManager : MonoBehaviour
         totalPrice = 0;
         UpdateTotalPriceDisplay();
 
-        SyncToInventory();   // 关键时刻同步
-        SaveInventory();     // 并保存本地数据
+        SyncToInventory();
+        SaveInventory();
     }
 
     public void ResetSellingMachine()
@@ -99,9 +105,10 @@ public class SellingMachineManager : MonoBehaviour
             sellingProducts[i].currentQuantity = sellingProducts[i].originalQuantity;
             UpdateButtonDisplay(i);
         }
+
         UpdateTotalPriceDisplay();
 
-        SyncToInventory(); // ✅ 重置后同步回 Inventory
+
     }
 
     public void SaveInventory()
@@ -147,11 +154,12 @@ public class SellingMachineManager : MonoBehaviour
         SaveInventory();
     }
 
+    private bool hasInitializedOriginalQuantities = false;
 
-    // ✅ 新增：同步 Inventory → Selling Machine
+    //sync Inventory → Selling Machine
     public void SyncFromInventory()
     {
-        Debug.Log("✅ 正在执行 SyncFromInventory()");
+        Debug.Log("Processing SyncFromInventory()");
 
         Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
         Inventory toolbar = GameManager.instance.player.inventoryManager.toolbar;
@@ -160,27 +168,24 @@ public class SellingMachineManager : MonoBehaviour
         {
             int totalCount = 0;
 
-            // 遍历背包
             foreach (Inventory.Slot slot in backpack.slots)
-            {
                 if (slot != null && slot.itemName == product.productName)
-                {
                     totalCount += slot.count;
-                }
-            }
 
-            // 遍历 Toolbar
             foreach (Inventory.Slot slot in toolbar.slots)
-            {
                 if (slot != null && slot.itemName == product.productName)
-                {
                     totalCount += slot.count;
-                }
-            }
 
             product.currentQuantity = totalCount;
-            product.originalQuantity = totalCount; // 可选：同时设置原始数量
+
+            // ✅ 只在第一次时设定 originalQuantity
+            if (!hasInitializedOriginalQuantities)
+            {
+                product.originalQuantity = totalCount;
+            }
         }
+
+        hasInitializedOriginalQuantities = true;
 
         for (int i = 0; i < sellingProducts.Count; i++)
         {
@@ -189,10 +194,11 @@ public class SellingMachineManager : MonoBehaviour
     }
 
 
-    // ✅ 新增：同步 Selling Machine → Inventory
+
+    // Sync Selling Machine → Inventory
     public void SyncToInventory()
     {
-        Debug.Log("✅ 正在执行 SyncToInventory()");
+        Debug.Log("Processing SyncToInventory()");
 
         Inventory backpack = GameManager.instance.player.inventoryManager.backpack;
         Inventory toolbar = GameManager.instance.player.inventoryManager.toolbar;
@@ -203,7 +209,7 @@ public class SellingMachineManager : MonoBehaviour
             bool foundInBackpack = false;
             bool foundInToolbar = false;
 
-            // 👜 尝试更新背包中的对应物品数量
+            // update that product quantity in inventory
             foreach (Inventory.Slot slot in backpack.slots)
             {
                 if (slot != null && slot.itemName == product.productName)
@@ -215,7 +221,7 @@ public class SellingMachineManager : MonoBehaviour
                 }
             }
 
-            // 🧰 如果背包没找到，尝试更新 Toolbar
+            // if inventory can't find try update toolbar
             if (!foundInBackpack)
             {
                 foreach (Inventory.Slot slot in toolbar.slots)
@@ -230,7 +236,7 @@ public class SellingMachineManager : MonoBehaviour
                 }
             }
 
-            // 🆕 如果两个地方都没找到，插入到背包或 Toolbar 的空位
+            // input product into empty coloum of toolbar or inventory if can't find in both place
             if (!foundInBackpack && !foundInToolbar && remainingToAssign > 0)
             {
                 var itemPrefab = GameManager.instance.itemManager.GetItemByName(product.productName);
@@ -247,19 +253,19 @@ public class SellingMachineManager : MonoBehaviour
 
                 bool inserted = false;
 
-                // 插入到背包空位
+                // input into empty coloum of inventory
                 for (int i = 0; i < backpack.slots.Count; i++)
                 {
                     if (string.IsNullOrEmpty(backpack.slots[i].itemName))
                     {
                         backpack.slots[i] = newSlot;
                         inserted = true;
-                        Debug.Log($"✅ 新增 {product.productName} 到背包 slot {i}");
+                        Debug.Log($"Add {product.productName} to inventory slot {i}");
                         break;
                     }
                 }
 
-                // 插入到 Toolbar 空位（如果背包没插入成功）
+                // if inventory input unsuccessfully,inout toolbar empty coloum
                 if (!inserted)
                 {
                     for (int i = 0; i < toolbar.slots.Count; i++)
@@ -267,7 +273,7 @@ public class SellingMachineManager : MonoBehaviour
                         if (string.IsNullOrEmpty(toolbar.slots[i].itemName))
                         {
                             toolbar.slots[i] = newSlot;
-                            Debug.Log($"✅ 新增 {product.productName} 到 Toolbar slot {i}");
+                            Debug.Log($"Add {product.productName} to Toolbar slot {i}");
                             break;
                         }
                     }
@@ -275,10 +281,8 @@ public class SellingMachineManager : MonoBehaviour
             }
         }
 
-        GameManager.instance.uiManager.RefreshInventoryUI("backpack");
         GameManager.instance.uiManager.RefreshInventoryUI("toolbar");
+        GameManager.instance.uiManager.RefreshInventoryUI("backpack");
+
     }
-
-
-
 }

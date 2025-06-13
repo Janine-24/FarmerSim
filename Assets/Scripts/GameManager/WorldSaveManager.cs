@@ -47,32 +47,6 @@ public static class WorldSaveManager
             data.plantedCrops.Add(pd);
         }
 
-        foreach (var machine in UnityEngine.Object.FindObjectsOfType<ProductionMachine>())
-        {
-            if (string.IsNullOrEmpty(machine.machineID))
-                Debug.LogWarning($"❌ Machine at {machine.transform.position} is missing machineID!");
-            if (string.IsNullOrEmpty(machine.machineID))
-            {
-                Debug.LogWarning($"❌ Skipping machine at {machine.transform.position} — machineID is missing");
-                continue;
-            }
-
-            if (machine.recipe == null)
-            {
-                Debug.LogWarning($"❌ Skipping machine {machine.machineID} — recipe is missing");
-                continue;
-            }
-            Debug.Log($"🧪 Saving machine: ID={machine.machineID}, Pos={machine.transform.position}");
-            data.activeMachines.Add(new MachineSaveData
-            {
-                recipeID = machine.recipe.recipeName,
-                prefabName = machine.machineID,
-                position = machine.transform.position,
-                timerLeft = machine.currentTimer,
-                amountLeft = machine.GetRemainingOutputs()
-            });
-        }
-
 
         foreach (var tile in GameManager.instance.tileManager.hoedTiles)
         {

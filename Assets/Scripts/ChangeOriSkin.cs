@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class ChangeOriSkin : MonoBehaviour
 {
-    public Animator animator; // 拖入角色 Animator
-    public AnimatorOverrideController defaultSkin; // 拖入默认皮肤控制器
-    public Button revertButton; // 拖入还原按钮
+    public Animator animator; // Drag in the character Animator
+    public AnimatorOverrideController defaultSkin; // Drag in the default skin controller
+    public Button revertButton; 
 
     private void Start()
     {
@@ -17,10 +17,10 @@ public class ChangeOriSkin : MonoBehaviour
         SkinManager.selectedOverrideController = defaultSkin;
         animator.runtimeAnimatorController = defaultSkin;
 
-        // 保存选择
-        PlayerPrefs.SetString("SelectedSkinName", defaultSkin.name);
+        
+        PlayerPrefs.SetString("SelectedSkinName", defaultSkin.name);//save selected skin
         PlayerPrefs.Save();
 
-        Debug.Log("已切换回默认皮肤：" + defaultSkin.name);
+        Debug.Log("Already change to default skin：" + defaultSkin.name);
     }
 }

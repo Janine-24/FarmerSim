@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LateSNB : MonoBehaviour
 {
-    // 引用 Buying 和 Selling Machine Manager
+    // use Buying n Selling Machine Manager 
     public BuyingMachineManager buyingMachineManager;
     public SellingMachineManager sellingMachineManager;
 
@@ -15,27 +15,27 @@ public class LateSNB : MonoBehaviour
 
     public void OnCloseButtonClicked()
     {
-        // 保存购买数据
+        // save buy data
         if (buyingMachineManager != null)
         {
             buyingMachineManager.SaveInventory();
         }
         else
         {
-            Debug.LogError("BuyingMachineManager 引用未设置！");
+            Debug.LogError("BuyingMachineManager not been use！");
         }
 
-        // 保存售出数据
+        // save selling data
         if (sellingMachineManager != null)
         {
             sellingMachineManager.SaveInventory();
         }
         else
         {
-            Debug.LogError("SellingMachineManager 引用未设置！");
+            Debug.LogError("SellingMachineManager not been use！");
         }
 
-        // 切换到主页面
+        // change to main page
         SceneManager.LoadScene("main page");
     }
 }
