@@ -38,65 +38,48 @@ public class Player : MonoBehaviour
             Inventory toolbar = inventoryManager.toolbar;
             Inventory.Slot selectedSlot = toolbar.selectedSlot;
 
-            string toolName = selectedSlot?.itemData?.itemName.ToLower() ?? "None"; // Declare only once
-
-            
-
-            Debug.Log("Selected tool: " + toolName);
-
-            if (selectedSlot.count > 0)
+            if (selectedSlot != null && selectedSlot.count > 0 && selectedSlot.itemName == "Shovel3")
             {
-                if (selectedSlot.itemName == "Shovel3")
+                if (tileManager.IsInteractable(position))
                 {
-                    if (tileManager.IsInteractable(position))
-                    {
-                        Debug.Log("Tile is interactable");
-                        tileManager.SetInteracted(position);
-                    }
-                    else
-                    {
-                        tileManager.ReverseInteracted(position);
-                    }
-
-                 
-
-                    Debug.Log("Shovel durability: " + selectedSlot.itemData.durability);
-
-                    // 👇 Destroy shovel if durability is 0
-                    if (selectedSlot.individualDurability.Count > 0)
-                    {
-                        selectedSlot.individualDurability[0]--;
-                        Debug.Log("Durability list: " + string.Join(", ", selectedSlot.individualDurability));
-
-                        Debug.Log("Shovel durability: " + selectedSlot.individualDurability[0]);
-
-                        // 👇 If this shovel broke, remove one from stack
-                        if (selectedSlot.individualDurability[0] <= 0)
-                        {
-                            selectedSlot.RemoveItem();
-                            int index = GameManager.instance.player.inventoryManager.toolbarUI.GetSelectedSlotIndex();
-                            GameManager.instance.player.inventoryManager.toolbarUI.SelectSlot(index);
-
-                        }
-
-                        // Refresh UI
-                        GameManager.instance.player.inventoryManager.UpdateToolbarUI();
-                        GameManager.instance.uiManager.RefreshAll();
-                        GameManager.instance.player.inventoryManager.toolbarUI.SelectSlot(GameManager.instance.player.inventoryManager.toolbarUI.GetSelectedSlotIndex());
-
-                    }
-                }
-                    else
-                    {
-                        Debug.Log("Selected tool is not a hoe.");
-                    }
+                    Debug.Log("Tile is interactable");
+                    tileManager.SetInteracted(position);
                 }
                 else
                 {
-                    Debug.Log("Selected item is not a tool or count is zero.");
+                    tileManager.ReverseInteracted(position);
                 }
-            
+
+                Debug.Log("Used shovel: " + selectedSlot.itemName);
+
+                // 👇 Remove one from the stack
+                selectedSlot.count--;
+                // If item count is 0, clear the slot
+                if (selectedSlot.count <= 0)
+                {
+                    toolbar.selectedSlot = null;
+
+                    inventoryManager.UpdateToolbarUI();
+                }
+                // Update UI
+                inventoryManager.UpdateToolbarUI();
+
+                // 👇 If no more left, clear the slot
+                if (selectedSlot.count <= 0)
+                {
+                    toolbar.selectedSlot = null;
+                    inventoryManager.UpdateToolbarUI();
+                }
+
+                GameManager.instance.uiManager.RefreshAll();
+                inventoryManager.toolbarUI.SelectSlot(inventoryManager.toolbarUI.GetSelectedSlotIndex());
+            }
+            else
+            {
+                Debug.Log("No shovel selected or item count is 0.");
+            }
         }
+
 
         if (Input.GetKeyDown(KeyCode.G)) // 或改成靠近自动触发
         {
