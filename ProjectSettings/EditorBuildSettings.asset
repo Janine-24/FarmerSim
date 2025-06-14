@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SNBMachine2.unity
     guid: 0277b207fd75eab49895626b8a3903fd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/InventoryManager.unity
     guid: 1f59d61d1dfd2ed48a618ea06c576822
   - enabled: 1

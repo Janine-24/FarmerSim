@@ -215,6 +215,7 @@ public class SellingMachineManager : MonoBehaviour
                 if (slot != null && slot.itemName == product.productName)
                 {
                     existingInToolbar += slot.count;
+                    slot.count = 0;
                 }
             }
             //remainingToAssign -= existingInToolbar; 不知道有没有用but不要动先
