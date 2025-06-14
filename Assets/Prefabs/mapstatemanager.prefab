@@ -91,17 +91,21 @@ MonoBehaviour:
   machinePrefabs:
   - machineType: breadfactory
     prefab: {fileID: 3524390586461385895, guid: 0a37263997c91e243805cb359862682f, type: 3}
-  - machineType: carrotpiefactory
-    prefab: {fileID: 2938993142418050364, guid: 10d1104eaefbb4840ae1363821e9c3fa, type: 3}
   - machineType: cheesefactory
     prefab: {fileID: 7086111437926052078, guid: aaede180faf682e4d93b6bed72b849b9, type: 3}
   - machineType: hamburgerfactory
     prefab: {fileID: 1476859362983040747, guid: 7f238f5ab0964f94b838e80d4df66cb9, type: 3}
   - machineType: breadfactoryupdate
     prefab: {fileID: 4237056997310429856, guid: c01197e87677c46418b82462cc05bf39, type: 3}
-  - machineType: carrotpiefactoryupdate
-    prefab: {fileID: 1581152323828465827, guid: 8d073d96add36834abc05d9c3306d8e0, type: 3}
   - machineType: cheesefactoryupdate
     prefab: {fileID: 4407354163724982677, guid: ebea9860a97be9c4d890945ba62ba39f, type: 3}
   - machineType: hamburgerfactoryupdate
     prefab: {fileID: 3597929982483667014, guid: 66f4cd1955a618b4cb097a858e524f1f, type: 3}
+  - machineType: carrotpiefactoryupdate
+    prefab: {fileID: 1581152323828465827, guid: 8d073d96add36834abc05d9c3306d8e0, type: 3}
+  - machineType: carrotpiefactory
+    prefab: {fileID: 2938993142418050364, guid: 10d1104eaefbb4840ae1363821e9c3fa, type: 3}
+  - machineType: sweaterfactory
+    prefab: {fileID: 832170335591844702, guid: cf753a8ae62d295469adb65f452c3e54, type: 3}
+  - machineType: sweaterfactorupdate
+    prefab: {fileID: 5316271747834095547, guid: 135f46519282cb440a040dfe9a0c1faa, type: 3}

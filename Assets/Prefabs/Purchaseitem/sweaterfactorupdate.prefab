@@ -325,4 +325,4 @@ MonoBehaviour:
   recipe: {fileID: 11400000, guid: 0b69af7df6daa1a4981c4822376e9d11, type: 2}
   isProcessing: 0
   currentTimer: 0
-  machineID: sweaterfactoryupdate
+  machineID: sweaterfactorupdate
