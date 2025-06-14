@@ -208,6 +208,17 @@ public class SellingMachineManager : MonoBehaviour
             int remainingToAssign = product.currentQuantity;
             bool foundInBackpack = false;
             bool foundInToolbar = false;
+            int existingInToolbar = 0;
+
+            foreach (var slot in toolbar.slots)
+            {
+                if (slot != null && slot.itemName == product.productName)
+                {
+                    existingInToolbar += slot.count;
+                }
+            }
+            //remainingToAssign -= existingInToolbar; 不知道有没有用but不要动先
+            if (remainingToAssign < 0) remainingToAssign = 0;
 
             // update that product quantity in inventory
             foreach (Inventory.Slot slot in backpack.slots)

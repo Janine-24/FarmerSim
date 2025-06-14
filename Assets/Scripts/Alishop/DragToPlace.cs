@@ -215,9 +215,9 @@ public class DragManager : MonoBehaviour
         Vector3 bottomLeft = position - size / 2f;
         Vector3 topRight = position + size / 2f;
 
-        for (float x = bottomLeft.x; x < topRight.x; x += 1f)
+        for (float x = bottomLeft.x; x < topRight.x; x -= 1f)
         {
-            for (float y = bottomLeft.y; y < topRight.y; y += 1f)
+            for (float y = bottomLeft.y; y < topRight.y; y -= 1f)
             {
                 Vector3Int cellPos = tileManager.InteractableMap.WorldToCell(new Vector3(x, y, 0));
 
