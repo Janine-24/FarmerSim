@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f0d9fba444d7b4c9f99fe69e64d4ff, type: 3}
+  m_Name: CarrotPie3
+  m_EditorClassIdentifier: 
+  itemName: CarrotPie3
+  icon: {fileID: -1682948431585814222, guid: 943bc3602ee173547b1a379e456b965a, type: 3}
+  itemType: 6
+  wateringTime: 0
+  harvestTime: 0
+  seedStageSprite: {fileID: 0}
+  sproutStageSprite: {fileID: 0}
+  matureStageSprite: {fileID: 0}
+  harvestProductPrefab: {fileID: 1971296763523597479, guid: 2ca1e9614ec26634d95bfcad95fa3ce0, type: 3}
+  harvestYield: 1
+  durability: 0
+  toolActionPrefab: {fileID: 0}
+  growthBoost: 0
+  waterCapacity: 0
+  wateringRange: 0
+  isAutoWaterer: 0
+  unlockLevel: 0

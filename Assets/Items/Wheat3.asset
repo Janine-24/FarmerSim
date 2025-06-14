@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f0d9fba444d7b4c9f99fe69e64d4ff, type: 3}
+  m_Name: Wheat3
+  m_EditorClassIdentifier: 
+  itemName: Wheat3
+  icon: {fileID: -2699735826108634396, guid: c05c4bd32aafcac4badf6b5396062829, type: 3}
+  itemType: 0
+  wateringTime: 20
+  harvestTime: 20
+  seedStageSprite: {fileID: -2007879195102778466, guid: c0d3d237a397c2c4ab5243b3d22aca27, type: 3}
+  sproutStageSprite: {fileID: 3071275207095628571, guid: 65f362cadd50bda48b1dd2af8b97be7c, type: 3}
+  matureStageSprite: {fileID: 469099454673311673, guid: c8763161fe92cff4bb4f03c5d0d77842, type: 3}
+  harvestProductPrefab: {fileID: 6709782327416367699, guid: 63ecb48cfe5e179408b5c09277c4c138, type: 3}
+  harvestYield: 3
+  durability: 0
+  toolActionPrefab: {fileID: 0}
+  growthBoost: 0
+  waterCapacity: 0
+  wateringRange: 0
+  isAutoWaterer: 0
+  unlockLevel: 0

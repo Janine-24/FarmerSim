@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3502126009710387673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365881325679488805}
+  - component: {fileID: 6225582766489647862}
+  m_Layer: 0
+  m_Name: mapstatemanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1365881325679488805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502126009710387673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 802.1093, y: 289.3611, z: -19.961794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6225582766489647862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502126009710387673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d66b098dabe2944d8c942049c0764b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapData:
+    animals: []
+    habitats: []
+    clouds: []
+    products: []
+    machines: []
+    playerLevel: 1
+  animalPrefabs:
+  - animalType: chicken
+    prefab: {fileID: 7812178713843837684, guid: 38c6f523527299d4694719ed7fe02afb, type: 3}
+  - animalType: sheep
+    prefab: {fileID: 3420930004063497669, guid: 3b4cbe05db586dc409c00485c142151e, type: 3}
+  - animalType: cow
+    prefab: {fileID: 3532523336198122836, guid: 7fb320b5dbcac374da9bf0bfce6b063b, type: 3}
+  - animalType: pig
+    prefab: {fileID: 8675702892012565045, guid: 706f95ccad8e5c54a9caf39b512d441d, type: 3}
+  habitatPrefabs:
+  - habitatType: chicken
+    prefab: {fileID: 4715934671889459428, guid: 3c816d14c2b8c024d931915d6fb9f771, type: 3}
+  - habitatType: cow
+    prefab: {fileID: 4715934671889459428, guid: 02e7285b1b3aa6745b35f31cc9178979, type: 3}
+  - habitatType: pig
+    prefab: {fileID: 4715934671889459428, guid: 1462556f964feb14f9f75c67a26a2a27, type: 3}
+  - habitatType: sheep
+    prefab: {fileID: 4715934671889459428, guid: 25d87a75e3a9c5245b6beb12d13b0160, type: 3}
+  productPrefabs:
+  - productType: Egg3
+    prefab: {fileID: 158665329964737262, guid: 380e6dbe14cef3b45bfbeb174c46c199, type: 3}
+  - productType: Milk3
+    prefab: {fileID: 3220352609163031576, guid: cafd5e79ee86312408378987c08ef6b7, type: 3}
+  - productType: Bacon3
+    prefab: {fileID: 7533797594409393161, guid: 11212b6a29721cb4bb852e6c38c8c611, type: 3}
+  - productType: Wool3
+    prefab: {fileID: 3315596234490270589, guid: db6ed891f1b47054e9e643869428b3ce, type: 3}
+  - productType: Bread3
+    prefab: {fileID: 136248063312171056, guid: 995a3c148bdbfaa47b4796fe71e2d9b6, type: 3}
+  - productType: CarrotPie3
+    prefab: {fileID: 1971296763523597479, guid: 2ca1e9614ec26634d95bfcad95fa3ce0, type: 3}
+  - productType: Cheese3
+    prefab: {fileID: 5068729170454238163, guid: 27f0283ba31e0a14097888585e9d30a4, type: 3}
+  - productType: Sweater3
+    prefab: {fileID: 4962381950166121661, guid: 6d5b72dfc6d3a6041ab8204c3db670fd, type: 3}
+  - productType: Hamburger3
+    prefab: {fileID: 8802405890612054163, guid: 63e840fb6587025468bba13a5a72e8bd, type: 3}
+  machinePrefabs:
+  - machineType: breadfactory
+    prefab: {fileID: 3524390586461385895, guid: 0a37263997c91e243805cb359862682f, type: 3}
+  - machineType: cheesefactory
+    prefab: {fileID: 7086111437926052078, guid: aaede180faf682e4d93b6bed72b849b9, type: 3}
+  - machineType: hamburgerfactory
+    prefab: {fileID: 1476859362983040747, guid: 7f238f5ab0964f94b838e80d4df66cb9, type: 3}
+  - machineType: breadfactoryupdate
+    prefab: {fileID: 4237056997310429856, guid: c01197e87677c46418b82462cc05bf39, type: 3}
+  - machineType: cheesefactoryupdate
+    prefab: {fileID: 4407354163724982677, guid: ebea9860a97be9c4d890945ba62ba39f, type: 3}
+  - machineType: hamburgerfactoryupdate
+    prefab: {fileID: 3597929982483667014, guid: 66f4cd1955a618b4cb097a858e524f1f, type: 3}
+  - machineType: carrotpiefactoryupdate
+    prefab: {fileID: 1581152323828465827, guid: 8d073d96add36834abc05d9c3306d8e0, type: 3}
+  - machineType: carrotpiefactory
+    prefab: {fileID: 2938993142418050364, guid: 10d1104eaefbb4840ae1363821e9c3fa, type: 3}
+  - machineType: sweaterfactory
+    prefab: {fileID: 832170335591844702, guid: cf753a8ae62d295469adb65f452c3e54, type: 3}
+  - machineType: sweaterfactorupdate
+    prefab: {fileID: 5316271747834095547, guid: 135f46519282cb440a040dfe9a0c1faa, type: 3}
