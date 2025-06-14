@@ -18,7 +18,7 @@ public class LevelSystem : MonoBehaviour
 
     void Start()
     {
-        int Level = LevelSystem.Instance.level;
+        
         LoadLevelData();
         UpdateUI();
     }
