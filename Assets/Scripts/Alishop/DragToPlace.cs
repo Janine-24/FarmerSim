@@ -14,7 +14,13 @@ public class DragManager : MonoBehaviour
     public LayerMask habitatLayer;
     private SpriteRenderer currentRenderer;
     private Collider2D currentCollider;
+    private TileManager tileManager;
 
+
+    private void Start()
+    {
+        tileManager = GameManager.instance.tileManager;
+    }
 
     private void Awake()
     {
@@ -191,6 +197,8 @@ public class DragManager : MonoBehaviour
         Collider2D obstacleHit = Physics2D.OverlapBox(position, size, 0f, obstacleLayer);
         if (obstacleHit != null)
             return false;
+
+        
         // habitat layer
         if (currentItem.itemType == ShopItemType.Habitat)
         {
@@ -203,6 +211,32 @@ public class DragManager : MonoBehaviour
                 }
             }
         }
+
+        Vector3 bottomLeft = position - size / 2f;
+        Vector3 topRight = position + size / 2f;
+
+        for (float x = bottomLeft.x; x < topRight.x; x += 1f)
+        {
+            for (float y = bottomLeft.y; y < topRight.y; y += 1f)
+            {
+                Vector3Int cellPos = tileManager.InteractableMap.WorldToCell(new Vector3(x, y, 0));
+
+                // 🔸 Reject if there's any soil tile
+                if (tileManager.IsPlantable(cellPos))
+                {
+                    ShowHint("Can't place on soil.");
+                    return false;
+                }
+
+                // 🔸 Reject if a plant is already there
+                if (!tileManager.NoPlantOnTile(cellPos))
+                {
+                    ShowHint("A plant already exists here.");
+                    return false;
+                }
+            }
+        }
+
         return true; //can place iff not hit with these layers
     }
 
@@ -248,6 +282,10 @@ public class DragManager : MonoBehaviour
             }
         }
     }
+   
+
+   
+
 
     private void OnDrawGizmos()
     {
