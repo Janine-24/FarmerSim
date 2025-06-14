@@ -78,7 +78,7 @@ public class BuyingMachineManager : MonoBehaviour
             
             buyingProducts[i].originalQuantity = buyingProducts[i].currentQuantity; // Update originalQuantity in buying machine (set to current quantity)
             sellingMachineManager.sellingProducts[i].currentQuantity += boughtAmount;// Sync the quantity of product quantity purchased to the selling machine
-            sellingMachineManager.sellingProducts[i].originalQuantity = sellingMachineManager.sellingProducts[i].currentQuantity;// Update n sync originalQuantity in selling machine 
+            //sellingMachineManager.sellingProducts[i].originalQuantity = sellingMachineManager.sellingProducts[i].currentQuantity;// Update n sync originalQuantity in selling machine 
             Debug.Log($"Selling Machine Updated {sellingMachineManager.sellingProducts[i].productName}: " +
                 $"OriginalQuantity: {sellingMachineManager.sellingProducts[i].originalQuantity}, " +
                 $"CurrentQuantity: {sellingMachineManager.sellingProducts[i].currentQuantity}");
