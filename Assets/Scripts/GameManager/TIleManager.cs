@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class TileManager : MonoBehaviour
 {
     [SerializeField] private Tilemap interactableMap;
-
+    public Tilemap InteractableMap => interactableMap;
     [SerializeField] private Tile hiddenInteractableTile;
     [SerializeField] private Sprite visualCueForPlant;
     [SerializeField] private Tile interactedTile;
