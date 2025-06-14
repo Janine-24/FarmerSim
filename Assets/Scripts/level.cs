@@ -18,10 +18,10 @@ public class LevelSystem : MonoBehaviour
 
     void Start()
     {
-        
         LoadLevelData();
         UpdateUI();
     }
+
     public void SaveLevel()
     {
         PlayerPrefs.SetInt("PlayerLevel", level);
